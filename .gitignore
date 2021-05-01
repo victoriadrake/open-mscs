@@ -1,0 +1,36 @@
+# environments
+.env/
+.env.test
+.env*.local
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# dependency directories
+.npm
+node_modules/
+
+# pyenv
+.python-version
+Pipfile.lock
+
+# mkdocs documentation
+/site
+
+# operating system-related files
+# file properties cache/storage on macOS
+*.DS_Store
+# thumbnail cache on Windows
+Thumbs.db
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace

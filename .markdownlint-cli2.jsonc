@@ -1,0 +1,14 @@
+{
+    "config": {
+        "line-length": false,
+        "no-duplicate-header": false,
+        "no-emphasis-as-header": false,
+        "no-inline-html": false,
+        "ul-style": false,
+        "MD007": {
+            "indent": 4
+        }
+    },
+    "fix": true,
+    "ignores": ["node_modules", "includes"]
+}

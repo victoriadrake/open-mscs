@@ -910,23 +910,23 @@ AES rounds differ with key length:
 
 `KeyExpansion`: round keys are derived from the cipher key using the AES key schedule
 
-For each round:
+The [algorithm steps are](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#High-level_description_of_the_algorithm):
 
-1. `AddRoundKey`: bitwise XOR combines each byte of the state with a byte of the round key
+1. To begin, `AddRoundKey`: bitwise XOR combines each byte of the state with a byte of the round key
 2. For 9, 11, or 13 rounds:
-   1. `SubBytes`: substitution step replaces each byte according to lookup table
-       - Uses a 16x16 matrix (S-box) with permutation of all possible 256 8-bit values
-       - Left 4 bits are the row value, right 4 bits are the column value for indexing
-       - S-box is designed to have a low correlation between input bits and output bits
-   2. `ShiftRows`: transposition of last three rows of the state, cyclically shifted some number of steps (diffusion)
-       - A circular left shift is performed starting with 1 byte at the second row, 2 bytes at the third row, then 3 bytes at the fourth row.
-   3. `MixColumns`: linear mixing operation combines four bytes in each column of the state (diffusion)
-       - The four bytes of each column are combined using an invertible linear transformation (matrix multiplication)
-   4. `AddRoundKey` again
+    1. `SubBytes`: substitution step replaces each byte according to lookup table
+          - Uses a 16x16 matrix (S-box) with permutation of all possible 256 8-bit values
+          - Left 4 bits are the row value, right 4 bits are the column value for indexing
+          - S-box is designed to have a low correlation between input bits and output bits
+    2. `ShiftRows`: transposition of last three rows of the state, cyclically shifted some number of steps (diffusion)
+          - A circular left shift is performed starting with 1 byte at the second row, 2 bytes at the third row, then 3 bytes at the fourth row.
+    3. `MixColumns`: linear mixing operation combines four bytes in each column of the state (diffusion)
+          - The four bytes of each column are combined using an invertible linear transformation (matrix multiplication)
+    4. `AddRoundKey` again
 3. Final round:
-   1. `SubBytes`
-   2. `ShiftRows`
-   3. `AddRoundKey`
+    1. `SubBytes`
+    2. `ShiftRows`
+    3. `AddRoundKey`
 
 Each operation in AES is reversible, which is how AES is decrypted.
 
@@ -939,6 +939,33 @@ Each operation in AES is reversible, which is how AES is decrypted.
 - Key-recovery attack
 
 At time of writing there are no known feasible attacks that would break AES.
+
+#### RSA (Rivest, Shamir, Adleman)
+
+A block cipher that depends on the difficulty of factoring a large integer (𝒏) into two primes (*p* and *q*). The plaintext *M* and ciphertext *C* are integers between 0 and *𝒏-1* for some 𝒏.
+
+Two prime numbers, *p* and *q*, are chosen (using RNG). They must be different and sufficiently large and random. Their product 𝒏 is used to generate public and private keys.
+
+- The public key is *{𝒆,𝒏}*
+- The private key is *{𝒅,𝒏}*
+- The relationship between 𝒆 and 𝒅 is: *𝒅𝒆 mod φ(𝒏) = 1*
+    - *φ(𝒏) = (p−1)(q−1)*
+- 𝒆 and 𝒅 are multiplicative inverses modulo *φ(𝒏)* (the [Euler totient function](https://mathworld.wolfram.com/TotientFunction.html))
+- The key 𝒅 can be found with modular multiplicative inverse: *𝒅 ≡ 𝒆⁻¹(mod φ(𝒏))*
+
+The message *M* is independent of the values for *p* and *q*, allowing any message to be encrypted using the same public-private key pair. The values *p* and *q* are independent of the exponent 𝒆.
+
+Approaches to attacking RSA include:
+
+- Brute force (try all private keys)
+- Mathematical attacks
+    - Factoring 𝒏 into *p* and *q*
+    - Determining *φ(𝒏)* (without finding *p* and *q*)
+    - Determining 𝒅 without determining *φ(𝒏)*
+- Timing attacks (using the running time of the decryption algorithm)
+- [Chosen ciphertext attacks](https://en.wikipedia.org/wiki/Chosen-ciphertext_attack)
+
+RSA is susceptible to these when the key space is insufficiently small.
 
 ### Block Cipher Modes
 
@@ -999,46 +1026,29 @@ A stream cipher converts a plaintext message to ciphertext bit-by-bit.
 
 Variable-key-size stream cipher, Ron Rivest and RSA Security, 1987
 
-Based on the use of a random permutation. Was used in SSL/TLS, WEP, WPA, until prohibited for all versions of TLS by RFC 7465 in 2015.
+Based on the use of a random permutation, RC4 generates a pseudorandom keystream (stream of bits). It was used in SSL/TLS, WEP, WPA, until prohibited for all versions of TLS by RFC 7465 in 2015.
+
+The permutation is initialized using the **key-scheduling algorithm (KSA)**:
 
 1. A 256-byte state vector, *S*, is initialized from a variable length key of 1-256 bytes (8 to 2048 bits)
     - Initially the entries of *S* are 0-255 (*S[0]... S[255]*)
     - If the private key, *K*, is 256 bytes, a temporary vector *T* holds *K*; otherwise, the bytes of *K* are repeated to fill up *T*
 2. *T* is used to produce the initial permutation of *S*
-    - For each byte in *S* (*S[ᵢ]*), we swap with another byte according to the scheme dictated by *T*
-3. Each byte of the now-initialized *S* is again swapped with another byte in *S* to achieve stream generation
+    - For each byte in *S* (*S[ᵢ]*), we swap with another byte *S[j]* according to the scheme dictated by *T*
+
+A keystream is generated using the **pseudo-random generation algorithm (PRGA)**. For each iteration *i*:
+
+1. The *i* element of *S*, *S[i]*, is added to *j*
+2. Exchange the values of *S[i]* and *S[j]* then use the sum *S[i] + S[j] (modulo 256)* as an index to fetch a third element of *S*, the keystream value *K*
+3. Do bitwise XOR with the next byte of the message to produce the next byte of either ciphertext or plaintext
 
 Encryption is performed by XOR-ing each byte of *K* with the next byte of the plaintext. Decryption is by XOR-ing each byte of *K* with the next byte of ciphertext.
 
-The [Fluhrer, Mantin and Shamir attack](https://en.wikipedia.org/wiki/Fluhrer,_Mantin_and_Shamir_attack) broke the WEP standard when they found RC4 to be vulnerable due to the first few bytes of the output keystream being strongly non-random. Andreas Klien showed more correlations between the RC4 keystream and key in [Klien's attack](https://en.wikipedia.org/wiki/RC4#Klein's_attack), which lead to Erik Tews, Ralf-Philipp Weinmann, and Andrei Pychkine cracking 128-bit WEP in under a minute.
+RC4 is vulnerable:
 
-Vulnerable to bit-flipping attack if not used with a strong message authentication code (MAC).
-
-### RSA (Rivest, Shamir, Adleman)
-
-A block cipher that depends on the difficulty of factoring a large integer (𝒏) into two primes (*p* and *q*). The plaintext *M* and ciphertext *C* are integers between 0 and *𝒏-1* for some 𝒏.
-
-Two prime numbers, *p* and *q*, are chosen (using RNG). They must be different and sufficiently large and random. Their product 𝒏 is used to generate public and private keys.
-
-- The public key is *{𝒆,𝒏}*
-- The private key is *{𝒅,𝒏}*
-- The relationship between 𝒆 and 𝒅 is: *𝒅𝒆 mod φ(𝒏) = 1*
-- 𝒆 and 𝒅 are multiplicative inverses modulo *φ(𝒏)* (the [Euler totient function](https://mathworld.wolfram.com/TotientFunction.html))
-- The key 𝒅 can be found with modular multiplicative inverse: *𝒅 ≡ 𝒆⁻¹(mod φ(𝒏))*
-
-The message *M* is independent of the values for *p* and *q*, allowing any message to be encrypted using the same public-private key pair. The values *p* and *q* are independent of the exponent 𝒆.
-
-Approaches to attacking RSA include:
-
-- Brute force (try all private keys)
-- Mathematical attacks
-    - Factoring 𝒏 into *p* and *q*
-    - Determining *φ(𝒏)* (without finding *p* and *q*)
-    - Determining 𝒅 without determining *φ(𝒏)*
-- Timing attacks (using the running time of the decryption algorithm)
-- [Chosen ciphertext attacks](https://en.wikipedia.org/wiki/Chosen-ciphertext_attack)
-
-RSA is susceptible to these when the key space is insufficiently small.
+- [Fluhrer, Mantin and Shamir attack](https://en.wikipedia.org/wiki/Fluhrer,_Mantin_and_Shamir_attack) broke the WEP standard when they found RC4 to be vulnerable due to the first few bytes of the output keystream being strongly non-random
+- Andreas Klien showed more correlations between the RC4 keystream and key in [Klien's attack](https://en.wikipedia.org/wiki/RC4#Klein's_attack), which lead to Erik Tews, Ralf-Philipp Weinmann, and Andrei Pychkine cracking 128-bit WEP in under a minute
+- Bit-flipping attack is possible if RC4 is not used with a strong message authentication code (MAC)
 
 ### Modular Math
 
@@ -1287,12 +1297,43 @@ The main goal is to encrypt or authenticate all traffic at the IP level, below t
 > - Encapsulating Security Payloads (ESP) provides confidentiality, connectionless data integrity, data origin authentication, an anti-replay service (a form of partial sequence integrity), and limited traffic-flow confidentiality.
 > - Internet Security Association and Key Management Protocol (ISAKMP) provides a framework for authentication and key exchange...
 
-AH uses a hash function to authenticate the IP header. It does not provide encryption.
+AH uses a hash function to provide authentication. It doesn't cover mutable fields in original IP header (DSCP/ToS, ECN, Flags, Fragment Offset, TTL and Header Checksum) and does not provide encryption. AH has two modes:
 
-ESP provides authentication, integrity using hash functions, and confidentiality through encryption. It has two modes:
+- **Transport mode**: places authentication code in the AH header, inserted after the IP header
+- **Tunnel mode**: places AH header after a new IP header
 
-- Transport mode: encrypts and optionally authenticates IP payload (not IP header)
-- Tunnel mode: protects the entire IP packet (used for VPN)
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Ipsec-ah.svg/800px-Ipsec-ah.svg.png" />
+  <figcaption>AH Modes, <a href="https://commons.wikimedia.org/wiki/File:Ipsec-ah.svg">Wikipedia</a></figcaption>
+</figure>
+
+AH shouldn’t be used alone since ESP can also provide authentication. IPsecv3 provides backwards compatibility to support AH.
+
+The AH header contains:
+
+- Next header
+- Payload length
+- Reserved
+- Security Parameter Index (SPI)
+- Sequence number
+    - Optional; protects against replay attacks using sliding window
+- Integrity Check Value (ICV)
+
+If both AH and ESP are used, ESP is applied first for encryption followed by AH for authentication.
+
+ESP provides authentication, integrity using hash functions, and confidentiality through encryption. Integrity is computed before encryption. ESP has two modes:
+
+- **Transport mode**: encrypts and optionally authenticates IP payload
+    - Doesn't cover original IP header
+    - End-to-end (host-to-host)
+- **Tunnel mode**: protects the entire IP packet (used for VPN)
+    - Encrypts the original IP header
+    - Gateway-to-gateway encrypted connection
+
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Ipsec-esp-tunnel-and-transport.svg/800px-Ipsec-esp-tunnel-and-transport.svg.png" />
+  <figcaption>ESP Modes, <a href="https://commons.wikimedia.org/wiki/File:Ipsec-esp-tunnel-and-transport.svg">Wikipedia</a></figcaption>
+</figure>
 
 An IP can be spoofed unidirectionally, such as for DoS attacks.
 
@@ -1302,10 +1343,11 @@ IPSec ensures that:
 - A routing update is not forged
 - A redirect message comes from the router to which the initial packet was sent
 
-**Sequence number checking** is used to help prevent replay attack in AH or with ESP authentication. A sliding window is used:
+**Sequence number checking** is used to help prevent replay attack in AH or if the authentication option in ESP is used. A sliding window checks packets:
 
-- If the sequence number in IPSec header is greater than the largest number of the current anti-replay window, packet is accepted and window is advanced
+- If the sequence number in IPSec header is greater than the largest number of the current anti-replay window, packet is authenticated and window is advanced
 - If it is smaller, the packet is rejected
+- Duplicates are rejected
 
 #### Internet Key Exchange (IKE)
 
@@ -1422,13 +1464,26 @@ You may like to read [SQL injection and XSS: what white hat hackers know about t
 
 Injection attacks include:
 
-- Cross Site Scripting (XSS): code is injected into a web page and changes that page’s behavior
+- Cross Site Scripting (XSS): code is injected into a web page and changes that page's behavior
 - SQLi: malicious actors may be able to send SQL commands that affect a SQL DB; see [Bobby Tables](https://xkcd.com/327/)
 - Cross-Site Request Forgery (CSRF): a separate external site causes a user to send unauthorized commands to a target site
 
 ## Cybercrime Law
 
 US [Computer Fraud and Abuse Act (CFAA)](https://en.wikipedia.org/wiki/Computer_Fraud_and_Abuse_Act) defines criminal sanctions for unauthorized access.
+
+The [Convention on Cybercrime](https://en.wikipedia.org/wiki/Convention_on_Cybercrime) sets out a common criminal policy defining:
+
+- Illegal access
+- Illegal interception
+- Data interference
+- System intereference
+- Misuse of devices
+- Computer-related forgery
+- Computer-related fraud
+- Offenses related to child pornography
+- Infringements of copyright and related rights
+- Attempt at aiding or abetting
 
 ### Intellectual Property
 
@@ -1448,13 +1503,11 @@ Copyrights protect the tangible expressions of an idea. Rights protected against
 
 Types of patents include:
 
-- Utility: for inventing or discovering any new and useful process, machine, articule of manufacturer, composition of matter, or new and useful improvement
-- Design: for inventing a new, original, and ornamental design for an article of manufacture
-- Plan: for inventing or discovering and asexually reproducing a distinct and new plant variety
+- **Utility**: for inventing or discovering any new and useful process, machine, articule of manufacturer, composition of matter, or new and useful improvement
+- **Design**: for inventing a new, original, and ornamental design for an article of manufacture
+- **Plan**: for inventing or discovering and asexually reproducing a distinct and new plant variety
 
-Software, databases, digital content, and algorithms are intellectual property.
-
-RSA was patented by RSA Security from 1983-2000.
+Software, databases, digital content, and algorithms are intellectual property. For example, RSA was patented by RSA Security from 1983-2000.
 
 The [Digital Millennium Copyright Act (DMCA)](https://www.copyright.gov/dmca/) seeks to protect intellectual property (IP) by defining circumventing anti-piracy functionality as a crime.
 
@@ -1521,7 +1574,7 @@ The [OECD Guidelines on the Protection of Privacy and Transborder Flows of Perso
 - Likelihood that a given threat exploits a vulnerability to an asset
 - Magnitude of harmful consequences that result
 
-An equation for calculating risk is: (Probability that threat occurs) * (Cost to organization)
+An equation for calculating risk is: *(Probability that threat occurs) x (Cost to organization)*
 
 Security control classes include:
 

@@ -3,6 +3,7 @@
 ## Course Work
 
 - [Scribbr APA Citation Generator](https://www.scribbr.com/apa-citation-generator/): makes generating citations and references near-painless.
+- [CyberChef](https://gchq.github.io/CyberChef/) a web app for data transformations: encryption, encoding, compression and data analysis. Open source on [GitHub](https://github.com/gchq/CyberChef).
 
 ## Health
 

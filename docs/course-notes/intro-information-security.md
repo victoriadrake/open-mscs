@@ -53,7 +53,7 @@ SYN spoofing generates connection request packets with forged source addresses. 
 - Reflector attack
 - Amplifier attack
 
-### Distributed denial-of-service (DDoS)
+### Distributed Denial-of-Service (DDoS)
 
 Sends large volume of DoS traffic using techniques such as Amplified Distributed Reflective Attack:
 
@@ -134,7 +134,7 @@ The function's stack frame stores:
 - Local variables (referenced as offset to EBP, eg. `EBP - 4`)
 - Base pointer (EBP) for current stack frame
 
-The stack starts at higher memory addresses and "grows down" in memory (towards lower memory addresses). The heap starts at lower memory addresses "grows upward" (toward higher memory address). See [Smashing The Stack For Fun And Profit](stack_smashing.pdf).
+The stack starts at higher memory addresses and "grows down" in memory (towards lower memory addresses). The heap starts at lower memory addresses "grows upward" (toward higher memory address). See [Smashing The Stack For Fun And Profit (PDF)](stack_smashing.pdf).
 
 ### Reading x86
 
@@ -253,7 +253,7 @@ For details on DAC, RBAC, and MAC, see [SP 800-53 Rev. 5, AC-3 Access Enforcemen
 
 Enterprise-wide access control needs to manage resources, privileges, and policies.
 
-### Discretionary access control (DAC)
+### Discretionary Access Control (DAC)
 
 - Based on the identity of the requestor (user)
 - Describes the privileges a subject has (who can access what) based on the policy
@@ -268,14 +268,14 @@ Enterprise-wide access control needs to manage resources, privileges, and polici
     - For user `Ui`, row in the matrix is: `[(oi1, rights1), (oi2, rights2), ...]`
     - Rights are described by permissions, e.g. read, write, execute
 
-### Role-based access control (RBAC)
+### Role-based Access Control (RBAC)
 
 - Users have roles; roles grant certain rights as defined in policy
 - Roles do not need to be changed frequently as users come and go
 - If policy doesn't specify access for a user, fail safe and deny by default
 - RBAC0 (minimum functionality), RBAC1 (adds role hierarchies for inheritance), RBAC2 (adds constraints for configuration, eg prerequisites, cardinality)
 
-### Mandatory access control (MAC)
+### Mandatory Access Control (MAC)
 
 - Centrally-managed policies (company decides how data should be shared)
 - Uses the comparison of security labels describing classification of objects and clearances of subjects
@@ -288,30 +288,26 @@ Enterprise-wide access control needs to manage resources, privileges, and polici
 
 #### Comparing labels
 
-`L1` dominates `L2` if:
-    `L1` > `L2` AND `comp1` > `comp2`
+- `L1` dominates `L2` if: `L1` > `L2` AND `comp1` > `comp2`
     - e.g. `L1 = (TS, {A,B,C})` and `L2 = (S, {A, B})`
     - levels are totally ordered and first set contains the second
 
-`L2` dominates `L1` if:
-    `L1` < `L2` AND `comp1` < `comp2`
+- `L2` dominates `L1` if: `L1` < `L2` AND `comp1` < `comp2`
 
-`L1` equals `L2` if:
-    `L1` = `L2` AND `comp1` = `comp2`
+- `L1` equals `L2` if: `L1` = `L2` AND `comp1` = `comp2`
 
-`L1` not comparable with `L2` if:
-    `L1` not greater than and not less than and not equal to `L2`
+- `L1` not comparable with `L2` if: `L1` not greater than and not less than and not equal to `L2`
     - probably because sets (partially ordered) aren't comparable
     - e.g. `L3 = (S, {B,C,D})` is not comparable with L1 above; first set doesn't contain second
 
-### Attribute-based access control (ABAC)
+### Attribute-Based Access Control (ABAC)
 
 - Access by subject (users) to objects (files, tables, programs, and networks), according to a preconfigured access control policy
 - Policy rule base or policy store contains rules
 - Access control compares attributes of the subject and object to rules and current environmental conditions to determine access
 - Strength in expressive power
 
-### UNIX file access control
+### UNIX File Access Control
 
 - Permissions are: read, write, execute
 - Classes are: owner, group, and other (world)
@@ -553,7 +549,7 @@ A **network-based IDS (NIDS)** monitors network traffic at selected points.
     - Can block a detected attack (IPS)
 - ...or passive sensors
     - Monitors a copy of network traffic, causing less overhead
-- Sensor deployment follows [firewall deployment strategy]()
+- Sensor deployment follows [firewall deployment strategy](#firewall-deployment)
 
 A **distributed or hybrid IDS** combines multiple sensors in a central analyzer for a more holistic view.
 
@@ -865,7 +861,7 @@ There are 16 DES rounds:
 
 - Each round's input is the ciphertext produced by the previous round
 - Encryption rounds use K1...K16, decryption uses K16...K1
-- Implementation of a **Feistel** cipher, using [F-function]](https://en.wikipedia.org/wiki/Data_Encryption_Standard#The_Feistel_(F)_function) with the four stages:
+- Implementation of a **Feistel** cipher, using [F-function]](<https://en.wikipedia.org/wiki/Data_Encryption_Standard#The_Feistel_(F)_function>) with the four stages:
     - Expansion: use expansion permutation (E-expansion) to duplicate half the bits
     - Key mixing: XOR the result with subkey (derived from main key using key schedule)
     - Substitution: processing by substitution boxes (S-boxes), one of 8 predefined tables -- this is the core of DES security

@@ -48,3 +48,9 @@ You can run the local development server with `mkdocs serve`. Read the [MkDocs d
 ### Committing
 
 The [pre-commit framework](https://pre-commit.com/) you installed as part of the set up will run a [Git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) that lints your Markdown files according to the `.markdownlint-cli2.jsonc`. This helps to keep things uniform and tidy.
+
+## Support
+
+For help with this website or repository, please open an [issue](https://github.com/victoriadrake/open-mscs/issues).
+
+For help with OMSCS, come [chat](https://openmscs.com/#quick-links) with your classmates!

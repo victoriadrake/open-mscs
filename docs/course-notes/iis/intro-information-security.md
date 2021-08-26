@@ -134,7 +134,7 @@ The function's stack frame stores:
 - Local variables (referenced as offset to EBP, eg. `EBP - 4`)
 - Base pointer (EBP) for current stack frame
 
-The stack starts at higher memory addresses and "grows down" in memory (towards lower memory addresses). The heap starts at lower memory addresses "grows upward" (toward higher memory address). See [Smashing The Stack For Fun And Profit (PDF)](stack_smashing.pdf).
+The stack starts at higher memory addresses and "grows down" in memory (towards lower memory addresses). The heap starts at lower memory addresses "grows upward" (toward higher memory address). See [Smashing The Stack For Fun And Profit (PDF)](iis/stack_smashing.pdf).
 
 ### Reading x86
 

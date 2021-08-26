@@ -5,9 +5,9 @@ nav:
   - Welcome: index.md
   - Course Notes:
       - OMSCS Course Notes: course-notes/index.md
-      - Cyber-Physical Systems Security: course-notes/cyber-physical-systems-security.md
+      - Cyber-Physical Systems Security: course-notes/cpss/cyber-physical-systems-security.md
       - Database Systems Concepts and Design: course-notes/db-systems-concepts-design/db-systems-concepts-design.md
-      - Introduction to Information Security: course-notes/intro-information-security.md
+      - Introduction to Information Security: course-notes/iis/intro-information-security.md
   - Graduate Life Resources: grad-life-resources.md
 theme:
   name: material

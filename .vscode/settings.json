@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": ".venv/bin/python3"
+    "python.pythonPath": ".venv/bin/python3",
+    "editor.fontFamily": "'JetBrains Mono','SourceCodePro+Powerline+Awesome Regular','Source Sans Pro', 'monospace', monospace, 'Droid Sans Fallback'",
+    "files.autoSave": "afterDelay"
 }

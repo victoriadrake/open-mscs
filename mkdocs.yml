@@ -6,6 +6,7 @@ nav:
   - Course Notes:
       - OMSCS Course Notes: course-notes/index.md
       - Cyber-Physical Systems Security: course-notes/cyber-physical-systems-security.md
+      - Database Systems Concepts and Design: course-notes/db-systems-concepts-design/db-systems-concepts-design.md
       - Introduction to Information Security: course-notes/intro-information-security.md
   - Graduate Life Resources: grad-life-resources.md
 theme:
@@ -39,8 +40,14 @@ markdown_extensions:
   - abbr
   - attr_list
   - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: true
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

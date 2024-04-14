@@ -1,0 +1,4282 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../db-systems-concepts-design/db-systems-concepts-design/">
+      
+      
+        <link rel="next" href="../../../grad-life-resources/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Introduction to Information Security - Open MSCS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-information-security" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Open MSCS" class="md-header__button md-logo" aria-label="Open MSCS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open MSCS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to Information Security
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/victoriadrake/open-mscs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-mscs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Course Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../grad-life-resources/" class="md-tabs__link">
+        
+  
+    
+  
+  Graduate Life Resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Open MSCS" class="md-nav__button md-logo" aria-label="Open MSCS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/></svg>
+
+    </a>
+    Open MSCS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/victoriadrake/open-mscs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-mscs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Course Notes
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Course Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cpss/cyber-physical-systems-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cyber-Physical Systems Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../db-systems-concepts-design/db-systems-concepts-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Systems Concepts and Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Introduction to Information Security
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Information Security
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Textbook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attacks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#denial-of-service-dos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Denial-of-Service (DoS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-denial-of-service-ddos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Denial-of-Service (DDoS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-injection-sqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL injection (SQLi)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-persistent-threat-apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Persistent Threat (APT)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack Overflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stack Overflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-x86" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading x86
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trusted-computing-base-tcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trusted Computing Base (TCB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passwords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assurance-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assurance Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Security
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretionary-access-control-dac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discretionary Access Control (DAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role-based-access-control-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role-based Access Control (RBAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-access-control-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mandatory Access Control (MAC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mandatory Access Control (MAC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attribute-based-access-control-abac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute-Based Access Control (ABAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unix-file-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIX File Access Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-machines-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Machines (VM)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#malware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Malware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Malware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viruses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viruses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#botnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Botnet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewalls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firewalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stateful-inspection-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stateful Inspection Firewall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-level-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-Level Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bastion-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bastion Hosts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-based-firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host-based Firewalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personal-firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal Firewalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall Topologies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intrusion-detection-systems-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intrusion Detection Systems (IDS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intrusion Detection Systems (IDS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signature-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signature Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anomaly-detection-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anomaly Detection Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heuristic-or-rules-based-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heuristic or Rules-Based Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection Accuracy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attacking-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attacking IDS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intrusion-prevention-systems-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intrusion Prevention Systems (IPS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#honeypots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Honeypots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cryptography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cryptography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciphers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ciphers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetric-vs-asymmetric" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetric vs. Asymmetric
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetric-cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetric Cryptography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symmetric Cryptography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symmetric-cipher-attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetric Cipher Attacks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asymmetric-cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asymmetric Cryptography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asymmetric Cryptography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-key-certificate-digital-signatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Key Certificate (Digital Signatures)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digital-envelopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Envelopes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-cipher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Cipher
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Block Cipher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#des" class="md-nav__link">
+    <span class="md-ellipsis">
+      DES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triple-des" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triple DES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aes" class="md-nav__link">
+    <span class="md-ellipsis">
+      AES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsa-rivest-shamir-adleman" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA (Rivest, Shamir, Adleman)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-cipher-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Cipher Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Block Cipher Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#electronic-codebook-ecb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Electronic Codebook (ECB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cipher-block-chaining-cbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cipher Block Chaining (CBC)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-cipher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream Cipher
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stream Cipher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rc4" class="md-nav__link">
+    <span class="md-ellipsis">
+      RC4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modular-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modular Math
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-hash-algorithm-sha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure Hash Algorithm (SHA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secure Hash Algorithm (SHA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sha-numbers-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      SHA Numbers Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-based-message-authentication-hmac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Based Message Authentication (HMAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diffie-hellman-key-exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diffie-Hellman Key Exchange
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutual-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establishing-session-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Establishing Session Keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Establishing Session Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-distribution-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Distribution Center
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kerberos-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kerberos Protocol
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-key-infrastructure-pki" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Key Infrastructure (PKI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip-security-ipsec" class="md-nav__link">
+    <span class="md-ellipsis">
+      IP Security (IPSec)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IP Security (IPSec)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internet-key-exchange-ike" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet Key Exchange (IKE)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl-and-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSL and TLS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wep-and-wpa2" class="md-nav__link">
+    <span class="md-ellipsis">
+      WEP and WPA2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mobile Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mobile Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ios-security-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      iOS Security Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-security-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android Security Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Security
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cybercrime-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cybercrime Law
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cybercrime Law">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intellectual-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intellectual Property
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ethics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oecd-privacy-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      OECD Privacy Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-security-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      IT Security Controls
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grad-life-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graduate Life Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#textbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Textbook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attacks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#denial-of-service-dos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Denial-of-Service (DoS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-denial-of-service-ddos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Denial-of-Service (DDoS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-injection-sqli" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL injection (SQLi)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-persistent-threat-apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Persistent Threat (APT)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack Overflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stack Overflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-x86" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading x86
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trusted-computing-base-tcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trusted Computing Base (TCB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passwords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assurance-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assurance Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Security
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretionary-access-control-dac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discretionary Access Control (DAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role-based-access-control-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role-based Access Control (RBAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-access-control-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mandatory Access Control (MAC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mandatory Access Control (MAC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attribute-based-access-control-abac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute-Based Access Control (ABAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unix-file-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIX File Access Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-machines-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Machines (VM)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#malware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Malware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Malware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viruses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viruses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#botnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Botnet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewalls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firewalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stateful-inspection-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stateful Inspection Firewall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-level-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-Level Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bastion-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bastion Hosts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-based-firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host-based Firewalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personal-firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal Firewalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall Topologies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intrusion-detection-systems-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intrusion Detection Systems (IDS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intrusion Detection Systems (IDS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signature-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signature Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anomaly-detection-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anomaly Detection Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heuristic-or-rules-based-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heuristic or Rules-Based Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection Accuracy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attacking-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attacking IDS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intrusion-prevention-systems-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intrusion Prevention Systems (IPS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#honeypots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Honeypots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cryptography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cryptography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciphers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ciphers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetric-vs-asymmetric" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetric vs. Asymmetric
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetric-cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetric Cryptography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Symmetric Cryptography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symmetric-cipher-attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetric Cipher Attacks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asymmetric-cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asymmetric Cryptography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asymmetric Cryptography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-key-certificate-digital-signatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Key Certificate (Digital Signatures)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digital-envelopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Envelopes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-cipher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Cipher
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Block Cipher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#des" class="md-nav__link">
+    <span class="md-ellipsis">
+      DES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triple-des" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triple DES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aes" class="md-nav__link">
+    <span class="md-ellipsis">
+      AES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsa-rivest-shamir-adleman" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA (Rivest, Shamir, Adleman)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-cipher-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Cipher Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Block Cipher Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#electronic-codebook-ecb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Electronic Codebook (ECB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cipher-block-chaining-cbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cipher Block Chaining (CBC)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-cipher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream Cipher
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stream Cipher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rc4" class="md-nav__link">
+    <span class="md-ellipsis">
+      RC4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modular-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modular Math
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-hash-algorithm-sha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure Hash Algorithm (SHA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secure Hash Algorithm (SHA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sha-numbers-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      SHA Numbers Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-based-message-authentication-hmac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Based Message Authentication (HMAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diffie-hellman-key-exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diffie-Hellman Key Exchange
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutual-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establishing-session-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Establishing Session Keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Establishing Session Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-distribution-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Distribution Center
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kerberos-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kerberos Protocol
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-key-infrastructure-pki" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Key Infrastructure (PKI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip-security-ipsec" class="md-nav__link">
+    <span class="md-ellipsis">
+      IP Security (IPSec)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IP Security (IPSec)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internet-key-exchange-ike" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet Key Exchange (IKE)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl-and-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSL and TLS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wep-and-wpa2" class="md-nav__link">
+    <span class="md-ellipsis">
+      WEP and WPA2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mobile Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mobile Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ios-security-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      iOS Security Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-security-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android Security Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Security
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cybercrime-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cybercrime Law
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cybercrime Law">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intellectual-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intellectual Property
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ethics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oecd-privacy-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      OECD Privacy Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-security-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      IT Security Controls
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="introduction-to-information-security">Introduction to Information Security<a class="headerlink" href="#introduction-to-information-security" title="Permanent link">&para;</a></h1>
+<h2 id="textbook">Textbook<a class="headerlink" href="#textbook" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Computer Security: Principle and Practice, 4 th Edition, by William Stallings and Lawrie Brown.
+(ISBN-10: 9780134794105)</li>
+</ul>
+<h2 id="attacks">Attacks<a class="headerlink" href="#attacks" title="Permanent link">&para;</a></h2>
+<p>Avenues for attack include:</p>
+<ul>
+<li>User input (injection)<ul>
+<li>E.g. command injection: construction of a command that is injected and later executed by the system with the privileges of the web server</li>
+</ul>
+</li>
+<li>Server variables logged without sanitization</li>
+<li>Second-order injection</li>
+<li>Modifying cookies</li>
+<li>Physical input through RFID, barcodes, scanned forms, etc.</li>
+<li>Inference attacks: use authorized queries to infer unauthorized data</li>
+</ul>
+<p>Contingency planning involves:</p>
+<ul>
+<li>Establishing a disaster-recovery failover environment</li>
+<li>Regularly scheduled backup operations</li>
+<li>Redundancy to ensure availability of critical resources and systems</li>
+</ul>
+<p>Security maintenance involves:</p>
+<ul>
+<li>Monitoring and logging</li>
+<li>Regularly scheduled backup and archive</li>
+<li>Regular system tests</li>
+<li>Software patches, updates, configuration checks, preferably automatic</li>
+</ul>
+<p>Detection includes:</p>
+<ul>
+<li>Signature-based: attempts to match specific attack patterns</li>
+<li>Anomaly-based: attempts to define normal behavior and detect patterns outside normal range</li>
+<li>Code analysis: test suites or static analysis</li>
+</ul>
+<p>Effects include:</p>
+<ul>
+<li>Incapacitation: disabling system operation</li>
+<li>Disruption: interrupt or prevention of the correct operations of system functions</li>
+<li>Corruption: undesirable alteration of system operation or data by adversary</li>
+<li>Obstruction: interrupt or hindering delivery of system services</li>
+</ul>
+<h3 id="denial-of-service-dos">Denial-of-Service (<abbr title="Denial-of-Service">DoS</abbr>)<a class="headerlink" href="#denial-of-service-dos" title="Permanent link">&para;</a></h3>
+<p>SYN spoofing generates connection request packets with forged source addresses. <abbr title="Transmission Control Protocol">TCP</abbr> SYN flood attacks include indirect attacks that utilize multiple systems:</p>
+<ul>
+<li><abbr title="Distributed Denial-of-Service">DDoS</abbr></li>
+<li>Reflector attack</li>
+<li>Amplifier attack</li>
+</ul>
+<h3 id="distributed-denial-of-service-ddos">Distributed Denial-of-Service (<abbr title="Distributed Denial-of-Service">DDoS</abbr>)<a class="headerlink" href="#distributed-denial-of-service-ddos" title="Permanent link">&para;</a></h3>
+<p>Sends large volume of <abbr title="Denial-of-Service">DoS</abbr> traffic using techniques such as Amplified Distributed Reflective Attack:</p>
+<ul>
+<li>Attacker queries open recursive <abbr title="Domain Name System">DNS</abbr> servers while spoofing victim's IP</li>
+<li>Victim receives large <abbr title="Domain Name System">DNS</abbr> text (TXT) records which amount to many GB of traffic</li>
+<li>Difficult to distinguish legitimate traffic from <abbr title="Distributed Denial-of-Service">DDoS</abbr> traffic</li>
+<li>
+<p>Attacker doesn't have to use his own computer</p>
+</li>
+<li>
+<p>Defenses include:</p>
+<ul>
+<li>Prevention and preemption</li>
+<li>Detection and filtering</li>
+<li>Reaction</li>
+<li>Source traceback and identification</li>
+</ul>
+</li>
+</ul>
+<h3 id="sql-injection-sqli"><abbr title="Structured Query Language">SQL</abbr> injection (<abbr title="SQL injection">SQLi</abbr>)<a class="headerlink" href="#sql-injection-sqli" title="Permanent link">&para;</a></h3>
+<p>If user input is not sanitized, <abbr title="Structured Query Language">SQL</abbr> can be injected to change intended queries.</p>
+<p>With a query such as:</p>
+<pre><code class="language-sql">`SELECT accounts FROM users WHERE login ='&quot; + login + &quot;'AND pass = '&quot; + password + &quot;' AND pin = &quot; + pin;`
+</code></pre>
+<p>Input for <code>login</code> such as <code>" 'or 1=1 --"</code> will select the full <code>users</code> table (because <code>1=1</code> is always true) and the comment syntax <code>--</code> negates the rest of the query.</p>
+<ul>
+<li>Effectively prevented by using <a href="https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html">parameterized queries</a></li>
+</ul>
+<p><abbr title="SQL injection">SQLi</abbr> types include:</p>
+<ul>
+<li>Inband: uses the same communication channel for injection and getting results</li>
+<li>Out-of-band: data retrieval using a different channel than injection</li>
+<li>Inferential: no actual data transfer; data is reconstructed through observing behavior resulting from injection<ul>
+<li>E.g. error pages, long-running queries</li>
+</ul>
+</li>
+</ul>
+<h3 id="advanced-persistent-threat-apt">Advanced Persistent Threat (<abbr title="Advanced Persistent Threat">APT</abbr>)<a class="headerlink" href="#advanced-persistent-threat-apt" title="Permanent link">&para;</a></h3>
+<p>Persistent and long-term operations, can be nation states.</p>
+<ul>
+<li>High-value targets</li>
+<li>Uses special malware, altered common malware, social engineering (<abbr title="Social Engineering">SE</abbr>) including phishing, and 0-days</li>
+<li>Blends with normal activities, cleans up logging tracks</li>
+</ul>
+<p>Lifecycle of operations is cyclical:</p>
+<ol>
+<li>Define its (next) target</li>
+<li>Research target and people involved (<abbr title="Social Engineering">SE</abbr>)</li>
+<li>Test for network detection, test exploitation of target servers</li>
+<li>Exploit deployment and success (infiltration)</li>
+<li>Establish outbound connections (create a path for exfiltration)</li>
+<li>Exfiltrate data</li>
+<li>Remain undetected</li>
+</ol>
+<h2 id="stack-overflow">Stack Overflow<a class="headerlink" href="#stack-overflow" title="Permanent link">&para;</a></h2>
+<ul>
+<li><em>Stack buffer overflow</em> is also called <em>stack smashing</em></li>
+<li>Memory leak is caused by incorrectly managed memory<ul>
+<li>Memory in languages like C must be allocated and released when done with</li>
+</ul>
+</li>
+<li>Payload is <strong>shellcode</strong>: machine code corresponding to machine instructions that implements an attacker's desired function</li>
+</ul>
+<p>Defenses include:</p>
+<ul>
+<li>Using a non-executable stack if the <abbr title="Operating System">OS</abbr> or hardware support it<ul>
+<li>Stack in this case is not writable</li>
+<li>Does not prevent read-only attacks e.g. <a href="https://heartbleed.com/">Heartbleed</a></li>
+</ul>
+</li>
+<li>Stack canaries<ul>
+<li>Writes a canary value just before return address that detects buffer overflow when overwritten</li>
+<li>Before returning from function, the code checks to see if the canary value has changed</li>
+<li>Detects modification to return address to prevent execution takeover, e.g. in return-to-libc attacks</li>
+</ul>
+</li>
+<li>Static code analysis using software tools</li>
+<li>Address Space Layout Randomization (<abbr title="Address Space Layout Randomization">ASLR</abbr>) makes it harder for attackers to find important locations (e.g. libc function address)<ul>
+<li><abbr title="Address Space Layout Randomization">ASLR</abbr> can't prevent read-only attacks where the attacker already has an address</li>
+</ul>
+</li>
+</ul>
+<p>The function's stack frame stores:</p>
+<ul>
+<li>Return address</li>
+<li>Arguments</li>
+<li>Local variables (referenced as offset to <abbr title="Base pointer, the top of the current frame.">EBP</abbr>, eg. <code>EBP - 4</code>)</li>
+<li>Base pointer (<abbr title="Base pointer, the top of the current frame.">EBP</abbr>) for current stack frame</li>
+</ul>
+<p>The stack starts at higher memory addresses and "grows down" in memory (towards lower memory addresses). The heap starts at lower memory addresses "grows upward" (toward higher memory address). See <a href="iis/stack_smashing.pdf">Smashing The Stack For Fun And Profit (PDF)</a>.</p>
+<h3 id="reading-x86">Reading x86<a class="headerlink" href="#reading-x86" title="Permanent link">&para;</a></h3>
+<p>The below lists can help you understand output from <a href="https://www.gnu.org/software/gdb/documentation/">GNU Project Debugger (GDB)</a> <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/">commands</a>, such as <code>disassemble main</code>.</p>
+<p>x86 32 bit registers include:</p>
+<ul>
+<li>%eax: accumulators used for arithmetic, interrupt calls, and I/O operations</li>
+<li>%ebx: base register used to access memory, pass system call arguments, return values</li>
+<li>%ecx: counter register</li>
+<li>%edx: data register used for arithmetic, interrupt calls, I/O operations</li>
+<li>%ebp: base pointer containing the address of the current stack frame</li>
+<li>%eip: instruction pointer containing the address of the next instruction to be executed</li>
+<li>%esi: source index register, a pointer for string or array operations</li>
+<li>%esp: current stack pointer containing the address of the "top" of the stack</li>
+</ul>
+<p>x86 assembly language instructions include:</p>
+<ul>
+<li><code>MOV src, dest</code>: copy value from source into destination</li>
+<li><code>LEA src, dest</code>: copy address (load the address) of source into destination</li>
+<li><code>ADD</code>/<code>SUB</code>/<code>AND</code>/<code>OR</code>/<code>XOR</code> <code>src, dest</code>: perform the mathematical operation in source and leave the result in the destination</li>
+<li><code>CMP val1, val2</code>: compare the two values and set <abbr title="Central Processing Unit">CPU</abbr> flags as a result</li>
+<li><code>JMP addr</code>: jump to address</li>
+<li><code>PUSH src</code>: push source value onto stack</li>
+<li><code>POP dest</code>: pop value off the top of the stack into destination</li>
+<li><code>CALL addr</code>: call the function at address</li>
+<li><code>LEAVE</code>: clean up the stack frame before leaving function</li>
+<li><code>RET</code>: return from function correctly</li>
+<li><code>INT num</code>: software interrupt to access an <abbr title="Operating System">OS</abbr> function</li>
+<li><code>NOP</code>: no operation</li>
+</ul>
+<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
+<p>Goals include:</p>
+<ul>
+<li>Availability<ul>
+<li>No false negatives -- if it's really me, I can get access</li>
+</ul>
+</li>
+<li>Authenticity<ul>
+<li>No false positives, meaning if it's not me but they guess my password, they get access</li>
+</ul>
+</li>
+</ul>
+<h3 id="trusted-computing-base-tcb">Trusted Computing Base (<abbr title="Trusted Computing Base">TCB</abbr>)<a class="headerlink" href="#trusted-computing-base-tcb" title="Permanent link">&para;</a></h3>
+<p>The <abbr title="Trusted Computing Base">TCB</abbr> needs to know who makes a request for a protected resource. The request comes from the process running on behalf of a user and contains claims about an identity and credentials to prove it.</p>
+<ul>
+<li>Protects access to physical resources</li>
+<li>Requires functional correctness</li>
+<li>Must maintain data integrity</li>
+<li>Protects disclosure of sensitive data in presence of untrusted software</li>
+<li>High assurance can be shown with formal proof</li>
+</ul>
+<p><abbr title="Trusted Computing Base">TCB</abbr> design principles include:</p>
+<ul>
+<li>Least privilege (damage containment)</li>
+<li>Economy of mechanism (simple and easy to analyze and test)</li>
+<li>Open design (avoid "security by obscurity" which is not a thing)</li>
+<li>Complete mediation (check every access and prevent bypass)</li>
+<li>Fail-safe defaults (deny by default)</li>
+<li>Ease of use (users avoid security that's a hassle)</li>
+</ul>
+<h3 id="authentication-implementation">Authentication Implementation<a class="headerlink" href="#authentication-implementation" title="Permanent link">&para;</a></h3>
+<p>How can the user prove who they are?</p>
+<ul>
+<li>Password or personal identification number (<abbr title="Personal Identification Number">PIN</abbr>): something you know, e.g. passphrase</li>
+<li>Token: something you have, e.g. RFID keycards, physical keys</li>
+<li>Static biometrics: something you are, e.g. fingerprint, retina, face</li>
+<li>Dynamic biometrics: something you do, e.g. voice recognition, handwriting</li>
+</ul>
+<h3 id="passwords">Passwords<a class="headerlink" href="#passwords" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Reactive password checking: a system runs its own password cracker to find and cancel guessable passwords (see <a href="https://www.openwall.com/john/">John the Ripper</a>)</li>
+<li>Proactive password checking or complex password policy: check to see if password is allowable at time of selection and offer guidance</li>
+</ul>
+<p>Passwords should be stored salted and hashed in a password file. (See <a href="https://pages.nist.gov/800-63-3/sp800-63b.html#-5112-memorized-secret-verifiers">SP 800-63B, 5.1.1.2 Memorized Secret Verifiers</a>). Password salting:</p>
+<ul>
+<li>Prevents duplicate passwords from being visible in the password file</li>
+<li>Increases the difficulty of offline dictionary attacks</li>
+<li>Mitigates the risk of discovering whether a person uses the same password on more than one system</li>
+</ul>
+<p>Defenses against client attacks on authentication include:</p>
+<ul>
+<li>Choosing passwords or passphrases with high entropy</li>
+<li>Limiting attempts at password input</li>
+<li>Using physical tokens that would require theft</li>
+</ul>
+<p>Defenses against host attack on authentication include:</p>
+<ul>
+<li>Choosing passwords or passphrases with high entropy</li>
+<li>Protecting the password database</li>
+<li>Using one-time passwords (<abbr title="One-Time Password">OTP</abbr>)</li>
+<li>Using challenge-response protocols</li>
+</ul>
+<h3 id="assurance-requirements">Assurance Requirements<a class="headerlink" href="#assurance-requirements" title="Permanent link">&para;</a></h3>
+<p>Assurance levels help communicate an organization's confidence in their authentication. Levels range from L1 (relatively low) to L3 (relatively high). See <abbr title="National Institute of Standards and Technology">NIST</abbr> guidance for details in: <a href="https://pages.nist.gov/800-63-3/sp800-63-3.html#sec6">SP 800-63-3, Selecting Assurance Levels</a>.</p>
+<ul>
+<li>System analysis (architecture, integrity, testing)</li>
+<li>Design specification and verification (correctness of implementation, ideally formal verification)</li>
+<li>Covert channel analysis (identify possible means of bypass)</li>
+<li>Trusted facility management (roles, policies)</li>
+<li>Trusted recovery (operations after failures)</li>
+<li>Trusted distribution (protect against unauthorized modification along the chain)</li>
+<li>Configuration management</li>
+</ul>
+<h2 id="database-security">Database Security<a class="headerlink" href="#database-security" title="Permanent link">&para;</a></h2>
+<p>Threats to <abbr title="Database">DB</abbr> include:</p>
+<ul>
+<li>Insiders and unauthorized users</li>
+<li>Bevy of information all in one place means it's an attractive target</li>
+<li>Query languages can be abused to gain unauthorized access</li>
+</ul>
+<h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h2>
+<p>For details on <abbr title="Discretionary Access Control">DAC</abbr>, <abbr title="Role-Based Access Control">RBAC</abbr>, and <abbr title="(1): Mandatory Access Control (2): Media Access Control (3): Message Authentication Code">MAC</abbr>, see <a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final">SP 800-53 Rev. 5, AC-3 Access Enforcement</a>.</p>
+<p>Enterprise-wide access control needs to manage resources, privileges, and policies.</p>
+<h3 id="discretionary-access-control-dac">Discretionary Access Control (<abbr title="Discretionary Access Control">DAC</abbr>)<a class="headerlink" href="#discretionary-access-control-dac" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Based on the identity of the requestor (user)</li>
+<li>Describes the privileges a subject has (who can access what) based on the policy</li>
+<li>A subject may be able to grant access to objects to other subjects at their discretion</li>
+<li>Access control matrix (<abbr title="Access Control Matrix">ACM</abbr>): 2-D matrix database that stores access rights of users for objects<ul>
+<li>Rows are users (subjects) or groups</li>
+<li>Columns correspond to resources (objects) to be protected</li>
+<li><code>ACM [U,O]</code> defines what access rights <code>U</code>ser has for <code>O</code>bject</li>
+</ul>
+</li>
+<li>Access control list (<abbr title="Access Control List">ACL</abbr>): the columns of an <abbr title="Access Control Matrix">ACM</abbr> describing how objects can be accessed<ul>
+<li>Column for object <code>Oi</code>: <code>[(ui1, rights1), (ui2, rights2), ...]</code></li>
+</ul>
+</li>
+<li>Capability list (C-list): the rows of an <abbr title="Access Control Matrix">ACM</abbr> describing capabilities (rights) of each user<ul>
+<li>For user <code>Ui</code>, row in the matrix is: <code>[(oi1, rights1), (oi2, rights2), ...]</code></li>
+<li>Rights are described by permissions, e.g. read, write, execute</li>
+</ul>
+</li>
+</ul>
+<h3 id="role-based-access-control-rbac">Role-based Access Control (<abbr title="Role-Based Access Control">RBAC</abbr>)<a class="headerlink" href="#role-based-access-control-rbac" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Users have roles; roles grant certain rights as defined in policy</li>
+<li>Roles do not need to be changed frequently as users come and go</li>
+<li>If policy doesn't specify access for a user, fail safe and deny by default</li>
+<li>RBAC0 (minimum functionality), RBAC1 (adds role hierarchies for inheritance), RBAC2 (adds constraints for configuration, eg prerequisites, cardinality)</li>
+</ul>
+<h3 id="mandatory-access-control-mac">Mandatory Access Control (<abbr title="(1): Mandatory Access Control (2): Media Access Control (3): Message Authentication Code">MAC</abbr>)<a class="headerlink" href="#mandatory-access-control-mac" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Centrally-managed policies (company decides how data should be shared)</li>
+<li>Uses the comparison of security labels describing classification of objects and clearances of subjects</li>
+<li>Examples include <a href="https://en.wikipedia.org/wiki/Bell%E2%80%93LaPadula_model">Bell-LaPadula</a> (<abbr title="Department of Defense (USA)">DoD</abbr>)<ul>
+<li>Read down, write up</li>
+</ul>
+</li>
+<li>...and <a href="https://en.wikipedia.org/wiki/Biba_Model">Biba Integrity Model</a><ul>
+<li>Read up, write-down</li>
+</ul>
+</li>
+<li>Labels are totally ordered, sets are partially ordered<ul>
+<li>Succeeded sets are contained in the higher one, otherwise they're not comparable</li>
+</ul>
+</li>
+</ul>
+<h4 id="comparing-labels">Comparing labels<a class="headerlink" href="#comparing-labels" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><code>L1</code> dominates <code>L2</code> if: <code>L1</code> &gt; <code>L2</code> AND <code>comp1</code> &gt; <code>comp2</code></p>
+<ul>
+<li>e.g. <code>L1 = (TS, {A,B,C})</code> and <code>L2 = (S, {A, B})</code></li>
+<li>levels are totally ordered and first set contains the second</li>
+</ul>
+</li>
+<li>
+<p><code>L2</code> dominates <code>L1</code> if: <code>L1</code> &lt; <code>L2</code> AND <code>comp1</code> &lt; <code>comp2</code></p>
+</li>
+<li>
+<p><code>L1</code> equals <code>L2</code> if: <code>L1</code> = <code>L2</code> AND <code>comp1</code> = <code>comp2</code></p>
+</li>
+<li>
+<p><code>L1</code> not comparable with <code>L2</code> if: <code>L1</code> not greater than and not less than and not equal to <code>L2</code></p>
+<ul>
+<li>probably because sets (partially ordered) aren't comparable</li>
+<li>e.g. <code>L3 = (S, {B,C,D})</code> is not comparable with L1 above; first set doesn't contain second</li>
+</ul>
+</li>
+</ul>
+<h3 id="attribute-based-access-control-abac">Attribute-Based Access Control (<abbr title="Attribute-Based Access Control">ABAC</abbr>)<a class="headerlink" href="#attribute-based-access-control-abac" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Access by subject (users) to objects (files, tables, programs, and networks), according to a preconfigured access control policy</li>
+<li>Policy rule base or policy store contains rules</li>
+<li>Access control compares attributes of the subject and object to rules and current environmental conditions to determine access</li>
+<li>Strength in expressive power</li>
+</ul>
+<h3 id="unix-file-access-control">UNIX File Access Control<a class="headerlink" href="#unix-file-access-control" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Permissions are: read, write, execute</li>
+<li>Classes are: owner, group, and other (world)</li>
+<li>Control checks occur when you try to open the file (<code>open()</code> executed by <abbr title="Operating System">OS</abbr>), not at read/write time<ul>
+<li>Granted access returns a file descriptor (<code>fd</code>), a pointer to a process' file table</li>
+</ul>
+</li>
+<li>The <code>setUID</code> bit temporarily allocates permissions for a file's owner to the executor</li>
+<li>Time-to-check-time-to-use-vulnerability (TOCTOU) arises when file permissions change after <code>open()</code> completes and before file is closed</li>
+</ul>
+<h2 id="virtual-machines-vm">Virtual Machines (<abbr title="Virtual Machine">VM</abbr>)<a class="headerlink" href="#virtual-machines-vm" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Full virtualization: multiple full <abbr title="Operating System">OS</abbr> instances execute in parallel on virtual hardware</li>
+<li>Hypervisor or virtual machine monitor (<abbr title="Virtual Machine Monitor">VMM</abbr>): a trusted computing base (<abbr title="Trusted Computing Base">TCB</abbr>) for <abbr title="Virtual Machine">VM</abbr> that coordinates guest <abbr title="Operating System">OS</abbr> access to memory, storage, and <abbr title="Central Processing Unit">CPU</abbr><ul>
+<li>Acts as <abbr title="Application Programming Interface">API</abbr> between hardware and <abbr title="Operating System">OS</abbr></li>
+<li>Partitions and manages physical resources</li>
+</ul>
+</li>
+<li>Types of full virtualization systems:<ul>
+<li>Type 1 hypervisor: native<ul>
+<li>Software directly atop physical hardware</li>
+<li>Better security and performance</li>
+<li>Typically for servers</li>
+</ul>
+</li>
+<li>Type 2 hypervisor: hosted<ul>
+<li>Software atop host <abbr title="Operating System">OS</abbr>, atop physical hardware</li>
+<li>Typically for clients</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="malware">Malware<a class="headerlink" href="#malware" title="Permanent link">&para;</a></h2>
+<ul>
+<li>May require a host software<ul>
+<li>Trap doors (e.g. <a href="https://eeggs.com/items/29841.html">flight simulator easter egg</a>)</li>
+<li>Logic bomb (predefined condition)</li>
+<li>Trojan (keyloggers, phishing)</li>
+<li>Viruses (copies itself to spread)</li>
+</ul>
+</li>
+<li>...or be independent<ul>
+<li>Worms (spreads through network connections)</li>
+<li>Botnets</li>
+<li>Advanced persistent threats (<abbr title="Advanced Persistent Threat">APT</abbr>)</li>
+</ul>
+</li>
+<li>Components include an infection mechanism, payload, and trigger</li>
+</ul>
+<p>Obfuscation can be achieved by packing: part or all of the file is compressed, encrypted or transformed.</p>
+<ul>
+<li>Defeats signature matching</li>
+<li>Unpacking code needs to be included</li>
+<li>Hard to detect since legitimate programs may also use packing</li>
+<li>Static and dynamic analysis can be combined to unpack and analyze malware</li>
+</ul>
+<h3 id="viruses">Viruses<a class="headerlink" href="#viruses" title="Permanent link">&para;</a></h3>
+<p>Viruses are inserted into a host program (virus sandwich). Detection can be avoided by compressing the host program code. Steps:</p>
+<ol>
+<li>Host program is run.</li>
+<li>Go to main of virus.</li>
+<li>Check flag to see if a previous infection is present, to avoid repeat.</li>
+<li>Find and infect uninfected programs.</li>
+<li>Execute arbitrary functionality.</li>
+<li>Go to first line of host program.</li>
+</ol>
+<p>Stages include:</p>
+<ul>
+<li>Dormant</li>
+<li>Propagation (spreading, e.g. via email)</li>
+<li>Triggered (host program runs)</li>
+<li>Executing (looking for new targets)</li>
+</ul>
+<p>Types include:</p>
+<ul>
+<li>Boot sector infector (when system is booted, before the <abbr title="Operating System">OS</abbr>)</li>
+<li>File infector (executable files)</li>
+<li>Macro virus (with macro, or scripting code)</li>
+<li>Multipartite virus (multiple types of files)</li>
+</ul>
+<p>Concealment classes include:</p>
+<ul>
+<li>Encrypted virus (encryption obscures content)</li>
+<li>Stealth virus (tries to hide from anti-virus)</li>
+<li>Polymorphic virus (changes its signature with every copy)</li>
+<li>Metamorphic (mutates with every infection, rewriting itself)</li>
+</ul>
+<p>Memory-resident viruses (rootkit)</p>
+<ul>
+<li>Rootkit resides at the <abbr title="Operating System">OS</abbr> level, modifies <abbr title="Operating System">OS</abbr> and data structure to hide itself from the user<ul>
+<li>Can filter itself from calls like <code>ls</code> by intercepting function calls</li>
+</ul>
+</li>
+<li>Classes include:<ul>
+<li>Persistent across boot (you can scan for these)</li>
+<li>Memory-based (doesn't survive reboot)</li>
+<li>User mode (hides via intercepted <abbr title="Application Programming Interface">API</abbr> calls)</li>
+<li>Kernel mode (changes system calls, can be fixed with a new <abbr title="Operating System">OS</abbr> installation)</li>
+<li><abbr title="Virtual Machine">VM</abbr>-based</li>
+<li>External mode (outside the normal operations with direct hardware access, e.g. <abbr title="Basic Input Output System">BIOS</abbr> or system management modes)</li>
+</ul>
+</li>
+</ul>
+<p>Antivirus includes:</p>
+<ul>
+<li>Simple scanners (signature-based)</li>
+<li>Heuristic scanners (compare integrity checksums)</li>
+<li>Activity traps (activity signatures, not effective against new behavior)</li>
+<li>Full-featured (combines host-based, network-based, and sandbox)</li>
+</ul>
+<h3 id="botnet">Botnet<a class="headerlink" href="#botnet" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Network of many "zombie" computers controlled by an attacker</li>
+<li>The bot code (malware) needs communication with attacker's servers for <abbr title="Communication &amp; Control">C&amp;C</abbr><ul>
+<li><abbr title="Communication &amp; Control">C&amp;C</abbr> goals are to not be easily detected or blend with normal traffic, be efficient and reliable, and be hard to block</li>
+</ul>
+</li>
+<li>Purposes include spamming, <abbr title="Distributed Denial-of-Service">DDoS</abbr>, key logging and ID theft, clickfraud, computation for password cracking, phishing, anonymized criminal communication, online games cheating</li>
+</ul>
+<h2 id="firewalls">Firewalls<a class="headerlink" href="#firewalls" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Active filtering, fails closed</li>
+<li>Prevention by enforcing defined policies</li>
+<li>Limited effectiveness:<ul>
+<li>Only filters what it sees (all traffic must pass through firewall)</li>
+<li>Must be immune to subversion (some malware can disable firewall)</li>
+<li>Can be misconfigured by hoomans</li>
+</ul>
+</li>
+<li>Advantages:<ul>
+<li>Simple, fast, transparent to user</li>
+<li>Provides insight to traffic via logging (not high-level though)</li>
+<li>Can do network address translation</li>
+<li>Can encrypt traffic</li>
+</ul>
+</li>
+</ul>
+<h3 id="filtering">Filtering<a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h3>
+<p>Two main types of filtering: packet and session.</p>
+<p><strong>Packet filtering</strong> is applied per-packet.</p>
+<ul>
+<li>Typically configured to filter packets in both directions</li>
+<li>Applies rules based on policy (<abbr title="Access Control List">ACL</abbr>)</li>
+<li>Applies rules based on packet's info, e.g. source IP, destination IP, transport-level address, IP protocol field, interface</li>
+<li>Rules must be precise to allow wanted traffic and block unwanted traffic, specifying:<ul>
+<li>Direction</li>
+<li>Source and destination addressesP</li>
+<li>Protocol</li>
+<li>Destination port</li>
+<li>Source port</li>
+</ul>
+</li>
+<li>Limitations:<ul>
+<li>Decisions are per-packet, not effective against attack over multiple packets</li>
+<li>See <a href="https://en.wikipedia.org/wiki/IP_fragmentation_attack">IP fragment attack</a></li>
+<li>No state info kept</li>
+</ul>
+</li>
+<li>Default policies<ul>
+<li><strong>Discard</strong>: prohibit unless permitted (whitelist)</li>
+<li><strong>Forward</strong>: permit unless prohibited (blacklist)<ul>
+<li>Easier to manage a blacklist, but less secure</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Session filtering</strong> filters a packet based on its context within a session.</p>
+<ul>
+<li>Includes Dynamic Packet Filtering and Stateful Inspection Firewall</li>
+</ul>
+<h3 id="stateful-inspection-firewall">Stateful Inspection Firewall<a class="headerlink" href="#stateful-inspection-firewall" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Directory with entry for each established <abbr title="Transmission Control Protocol">TCP</abbr> connection (Connection State Table)</li>
+<li>Packet filter allows incoming traffic to high-numbered ports only for packets that fit the profile of a directory entry</li>
+<li>Reviews packet info, records info about <abbr title="Transmission Control Protocol">TCP</abbr> connections</li>
+<li>Keeps track of <abbr title="Transmission Control Protocol">TCP</abbr> sequence numbers to prevent attacks that depend on that sequence number</li>
+<li>Inspect data for protocols like <abbr title="File Transfer Protocol">FTP</abbr>, <abbr title="Instant Message">IM</abbr>, <abbr title="Secure Session Initiation Protocol">SIPS</abbr> commands</li>
+</ul>
+<h3 id="application-level-gateway">Application-Level Gateway<a class="headerlink" href="#application-level-gateway" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Application proxy</li>
+<li>Relay of app-level traffic</li>
+<li>Must implement proxy code for each application you want to support</li>
+<li>Can restrict application features as preferred</li>
+<li>More secure that packet filtering</li>
+<li>Additional processing overhead for each connection (vs other types of firewalls)</li>
+</ul>
+<p>Here's a typical workflow:</p>
+<ol>
+<li>User contacts the gateway via <abbr title="Transmission Control Protocol">TCP</abbr>/IP to make request of application</li>
+<li>Gateway requests name of remote host</li>
+<li>User supplies valid auth info to gateway</li>
+<li>Gateway contacts application and relays <abbr title="Transmission Control Protocol">TCP</abbr> segments</li>
+<li>If proxy code is not implemented, remote host reports to gateway that service is not supported</li>
+<li>Gateway forwards response to user</li>
+</ol>
+<h3 id="bastion-hosts">Bastion Hosts<a class="headerlink" href="#bastion-hosts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Machine with an application-level gateway</li>
+<li>Critical strong point in network security</li>
+<li>Typically a secure <abbr title="Operating System">OS</abbr> with only essential services</li>
+<li>Requires authentication even from internal traffic to access proxy or host</li>
+<li>Limited disk use</li>
+<li>Each proxy is isolated and runs as a non-privileged user</li>
+</ul>
+<h3 id="host-based-firewalls">Host-based Firewalls<a class="headerlink" href="#host-based-firewalls" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Software module used to secure an individual host</li>
+<li>Filters and restricts traffic inbound and outbound</li>
+<li>Commonly on a server</li>
+</ul>
+<h3 id="personal-firewalls">Personal Firewalls<a class="headerlink" href="#personal-firewalls" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Home routers, typically less complex than server/standalone firewalls</li>
+<li>Primarily denies unauthorized remote access</li>
+<li>May monitor outgoing traffic to detect and block worms and malware activity</li>
+</ul>
+<h3 id="firewall-deployment">Firewall Deployment<a class="headerlink" href="#firewall-deployment" title="Permanent link">&para;</a></h3>
+<p><strong>External firewalls</strong> are between the Internet-connected router and the internal <abbr title="Demilitarized Zone">DMZ</abbr> network, where email, web, and <abbr title="Domain Name System">DNS</abbr> servers live.</p>
+<p><strong>Internal firewalls</strong> add additional separation between logical business areas of the internal network and provide two-way protection for the <abbr title="Demilitarized Zone">DMZ</abbr> by monitoring incoming and outgoing (exfiltrated data, anyone?) traffic.</p>
+<p><strong>Distributed firewall deployment</strong> may use stand-alone external, internal, host-based, and personal firewalls together to section servers logically. This helps with security monitoring and log aggregation.</p>
+<h3 id="firewall-topologies">Firewall Topologies<a class="headerlink" href="#firewall-topologies" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Host-resident firewall</strong>: personal firewall software, software on servers</li>
+<li><strong>Screening router</strong>: single router between internal/external networks with stateless or full packet filtering</li>
+<li><strong>Single bastion inline</strong>: single firewall device between internal and external router</li>
+<li><strong>Single bastion T</strong>: third network interface on bastion to <abbr title="Demilitarized Zone">DMZ</abbr> for external services</li>
+<li><strong>Double bastion inline</strong>: <abbr title="Demilitarized Zone">DMZ</abbr> sandwiched between bastion firewalls</li>
+<li><strong>Double bastion T</strong>: <abbr title="Demilitarized Zone">DMZ</abbr> on separate network interface on bastion firewall</li>
+<li><strong>Distributed firewall configuration</strong>: see <a href="#firewall-deployment">Firewall Deployment</a></li>
+</ul>
+<h2 id="intrusion-detection-systems-ids">Intrusion Detection Systems (<abbr title="Intrusion Detection System">IDS</abbr>)<a class="headerlink" href="#intrusion-detection-systems-ids" title="Permanent link">&para;</a></h2>
+<p>A mechanism that detects evidence of an unwanted presence on the network.</p>
+<ul>
+<li>Good for known attack types, some sophisticated attacks</li>
+<li>Not good for 0-days or <abbr title="Advanced Persistent Threat">APT</abbr></li>
+<li>Alerts must be interpreted</li>
+</ul>
+<p>Assumes that:</p>
+<ul>
+<li>System activities can be observed</li>
+<li>It's possible to differentiate between normal and intrusive activities</li>
+</ul>
+<p>An <abbr title="Intrusion Detection System">IDS</abbr> uses:</p>
+<ul>
+<li>Sensors, analyzers, and user interface to gather and analyze information from the computer or network to identify possible intrusion</li>
+<li>Passive monitoring (fails open)</li>
+<li><a href="#signature-detection">Signature-based detection</a> or <a href="#anomaly-detection-approaches">anomaly detection</a></li>
+</ul>
+<p>A <strong>host-based <abbr title="Intrusion Detection System">IDS</abbr> (HIDS)</strong> is deployed on a single host.</p>
+<ul>
+<li>Monitors system activity, e.g. process identifiers and system calls</li>
+<li>Detects internal and external intrusions</li>
+</ul>
+<p>A <strong>network-based <abbr title="Intrusion Detection System">IDS</abbr> (<abbr title="Network Intrusion Detection System">NIDS</abbr>)</strong> monitors network traffic at selected points.</p>
+<ul>
+<li>Many sensors, one or more servers and management consoles</li>
+<li>Segments, devices, transport and application protocols</li>
+<li>Large networks may produce lots of alerts; prioritize these for ease of sysadmin</li>
+<li>Uses inline sensors...<ul>
+<li>Can block a detected attack (<abbr title="Intrusion Prevention System">IPS</abbr>)</li>
+</ul>
+</li>
+<li>...or passive sensors<ul>
+<li>Monitors a copy of network traffic, causing less overhead</li>
+</ul>
+</li>
+<li>Sensor deployment follows <a href="#firewall-deployment">firewall deployment strategy</a></li>
+</ul>
+<p>A <strong>distributed or hybrid <abbr title="Intrusion Detection System">IDS</abbr></strong> combines multiple sensors in a central analyzer for a more holistic view.</p>
+<ul>
+<li>Coordinates many <abbr title="Network Intrusion Detection System">NIDS</abbr></li>
+<li>May have one or more collection and analysis points on the network</li>
+<li>Uses raw data or summary data</li>
+<li>May deal with different sensor data formats</li>
+</ul>
+<p>Workflow looks like this:</p>
+<ul>
+<li>Network/system data goes through data preprocessing<ul>
+<li>Generates activity records</li>
+</ul>
+</li>
+<li>Detection engine uses detection models to examine activities<ul>
+<li>Produces alerts</li>
+</ul>
+</li>
+<li>Decision engine uses decision table to produce responses/reports</li>
+</ul>
+<p>Deployment strategies include:</p>
+<ul>
+<li>Between external network and Internet<ul>
+<li>Sees all attempted attacks targeting tne network</li>
+<li>Nothing filtered by a firewall</li>
+</ul>
+</li>
+<li>Just inside external firewall<ul>
+<li>Can catch any traffic that should have been blocked by firewall</li>
+<li>Can analyze outgoing network traffic</li>
+</ul>
+</li>
+<li>In front of a subnet or server group<ul>
+<li>Smaller traffic volume for ease of analysis</li>
+<li>Can better locate intrusions from inside network</li>
+</ul>
+</li>
+</ul>
+<h3 id="signature-detection">Signature Detection<a class="headerlink" href="#signature-detection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Matches known patterns to detect malicious traffic</li>
+<li>Cannot detect new threats, only known ones</li>
+<li>New signatures need to be added to database</li>
+<li>Antivirus, <abbr title="Network Intrusion Detection System">NIDS</abbr></li>
+<li>Advantages:<ul>
+<li>Low cost and resource usage</li>
+</ul>
+</li>
+<li>Disadvantages:<ul>
+<li>Effort to identify, review, create new malware signatures</li>
+<li>Inability to detect 0-day attacks</li>
+</ul>
+</li>
+</ul>
+<h3 id="anomaly-detection-approaches">Anomaly Detection Approaches<a class="headerlink" href="#anomaly-detection-approaches" title="Permanent link">&para;</a></h3>
+<p><strong>Statistical approach</strong> uses univariate, multivariate, or time-series models of observed metrics.</p>
+<ul>
+<li>Multivariate: metrics considered by correlations</li>
+<li>Univariate: each metric treated as an independent random variable</li>
+<li>Time-series: considers time and order of events</li>
+<li>Advantages:<ul>
+<li>Relatively simple</li>
+<li>Low computational cost</li>
+<li>Lack of assumptions about expected behavior</li>
+</ul>
+</li>
+<li>Disadvantages:<ul>
+<li>Must select suitable metrics</li>
+<li>Cannot model all behaviors</li>
+</ul>
+</li>
+</ul>
+<p><strong>Knowledge-based approach</strong> uses an expert system (knowledgeable experts write classification rules) to define normal parameters.</p>
+<ul>
+<li>E.g. "office programs are typically used between 9-5."</li>
+<li>Advantages:<ul>
+<li>Easy to update</li>
+<li>Flexible rules</li>
+</ul>
+</li>
+<li>Disadvantages:<ul>
+<li>Must trust the experts</li>
+<li>Time and effort is required to develop knowledge from data</li>
+</ul>
+</li>
+</ul>
+<p><strong>Machine learning</strong> uses data to train and develop a model to automatically classify behaviors.</p>
+<ul>
+<li>Will detect attacks that are similar to past attacks, possibly 0-days</li>
+<li>Advantages:<ul>
+<li>Adaptable, can handle small changes automatically</li>
+<li>Captures interdependencies between observable metrics</li>
+</ul>
+</li>
+<li>Disadvantages:<ul>
+<li>Depends on good training data</li>
+<li>High false positives</li>
+<li>High resource cost in the training phase</li>
+</ul>
+</li>
+</ul>
+<p>Machine learning approaches include:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bayesian_network">Bayesian networks</a>: probabilistic relationships</li>
+<li><a href="https://en.wikipedia.org/wiki/Markov_model">Markov models</a>: model with a set of states</li>
+<li><a href="https://en.wikipedia.org/wiki/Neural_network">Neural networks</a>: simulates the brain to classify data</li>
+<li><a href="https://www.sciencedirect.com/topics/engineering/fuzzy-set-theory">Fuzzy logic</a>: fuzzy set theory, approximation</li>
+<li><a href="https://www.sciencedirect.com/topics/engineering/genetic-algorithm">Genetic algorithms</a>: inheritance, mutation, selection, recombination</li>
+<li><a href="https://developers.google.com/machine-learning/clustering/overview">Clustering</a> and outlier detection</li>
+</ul>
+<h3 id="heuristic-or-rules-based-detection">Heuristic or Rules-Based Detection<a class="headerlink" href="#heuristic-or-rules-based-detection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uses rules to identify known patterns of behavior for penetrations</li>
+<li>Tends to be specific to the machine or <abbr title="Operating System">OS</abbr></li>
+<li>Example: <a href="https://www.snort.org/">SNORT</a> is a rule-based <abbr title="Network Intrusion Detection System">NIDS</abbr> that uses a rule header and options<ul>
+<li>Actions are: alert, log, pass, activate, dynamic, drop, reject, sdrop</li>
+</ul>
+</li>
+</ul>
+<h3 id="detection-accuracy">Detection Accuracy<a class="headerlink" href="#detection-accuracy" title="Permanent link">&para;</a></h3>
+<p>For overview, see <a href="https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative">Classification: True vs. False and Positive vs. Negative</a>.</p>
+<p>For formulas, see <a href="https://en.wikipedia.org/wiki/Sensitivity_and_specificity">Sensitivity and specificity</a>.</p>
+<ul>
+<li>Detection rate or True Positive (TP) rate: when there is an intrusion, the likelihood that the <abbr title="Intrusion Detection System">IDS</abbr> will correctly output an alert</li>
+<li>False Negative Rate: how many intrusions were missed (<code>FN = - TP</code>)</li>
+<li>False alarm or False Positive (FP) rate: without an intrusion, likelihood that the <abbr title="Intrusion Detection System">IDS</abbr> will falsely produce an alert</li>
+<li>True Negative Rate: how likely normal activities are correctly classified as normal (<code>TN = 1 - FP</code>)</li>
+<li>Bayesian detection rate: given that alert was produced, how likely is it that an intrusion occurred<ul>
+<li>See <a href="https://www.sciencedirect.com/science/article/pii/S1319157811000292">Bayesian based intrusion detection system</a></li>
+</ul>
+</li>
+</ul>
+<p>The base rate fallacy says that people tend to ignore an established base rate in the face of individual information. See <a href="https://en.wikipedia.org/wiki/Base_rate_fallacy">base rate fallacy</a> for interesting general applicability.</p>
+<ul>
+<li>Base rate: prior probability of attacks (<code>P(I)</code>)</li>
+<li>Base rate depends on where it is measured</li>
+</ul>
+<p>At the network packet level, data volume is huge and base rate is low, so the base rate fallacy tells us that applying analysis here can result in a low Bayesian detection rate.</p>
+<ul>
+<li>Instead, apply detection algorithms to data that has a higher base rate<ul>
+<li>Process event data by selection, filtering, and summarizing</li>
+<li>Use a filtered packet stream (libpcap, tcpdump filters)</li>
+<li>This decreases volume of data</li>
+</ul>
+</li>
+<li>Higher base rate, thus higher Bayesian detection rate, is desired</li>
+<li>A low false alarm rate, as close to zero as possible, is desired</li>
+</ul>
+<p>As long as intrusion evidence is kept, decreasing the volume of overall packets produces a much higher base rate than the original packet data.</p>
+<h3 id="attacking-ids">Attacking <abbr title="Intrusion Detection System">IDS</abbr><a class="headerlink" href="#attacking-ids" title="Permanent link">&para;</a></h3>
+<p>Evasion techniques can allow attackers to bypass an <abbr title="Intrusion Detection System">IDS</abbr>.</p>
+<ul>
+<li><abbr title="Intrusion Detection System">IDS</abbr> monitoring is passive, so traffic may still reach its destination while an ongoing attack is analyzed</li>
+<li>Different operating systems and ambiguities in <abbr title="Transmission Control Protocol">TCP</abbr>/IP protocol implementations can be exploited, e.g. if the <abbr title="Intrusion Detection System">IDS</abbr> runs on Linux and the target is Windows</li>
+<li>Overlapping (malicious) packet fragments may be discarded by an <abbr title="Intrusion Detection System">IDS</abbr> while the end host accepts them</li>
+</ul>
+<p><strong>Insertion attacks</strong> can use bad checksums to disguise malicious traffic. The <abbr title="Intrusion Detection System">IDS</abbr> will accept a packet with a bad checksum, which disrupts the overall attack pattern, but the end host will reject the bad packet, which reconstructs the attack.</p>
+<p><strong><abbr title="Denial-of-Service">DoS</abbr> attacks</strong> can cause resource exhaustion and disrupt <abbr title="Intrusion Detection System">IDS</abbr>:</p>
+<ul>
+<li>Large traffic results in resource exhaustion and can keep the <abbr title="Intrusion Detection System">IDS</abbr> busy while another attack slips by</li>
+<li>A reactive <abbr title="Intrusion Detection System">IDS</abbr> can be abused by causing it to create an overwhelming number of alerts that humans have to deal with (<abbr title="Denial-of-Service">DoS</abbr> on humans)</li>
+</ul>
+<p>See more at <a href="https://en.wikipedia.org/wiki/Intrusion_detection_system_evasion_techniques#Evasion">Intrusion detection system evasion techniques</a>.</p>
+<h2 id="intrusion-prevention-systems-ips">Intrusion Prevention Systems (<abbr title="Intrusion Prevention System">IPS</abbr>)<a class="headerlink" href="#intrusion-prevention-systems-ips" title="Permanent link">&para;</a></h2>
+<p>It's an <abbr title="Intrusion Detection System">IDS</abbr> that also tries to block malicious activity.</p>
+<h2 id="honeypots">Honeypots<a class="headerlink" href="#honeypots" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Decoy systems with fabricated information designed to catch illegitimate access</li>
+<li>Logs information about attacker's activities</li>
+</ul>
+<p>Low-interaction honeypots mimic services or systems without implementing a full version of the system. They're a low resource operation but won't fool an attacker too long.</p>
+<p>High-interaction honeypots are a real, full <abbr title="Operating System">OS</abbr> or service. They're instrumented and provide a more realistic target for attackers, but require more resources to run.</p>
+<p>Deployment strategies include:</p>
+<ul>
+<li>Outside external firewall<ul>
+<li>No increase to risk for internal network</li>
+<li>Can reduce alerts issued from firewall</li>
+<li>Cannot trap internal attackers</li>
+</ul>
+</li>
+<li>In <abbr title="Demilitarized Zone">DMZ</abbr><ul>
+<li>Attempted attacks may be blocked by firewall</li>
+</ul>
+</li>
+<li>In internal network<ul>
+<li>Can detect firewall misconfiguration</li>
+<li>If compromised, can attack internal systems</li>
+<li>Firewall has to allow traffic to internal network</li>
+</ul>
+</li>
+</ul>
+<h2 id="cryptography">Cryptography<a class="headerlink" href="#cryptography" title="Permanent link">&para;</a></h2>
+<p>Auguste <a href="https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle">Kerckhoffs's principle</a>: A cryptosystem should be secure even if everything about the system, except the key, is public knowledge.</p>
+<p>In other words, "security by obscurity" is not a thing.</p>
+<h3 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h3>
+<p>The most often used cryptographic operation, encryption converts plaintext data to ciphertext that is unintelligible to a third-party. It provides:</p>
+<ul>
+<li>One-to-one mapping of plaintext to ciphertext (ensure that the message can always be decrypted)</li>
+<li>Confidentiality</li>
+<li>Integrity checking (assurance that message was not tampered with)</li>
+<li>Authenticity and authentication (the message is genuinely sent from the sender)</li>
+</ul>
+<p>Encryption can be <a href="#symmetric-cryptography">symmetric</a> or <a href="#asymmetric-cryptography">asymmetric</a>.</p>
+<p>Attacks on encryption include:</p>
+<ul>
+<li>Brute-force attack (iteratively trying all possible keys)</li>
+<li>Cryptanalysis (of cipher's data characteristics)</li>
+<li>Attacks on implementation, e.g. side channel</li>
+<li>Social engineering, see <a href="https://xkcd.com/538/">$5 wrench</a>.</li>
+</ul>
+<h3 id="decryption">Decryption<a class="headerlink" href="#decryption" title="Permanent link">&para;</a></h3>
+<p>The process of converting the ciphertext back to plaintext. Requires the decryption key.</p>
+<h3 id="ciphers">Ciphers<a class="headerlink" href="#ciphers" title="Permanent link">&para;</a></h3>
+<p>An encryption scheme. Simple cipher examples: see Caesar Cipher or shift cipher. Or for fun, see <a href="https://victoria.dev/blog/a-unicode-substitution-cipher-algorithm/">A Unicode substitution cipher algorithm</a>.</p>
+<p>A fixed-shift cipher has only 26 possible encodings (for alphabetical letters) and can be trivially brute-forced. A monoalphabetic or substitution cipher that arbitrarily maps letters will have 26! or (~2⁸⁸) possible keys.</p>
+<p>Substitution ciphers can be defeated by analyzing statistical frequencies of letters. See <a href="https://en.wikipedia.org/wiki/Letter_frequency">letter frequency</a>.</p>
+<p><a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenère cipher</a> uses a matrix to map letters (polyalphabetic substitution).</p>
+<h3 id="symmetric-vs-asymmetric">Symmetric vs. Asymmetric<a class="headerlink" href="#symmetric-vs-asymmetric" title="Permanent link">&para;</a></h3>
+<p>When 4 people want to talk, they need:</p>
+<ul>
+<li>6 individual keys for symmetric encryption ⌧</li>
+<li>4 key pairs for asymmetric encryption (8 total keys: 4 private, 4 public)</li>
+</ul>
+<p>Asymmetric is better for:</p>
+<ul>
+<li>Securely distributing a session key, e.g. <abbr title="Transport Layer Security">TLS</abbr></li>
+<li>Scalability (you need fewer key pairs)</li>
+</ul>
+<p>Symmetric is better for:</p>
+<ul>
+<li>Confidentiality with speed (asymmetric is slower)</li>
+</ul>
+<h3 id="symmetric-cryptography">Symmetric Cryptography<a class="headerlink" href="#symmetric-cryptography" title="Permanent link">&para;</a></h3>
+<p>Uses a single shared secret key for encryption and decryption.</p>
+<p>Symmetric encryption components:</p>
+<ul>
+<li>Plaintext and ciphertext</li>
+<li>Encryption algorithm</li>
+</ul>
+<h4 id="symmetric-cipher-attacks">Symmetric Cipher Attacks<a class="headerlink" href="#symmetric-cipher-attacks" title="Permanent link">&para;</a></h4>
+<p><strong>Known-plaintext attacks</strong>: a specific known plaintext is compared to its ciphertext to the determine key.</p>
+<p><strong>Chosen-plaintext attacks</strong>: Any known plaintext compare to its ciphertext.</p>
+<p><strong>Differential cryptanalysis</strong>: analyze (compare) effect of changes to the known plaintext on the resulting ciphertext.</p>
+<p><strong>Linear cryptanalysis</strong>: determine the encryption function by analyzing (modeling) known plaintexts and their ciphertext using linear equations and derive the key bits.</p>
+<h3 id="asymmetric-cryptography">Asymmetric Cryptography<a class="headerlink" href="#asymmetric-cryptography" title="Permanent link">&para;</a></h3>
+<p>Also "public key cryptography." Uses a key pair (two mathematically-paired keys): a public key for encryption and verification, and a private key for decryption and signing.</p>
+<p>Principle components include:</p>
+<ul>
+<li>A public and private key pair</li>
+<li>Encryption and decryption algorithms (cipher suite)</li>
+<li>Plaintext and ciphertext</li>
+</ul>
+<p>Public key algorithms include:</p>
+<ul>
+<li>RSA (see RSA)</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman key exchange</a></strong>: one of the first public-key protocols and uses asymmetric encryption to enable two users to agree on a shared secret key for subsequent symmetric encryption exchange</li>
+<li><strong>Digital Signature Standard (<abbr title="Digital Signature Standard">DSS</abbr>)</strong>: a Federal Information Processing Standard (<abbr title="Federal Information Processing Standard">FIPS</abbr>) specifying a suite of cryptographic algorithms including Digital Signature Algorithm (<abbr title="Digital Signature Algorithm">DSA</abbr>).<ul>
+<li>Only for signing</li>
+</ul>
+</li>
+<li><strong>Elliptic-Curve Cryptography (<abbr title="Elliptic-Curve Cryptography">ECC</abbr>)</strong>: meant to improve on RSA; see <a href="https://csrc.nist.gov/Projects/Elliptic-Curve-Cryptography">Elliptic Curve Cryptography</a><ul>
+<li>Equal security to RSA with a smaller bit size</li>
+</ul>
+</li>
+</ul>
+<h4 id="public-key-certificate-digital-signatures">Public Key Certificate (Digital Signatures)<a class="headerlink" href="#public-key-certificate-digital-signatures" title="Permanent link">&para;</a></h4>
+<p>A Certificate Authority (CA) vouches for the validity of the public key:</p>
+<ol>
+<li>Key holder provides public key and identifying information to the CA</li>
+<li>CA combines indentifying information and public key with certificate information (e.g. validity period), and hashes it</li>
+<li>CA signs the resulting certificate block with its own private key (vouching for authenticity)</li>
+</ol>
+<p>When you provide your public key certificate to someone, they can verify it's valid:</p>
+<ol>
+<li>Extracting and calculating the hash code of the certificate</li>
+<li>Verify the digital signature using the CA's public key and the signature verification algorithm</li>
+</ol>
+<p>Relies on trust in CA: see <a href="https://darknetdiaries.com/episode/3/">DigiNotar</a>.</p>
+<h4 id="digital-envelopes">Digital Envelopes<a class="headerlink" href="#digital-envelopes" title="Permanent link">&para;</a></h4>
+<p>Uses public key encryption to send a "sealed letter."</p>
+<p>A message is encrypted with a shared key. The shared key is then encrypted with someone's public key. Only the intended recipient (who holds the private key) can use the shared key to decrypt the message.</p>
+<h3 id="block-cipher">Block Cipher<a class="headerlink" href="#block-cipher" title="Permanent link">&para;</a></h3>
+<p>The most common symmetric encryption algorithm, a block cipher takes plaintext input in fixed-size blocks and produces an equally-sized block of ciphertext.</p>
+<p>The algorithm need not be secret and is encouraged to be public, so others can verify it.</p>
+<p>Primitives include:</p>
+<ul>
+<li><strong>Confusion</strong>: substitution is used to obscure the relationship between the key and ciphertext</li>
+<li><strong>Diffusion</strong>: permutation is used to spread the influence of one plaintext bit over many ciphertext bits and hide the statistical properties of the plaintext</li>
+<li><strong>Round</strong>: a combination of substitution and permutation<ul>
+<li>Many rounds increase security by propagating changes throughout the ciphertext</li>
+</ul>
+</li>
+</ul>
+<p>Comparisons of block cipher sizes:</p>
+<table>
+<thead>
+<tr>
+<th>Thing</th>
+<th><abbr title="Data Encryption Standard">DES</abbr> size (bits)</th>
+<th>Triple <abbr title="Data Encryption Standard">DES</abbr> size (bits)</th>
+<th><abbr title="Advanced Encryption Standard">AES</abbr> size (bits)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plaintext block size</td>
+<td>64</td>
+<td>64</td>
+<td>128</td>
+</tr>
+<tr>
+<td>Ciphertext block size</td>
+<td>64</td>
+<td>64</td>
+<td>128</td>
+</tr>
+<tr>
+<td>Key size</td>
+<td>56</td>
+<td>112 or 168</td>
+<td>128, 192, or 256</td>
+</tr>
+</tbody>
+</table>
+<p>A longer key length means more keys, and is harder to brute-force.</p>
+<h4 id="des"><abbr title="Data Encryption Standard">DES</abbr><a class="headerlink" href="#des" title="Permanent link">&para;</a></h4>
+<p>Symmetric key block cipher algorithm, Feistel and IBM, 1977</p>
+<ul>
+<li>64 bit key (8 bytes) with one parity bit for each byte; effective key length is only 56 bits</li>
+<li>Outputs a 64 bit block ciphertext</li>
+</ul>
+<p>There are 16 <abbr title="Data Encryption Standard">DES</abbr> rounds:</p>
+<ul>
+<li>Each round's input is the ciphertext produced by the previous round</li>
+<li>Encryption rounds use K1...K16, decryption uses K16...K1</li>
+<li>Implementation of a <strong>Feistel</strong> cipher, using [F-function]](<a href="https://en.wikipedia.org/wiki/Data_Encryption_Standard#The_Feistel_(F)_function">https://en.wikipedia.org/wiki/Data_Encryption_Standard#The_Feistel_(F)_function</a>) with the four stages:<ul>
+<li>Expansion: use expansion permutation (E-expansion) to duplicate half the bits</li>
+<li>Key mixing: XOR the result with subkey (derived from main key using key schedule)</li>
+<li>Substitution: processing by substitution boxes (S-boxes), one of 8 predefined tables -- this is the core of <abbr title="Data Encryption Standard">DES</abbr> security<ul>
+<li>Given a six bit value <code>011011</code>, the outer two bits (<code>0</code> and <code>1</code>) represent the rows and the inner four (<code>1101</code>) the columns</li>
+</ul>
+</li>
+<li>Permutation: rearrange the 32 outputs according to fixed permutation (P-box)</li>
+</ul>
+</li>
+</ul>
+<p>How to XOR, or "same-same zero, different is one":</p>
+<ul>
+<li><code>0 XOR 0 = 0</code></li>
+<li><code>1 XOR 1 = 0</code></li>
+<li><code>0 XOR 1 = 1</code></li>
+<li><code>1 XOR 0 = 1</code></li>
+</ul>
+<p><abbr title="Data Encryption Standard">DES</abbr> isn't the most secure anymore:</p>
+<ul>
+<li>2⁵⁶ keys is too small a keyspace</li>
+<li>S-box design criteria is secret, although still shown to be resistant to attacks</li>
+</ul>
+<h4 id="triple-des">Triple <abbr title="Data Encryption Standard">DES</abbr><a class="headerlink" href="#triple-des" title="Permanent link">&para;</a></h4>
+<p>It's <abbr title="Data Encryption Standard">DES</abbr> run three times with three different keys to overcome the small key space. Effective key lengths are 56, 112, or 168.</p>
+<p>Triple <abbr title="Data Encryption Standard">DES</abbr> is vulnerable to collision attacks.</p>
+<h4 id="aes"><abbr title="Advanced Encryption Standard">AES</abbr><a class="headerlink" href="#aes" title="Permanent link">&para;</a></h4>
+<p>Symmetric key block cipher algorithm, <abbr title="National Institute of Standards and Technology">NIST</abbr>, 2001</p>
+<p>A subset of the Rijndael block cipher, more efficient than Triple <abbr title="Data Encryption Standard">DES</abbr>. <abbr title="Advanced Encryption Standard">AES</abbr> replaces <abbr title="Data Encryption Standard">DES</abbr>.</p>
+<ul>
+<li>Variant of Rijndael, not a Feistel structure</li>
+<li>Fixed block size of 128 bits</li>
+<li>Entire block processed in parallel during each round</li>
+<li>Substitution and permutation</li>
+<li>Key length can be 128, 192, or 256 bit (effectively defeats brute forcing at time of writing)</li>
+</ul>
+<p><abbr title="Advanced Encryption Standard">AES</abbr> rounds differ with key length:</p>
+<ul>
+<li>10 rounds for 128-bit keys</li>
+<li>12 rounds for 192-bit keys</li>
+<li>14 rounds for 256-bit keys</li>
+</ul>
+<p><code>KeyExpansion</code>: round keys are derived from the cipher key using the <abbr title="Advanced Encryption Standard">AES</abbr> key schedule</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#High-level_description_of_the_algorithm">algorithm steps are</a>:</p>
+<ol>
+<li>To begin, <code>AddRoundKey</code>: bitwise XOR combines each byte of the state with a byte of the round key</li>
+<li>For 9, 11, or 13 rounds:<ol>
+<li><code>SubBytes</code>: substitution step replaces each byte according to lookup table<ul>
+<li>Uses a 16x16 matrix (S-box) with permutation of all possible 256 8-bit values</li>
+<li>Left 4 bits are the row value, right 4 bits are the column value for indexing</li>
+<li>S-box is designed to have a low correlation between input bits and output bits</li>
+</ul>
+</li>
+<li><code>ShiftRows</code>: transposition of last three rows of the state, cyclically shifted some number of steps (diffusion)<ul>
+<li>A circular left shift is performed starting with 1 byte at the second row, 2 bytes at the third row, then 3 bytes at the fourth row.</li>
+</ul>
+</li>
+<li><code>MixColumns</code>: linear mixing operation combines four bytes in each column of the state (diffusion)<ul>
+<li>The four bytes of each column are combined using an invertible linear transformation (matrix multiplication)</li>
+</ul>
+</li>
+<li><code>AddRoundKey</code> again</li>
+</ol>
+</li>
+<li>Final round:<ol>
+<li><code>SubBytes</code></li>
+<li><code>ShiftRows</code></li>
+<li><code>AddRoundKey</code></li>
+</ol>
+</li>
+</ol>
+<p>Each operation in <abbr title="Advanced Encryption Standard">AES</abbr> is reversible, which is how <abbr title="Advanced Encryption Standard">AES</abbr> is decrypted.</p>
+<p><a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#Security">Theoretical attacks</a> include:</p>
+<ul>
+<li>XSL attack</li>
+<li>Side-channel attack</li>
+<li>Related-key attack</li>
+<li>Known-key distinguishing attack</li>
+<li>Key-recovery attack</li>
+</ul>
+<p>At time of writing there are no known feasible attacks that would break <abbr title="Advanced Encryption Standard">AES</abbr>.</p>
+<h4 id="rsa-rivest-shamir-adleman">RSA (Rivest, Shamir, Adleman)<a class="headerlink" href="#rsa-rivest-shamir-adleman" title="Permanent link">&para;</a></h4>
+<p>A block cipher that depends on the difficulty of factoring a large integer (𝒏) into two primes (<em>p</em> and <em>q</em>). The plaintext <em>M</em> and ciphertext <em>C</em> are integers between 0 and <em>𝒏-1</em> for some 𝒏.</p>
+<p>Two prime numbers, <em>p</em> and <em>q</em>, are chosen (using <abbr title="Random Number Generator">RNG</abbr>). They must be different and sufficiently large and random. Their product 𝒏 is used to generate public and private keys.</p>
+<ul>
+<li>The public key is <em>{𝒆,𝒏}</em></li>
+<li>The private key is <em>{𝒅,𝒏}</em></li>
+<li>The relationship between 𝒆 and 𝒅 is: <em>𝒅𝒆 mod φ(𝒏) = 1</em><ul>
+<li><em>φ(𝒏) = (p−1)(q−1)</em></li>
+</ul>
+</li>
+<li>𝒆 and 𝒅 are multiplicative inverses modulo <em>φ(𝒏)</em> (the <a href="https://mathworld.wolfram.com/TotientFunction.html">Euler totient function</a>)</li>
+<li>The key 𝒅 can be found with modular multiplicative inverse: <em>𝒅 ≡ 𝒆⁻¹(mod φ(𝒏))</em></li>
+</ul>
+<p>The message <em>M</em> is independent of the values for <em>p</em> and <em>q</em>, allowing any message to be encrypted using the same public-private key pair. The values <em>p</em> and <em>q</em> are independent of the exponent 𝒆.</p>
+<p>Approaches to attacking RSA include:</p>
+<ul>
+<li>Brute force (try all private keys)</li>
+<li>Mathematical attacks<ul>
+<li>Factoring 𝒏 into <em>p</em> and <em>q</em></li>
+<li>Determining <em>φ(𝒏)</em> (without finding <em>p</em> and <em>q</em>)</li>
+<li>Determining 𝒅 without determining <em>φ(𝒏)</em></li>
+</ul>
+</li>
+<li>Timing attacks (using the running time of the decryption algorithm)</li>
+<li><a href="https://en.wikipedia.org/wiki/Chosen-ciphertext_attack">Chosen ciphertext attacks</a></li>
+</ul>
+<p>RSA is susceptible to these when the key space is insufficiently small.</p>
+<h3 id="block-cipher-modes">Block Cipher Modes<a class="headerlink" href="#block-cipher-modes" title="Permanent link">&para;</a></h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)">block cipher mode of operation</a> uses a block cipher to provide confidentiality or authenticity. The idea is to repeatedly apply a cipher's single-block operation to transform data larger than a single block.</p>
+<p>Authenticated Encryption (<abbr title="Authenticated Encryption">AE</abbr>) protects confidentiality and integrity of communications simultaneously, and can provide security against chosen ciphertext attacks. <abbr title="Authenticated Encryption">AE</abbr> is implemented using a block cipher mode structure.</p>
+<p>Block cipher modes defined in <a href="https://csrc.nist.gov/publications/detail/sp/800-38a/final"><abbr title="National Institute of Standards and Technology">NIST</abbr> SP 800-38A</a> are:</p>
+<ul>
+<li>Electronic Codebook (<abbr title="Electronic Codebook">ECB</abbr>)</li>
+<li>Cipher Block Chaining (<abbr title="Cipher Block Chaining">CBC</abbr>)</li>
+<li>Cipher Feedback (<abbr title="Cipher Feedback">CFB</abbr>)</li>
+<li>Output Feedback (<abbr title="Output Feedback">OFB</abbr>)</li>
+<li>Counter (<abbr title="Counter">CTR</abbr>)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+<th>Typically used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Electronic Codebook">ECB</abbr></td>
+<td>Each block of 64 bits independently encrypted using the same key</td>
+<td>Transmission of single values, e.g. encryption key</td>
+</tr>
+<tr>
+<td><abbr title="Cipher Block Chaining">CBC</abbr></td>
+<td>Input to the encryption algorithm is the XOR of the next 64 bits of plaintext and the preceding 64 bits of ciphertext</td>
+<td>Block-oriented transmission, authentication</td>
+</tr>
+<tr>
+<td><abbr title="Cipher Feedback">CFB</abbr></td>
+<td>Input processed <em>s</em> bits at a time using preceding ciphertext as input to produce pseudorandom output. Output XORed with plaintext to produce next ciphertext unit</td>
+<td>Stream-oriented transmission, authentication</td>
+</tr>
+<tr>
+<td><abbr title="Output Feedback">OFB</abbr></td>
+<td>Like <abbr title="Cipher Feedback">CFB</abbr>, but input is the preceding <abbr title="Data Encryption Standard">DES</abbr> output</td>
+<td>Stream-oriented transmission on noisy channels, e.g. satellite communication)</td>
+</tr>
+<tr>
+<td><abbr title="Counter">CTR</abbr></td>
+<td>Each block of plaintext is XORed with an encrypted counter, incremented for each subsequent block</td>
+<td>Block-oriented transmission, high-speed requirements</td>
+</tr>
+</tbody>
+</table>
+<h4 id="electronic-codebook-ecb">Electronic Codebook (<abbr title="Electronic Codebook">ECB</abbr>)<a class="headerlink" href="#electronic-codebook-ecb" title="Permanent link">&para;</a></h4>
+<p><abbr title="Electronic Codebook">ECB</abbr> is the simplest <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Confidentiality_only_modes">confidentiality mode</a>.</p>
+<p>Issues abound:</p>
+<ul>
+<li><abbr title="Electronic Codebook">ECB</abbr> has <strong>weak confidentiality</strong>: the same plaintext block produces the same ciphertext block, which makes it vulnerable to analysis because it does not hide patterns well</li>
+<li><abbr title="Electronic Codebook">ECB</abbr> has <strong>weak integrity</strong>: plaintext blocks are encrypted independently, making them vulnerable to cipher block substitution and rearrangement attacks</li>
+</ul>
+<h4 id="cipher-block-chaining-cbc">Cipher Block Chaining (<abbr title="Cipher Block Chaining">CBC</abbr>)<a class="headerlink" href="#cipher-block-chaining-cbc" title="Permanent link">&para;</a></h4>
+<p>More secure than <abbr title="Electronic Codebook">ECB</abbr>, this is the most widely used approach for encrypting large messages.</p>
+<p>The <abbr title="Initialization Vector">IV</abbr> is XORed with the first plaintext block to produce the first ciphertext. Subsequent blocks are XORed with the resulting ciphertext from the previous block. This makes <abbr title="Cipher Block Chaining">CBC</abbr> more resistant to cryptanalysis.</p>
+<p><abbr title="Cipher Block Chaining">CBC</abbr> maintains integrity since, if the order of blocks are changed, it will not be properly decrypted. Both parties need the <abbr title="Initialization Vector">IV</abbr> to decrypt the ciphertext.</p>
+<p>The last block of <abbr title="Cipher Block Chaining">CBC</abbr> is the <abbr title="Cipher Block Chaining">CBC</abbr> residue and can be sent as a measure of protecting message integrity. Modification of the plaintext means that the <abbr title="Cipher Block Chaining">CBC</abbr> residue computed by the receiver will differ from the <abbr title="Cipher Block Chaining">CBC</abbr> residue from the sender.</p>
+<p>To have both confidentiality and integrity with <abbr title="Cipher Block Chaining">CBC</abbr>, two separate keys should be used to do encryption and generate residue. Alternatively, compute a hash of the message then append and encrypt it together.</p>
+<p>Some helpful formulas:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Formula</th>
+<th>Ciphertext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Electronic Codebook">ECB</abbr></td>
+<td><code>Yᵢ = F(PlainTextᵢ, Key)</code></td>
+<td><code>Yᵢ</code></td>
+</tr>
+<tr>
+<td><abbr title="Cipher Block Chaining">CBC</abbr></td>
+<td><code>Yᵢ = PlainTextᵢ XOR Ciphertextᵢ₋₁</code></td>
+<td><code>F(Y, Key); Ciphertext₀ = IV</code></td>
+</tr>
+<tr>
+<td><abbr title="Cipher Feedback">CFB</abbr></td>
+<td><code>Yᵢ = Ciphertextᵢ₋₁</code></td>
+<td><code>Plaintext XOR F(Y, Key); Ciphertext₀ = IV</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="stream-cipher">Stream Cipher<a class="headerlink" href="#stream-cipher" title="Permanent link">&para;</a></h3>
+<p>A stream cipher converts a plaintext message to ciphertext bit-by-bit.</p>
+<h4 id="rc4">RC4<a class="headerlink" href="#rc4" title="Permanent link">&para;</a></h4>
+<p>Variable-key-size stream cipher, Ron Rivest and RSA Security, 1987</p>
+<p>Based on the use of a random permutation, RC4 generates a pseudorandom keystream (stream of bits). It was used in <abbr title="Secure Socket Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr>, <abbr title="Wired Equivalent Privacy">WEP</abbr>, <abbr title="WiFi Protected Access">WPA</abbr>, until prohibited for all versions of <abbr title="Transport Layer Security">TLS</abbr> by RFC 7465 in 2015.</p>
+<p>The permutation is initialized using the <strong>key-scheduling algorithm (KSA)</strong>:</p>
+<ol>
+<li>A 256-byte state vector, <em>S</em>, is initialized from a variable length key of 1-256 bytes (8 to 2048 bits)<ul>
+<li>Initially the entries of <em>S</em> are 0-255 (<em>S[0]... S[255]</em>)</li>
+<li>If the private key, <em>K</em>, is 256 bytes, a temporary vector <em>T</em> holds <em>K</em>; otherwise, the bytes of <em>K</em> are repeated to fill up <em>T</em></li>
+</ul>
+</li>
+<li><em>T</em> is used to produce the initial permutation of <em>S</em><ul>
+<li>For each byte in <em>S</em> (<em>S[ᵢ]</em>), we swap with another byte <em>S[j]</em> according to the scheme dictated by <em>T</em></li>
+</ul>
+</li>
+</ol>
+<p>A keystream is generated using the <strong>pseudo-random generation algorithm (PRGA)</strong>. For each iteration <em>i</em>:</p>
+<ol>
+<li>The <em>i</em> element of <em>S</em>, <em>S[i]</em>, is added to <em>j</em></li>
+<li>Exchange the values of <em>S[i]</em> and <em>S[j]</em> then use the sum <em>S[i] + S[j] (modulo 256)</em> as an index to fetch a third element of <em>S</em>, the keystream value <em>K</em></li>
+<li>Do bitwise XOR with the next byte of the message to produce the next byte of either ciphertext or plaintext</li>
+</ol>
+<p>Encryption is performed by XOR-ing each byte of <em>K</em> with the next byte of the plaintext. Decryption is by XOR-ing each byte of <em>K</em> with the next byte of ciphertext.</p>
+<p>RC4 is vulnerable:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Fluhrer,_Mantin_and_Shamir_attack">Fluhrer, Mantin and Shamir attack</a> broke the <abbr title="Wired Equivalent Privacy">WEP</abbr> standard when they found RC4 to be vulnerable due to the first few bytes of the output keystream being strongly non-random</li>
+<li>Andreas Klien showed more correlations between the RC4 keystream and key in <a href="https://en.wikipedia.org/wiki/RC4#Klein's_attack">Klien's attack</a>, which lead to Erik Tews, Ralf-Philipp Weinmann, and Andrei Pychkine cracking 128-bit <abbr title="Wired Equivalent Privacy">WEP</abbr> in under a minute</li>
+<li>Bit-flipping attack is possible if RC4 is not used with a strong message authentication code (<abbr title="(1): Mandatory Access Control (2): Media Access Control (3): Message Authentication Code">MAC</abbr>)</li>
+</ul>
+<h3 id="modular-math">Modular Math<a class="headerlink" href="#modular-math" title="Permanent link">&para;</a></h3>
+<p>Concepts to review:</p>
+<ul>
+<li>Modular multiplication</li>
+<li>Modular exponentiation</li>
+<li>Multiplicative inverse</li>
+<li><a href="https://en.wikipedia.org/wiki/Euclidean_algorithm">Euclidean algorithm</a> and <a href="https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity">Bézout's identity</a></li>
+</ul>
+<h3 id="hash-function">Hash Function<a class="headerlink" href="#hash-function" title="Permanent link">&para;</a></h3>
+<p>Cryptographic algorithm that:</p>
+<ul>
+<li>Takes a message digest (data) input of any size and produces a fixed-length output<ul>
+<li>Output is typically 128-512 bits</li>
+</ul>
+</li>
+<li>Efficient on computational resources (fast to compute)</li>
+<li>Is a one-way function (cannot be reversed to find the original input)</li>
+</ul>
+<p>Hash functions are useful for message authentication, password security, and intrusion detection.</p>
+<p>Hash functions should have collision resistance, which means that it is not desirable for different inputs to produce the same output.</p>
+<p><strong>Weak collision resistance</strong>: bound to a particular message <code>m</code>, it's computationally infeasible to find <code>m'</code> with <code>m' != m</code> so that <code>h(m) = h(m')</code>.</p>
+<p><strong>Strong collision resistance</strong>: given any arbitrary message <code>x</code>, there exists no <code>x</code> and <code>x'</code> with <code>x != x'</code> so that <code>h(x) = h(x')</code>. This automatically satisfies weak collision resistance.</p>
+<p>See <a href="https://stackoverflow.com/questions/8523005/what-is-the-difference-between-weak-and-strong-resistance">What is the difference between weak and strong resistance</a>.</p>
+<p>Hash function weaknesses include:</p>
+<ul>
+<li><strong>Pigeonhole principle</strong>: <code>n = m</code><ul>
+<li>One pigeon (n) per hole (m)</li>
+<li>If <code>n &gt; m</code> then at least one hole has more than one pigeon</li>
+</ul>
+</li>
+<li><strong>Birthday paradox</strong>: how many people do you need to put in a room until you have a greater than 50% chance that two of them will have the same birthday?<ul>
+<li>For 100% chance that two people in the room have the same birthday, you need 367 people (leap years)</li>
+<li>For less than 100%, computed as <code>P(A) = 1 − P(A′)</code></li>
+<li>Probability that a pair share the same birthday: <code>1-(k)ₙ/kⁿ</code></li>
+<li>See <a href="https://en.wikipedia.org/wiki/Birthday_problem">Birthday problem</a></li>
+</ul>
+</li>
+</ul>
+<p>How long of a hash value do we need to avoid collisions?</p>
+<table>
+<thead>
+<tr>
+<th>Hash length</th>
+<th>Possible number of hash values</th>
+<th>Number of messages for collision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l</td>
+<td>2¹</td>
+<td>2¹/²</td>
+</tr>
+<tr>
+<td>64</td>
+<td>2⁶⁴</td>
+<td>2³²</td>
+</tr>
+</tbody>
+</table>
+<h3 id="secure-hash-algorithm-sha">Secure Hash Algorithm (<abbr title="Secure Hash Algorithms">SHA</abbr>)<a class="headerlink" href="#secure-hash-algorithm-sha" title="Permanent link">&para;</a></h3>
+<ul>
+<li><abbr title="Secure Hash Algorithms">SHA</abbr>-1: 1995 <abbr title="Federal Information Processing Standard">FIPS</abbr> 180-1, from National Security Agency (NSA) in <abbr title="Digital Signature Algorithm">DSA</abbr> -- insecure as of 2010</li>
+<li><abbr title="Secure Hash Algorithms">SHA</abbr>-2: 2002 <abbr title="Federal Information Processing Standard">FIPS</abbr> 180-2, encompasses:<ul>
+<li><abbr title="Secure Hash Algorithms">SHA</abbr>-256</li>
+<li><abbr title="Secure Hash Algorithms">SHA</abbr>-384</li>
+<li><abbr title="Secure Hash Algorithms">SHA</abbr>-512</li>
+</ul>
+</li>
+<li><abbr title="Secure Hash Algorithms">SHA</abbr>-3: 2015 <abbr title="Federal Information Processing Standard">FIPS</abbr> 202 -- compact and useful for embedded devices</li>
+</ul>
+<p>Message digest generation (<abbr title="Secure Hash Algorithms">SHA</abbr>-512) follows these steps:</p>
+<ol>
+<li>Message is (always) padded (<code>100...0</code> appended to last block) so it is a multiple of 1024 bits</li>
+<li>A 128-bit block is appended (unsigned 128-bit integer containing pre-padded length of original message)</li>
+<li>512-bit hash buffer is initialized to hold intermediate and final results</li>
+<li>Registers initialized to the hard-coded <abbr title="Initialization Vector">IV</abbr></li>
+<li>Message processed in 1024-bit (128-words) blocks:</li>
+<li>Each block has 80 rounds</li>
+<li>First block is processed with <abbr title="Initialization Vector">IV</abbr>, giving hash buffer the first intermediate value</li>
+<li>Each round takes as input the previous intermediate value, a constant (k), and some words from the previous block</li>
+<li>Operations include circular shifts, primitive pulling functions (and, or, not, XOR)</li>
+<li>After all <em>N</em> blocks are processed, the output is the 512-bit message digest</li>
+</ol>
+<h4 id="sha-numbers-table"><abbr title="Secure Hash Algorithms">SHA</abbr> Numbers Table<a class="headerlink" href="#sha-numbers-table" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Message digest size</th>
+<th>Message size</th>
+<th>Block size</th>
+<th>Word size</th>
+<th>Rounds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Secure Hash Algorithms">SHA</abbr>-1</td>
+<td>160-bit</td>
+<td>&lt;2⁶⁴</td>
+<td>512</td>
+<td>32-byte words</td>
+<td>80</td>
+</tr>
+<tr>
+<td><abbr title="Secure Hash Algorithms">SHA</abbr>-256</td>
+<td>256 bits</td>
+<td>&lt;2⁶⁴</td>
+<td>512</td>
+<td>32-byte words</td>
+<td>64</td>
+</tr>
+<tr>
+<td><abbr title="Secure Hash Algorithms">SHA</abbr>-384</td>
+<td>384 bits</td>
+<td>&lt;2¹²⁸</td>
+<td>1024</td>
+<td>64-byte words</td>
+<td>80</td>
+</tr>
+<tr>
+<td><abbr title="Secure Hash Algorithms">SHA</abbr>-512</td>
+<td>512 bits</td>
+<td>&lt;2¹²⁸</td>
+<td>1024</td>
+<td>64-byte words</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hash-based-message-authentication-hmac">Hash Based Message Authentication (<abbr title="Hash Based Message Authentication">HMAC</abbr>)<a class="headerlink" href="#hash-based-message-authentication-hmac" title="Permanent link">&para;</a></h3>
+<p>Hash functions are suitable for message authentication because:</p>
+<ul>
+<li>They are fast to compute compared to encryption algorithms (<abbr title="Data Encryption Standard">DES</abbr>)</li>
+<li>Library code is widely available</li>
+</ul>
+<p>To use a hash algorithm for message authentication, we need to incorporate use of a secret key. Enter <abbr title="Hash Based Message Authentication">HMAC</abbr>, RFC 2104.</p>
+<p><abbr title="Hash Based Message Authentication">HMAC</abbr> makes modular use of the hash function. A new hash function could easily be used instead, if so desired one day.</p>
+<p>The <abbr title="Hash Based Message Authentication">HMAC</abbr> process goes like this:</p>
+<ol>
+<li>Secret key <em>K</em> is padded with zeroes so it is the same length as the number of bits in a block, <em>b</em><ul>
+<li>E.g. if this <abbr title="Hash Based Message Authentication">HMAC</abbr> uses <abbr title="Secure Hash Algorithms">SHA</abbr>-512, <em>K</em> is padded to make it 1024 bits (see <a href="#sha-numbers-table"><abbr title="Secure Hash Algorithms">SHA</abbr> numbers table</a>)</li>
+</ul>
+</li>
+<li>XOR the padded key <em>K⁺</em> with ipad, producing <em>Sᵢ</em></li>
+<li>Append the message <em>M</em> to <em>Sᵢ</em>, producing the stream for step 3</li>
+<li>Apply the embedded hash function <em>H</em> to the stream from step 3</li>
+<li>XOR the padded key <em>K⁺</em> with opad to produce <em>S₀</em></li>
+<li>Append the hash result from step 4 to <em>S₀</em>, producing the stream for step 6</li>
+<li>Apply the embedded hash function <em>H</em> to the stream from step 6</li>
+<li>Output the result</li>
+</ol>
+<p>Not Apple devices:</p>
+<ul>
+<li><strong>ipad</strong>: 36 in hexadecimal (00110110), repeated <em>b/8</em> times</li>
+<li><strong>opad</strong>: 5C in hexadecimal (01011100), repeated <em>b/8</em> times</li>
+</ul>
+<p><abbr title="Hash Based Message Authentication">HMAC</abbr> security:</p>
+<ul>
+<li>Depends on the cryptographic strength of the embedded one-way hash function</li>
+<li>Makes it harder to find collisions (compared to the underlying hash function) due to the use of the secret key<ul>
+<li>This means <abbr title="Hash Based Message Authentication">HMAC</abbr> cannot be attacked by generating message/code pairs for the underlying hash function offline because attacker does not know the secret key</li>
+</ul>
+</li>
+</ul>
+<h3 id="diffie-hellman-key-exchange">Diffie-Hellman Key Exchange<a class="headerlink" href="#diffie-hellman-key-exchange" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allows two people to exchange a secret value, with math</li>
+<li>Relies on the infeasibility of computing discrete logarithms</li>
+</ul>
+<p>See <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation">cryptographic explanation</a>:</p>
+<ol>
+<li>Alice and Bob publicly agree to use a public prime modulus <em>p = 23</em> and public prime base <em>g = 5</em> (which is a primitive root modulo 23).</li>
+<li>Alice chooses a secret integer (private key) <em>a = 4</em>, then sends Bob her public key <em>A = gᵃ mod p</em><ul>
+<li><em>A = 5⁴ mod 23 = 4</em></li>
+</ul>
+</li>
+<li>Bob chooses a secret integer (private key) <em>b = 3</em>, then sends Alice his public key <em>B = gᵇ mod p</em><ul>
+<li><em>B = 5³ mod 23 = 10</em></li>
+</ul>
+</li>
+<li>Alice computes <em>s = Bᵃ mod p</em><ul>
+<li><em>s = 10⁴ mod 23 = 18</em></li>
+</ul>
+</li>
+<li>Bob computes <em>s = Aᵇ mod p</em><ul>
+<li><em>s = 4³ mod 23 = 18</em></li>
+</ul>
+</li>
+<li>Alice and Bob now share a secret (the number 18).</li>
+</ol>
+<p>Limitations of Diffie-Hellmain include:</p>
+<ul>
+<li>Only used for key exchange</li>
+<li>It involves expensive exponential operations, so <abbr title="Denial-of-Service">DoS</abbr> is possible by requesting multiple sessions</li>
+<li>Susceptible to <abbr title="Man-in-the-Middle">MitM</abbr> attack if there is no authentication of the participants (fix this by signing the messages, digital signatures, public key certificates)</li>
+</ul>
+<h2 id="security-protocols">Security Protocols<a class="headerlink" href="#security-protocols" title="Permanent link">&para;</a></h2>
+<p>A <strong>protocol</strong> defines rules and conventions, in other words, "the way we do things around here."</p>
+<p>Secure communication involves:</p>
+<ul>
+<li>Mutual authentication</li>
+<li>Establishing and exchanging keys</li>
+<li>Agreeing on which cipher suite to use</li>
+</ul>
+<h3 id="mutual-authentication">Mutual Authentication<a class="headerlink" href="#mutual-authentication" title="Permanent link">&para;</a></h3>
+<p>Alice and Bob share a key.</p>
+<ol>
+<li>Alice claims she's Alice</li>
+<li>Bob sends a challenge value, <em>R1</em></li>
+<li>Alice encrypts the challenge value using their shared key and sends it back</li>
+<li>Bob decrypts Alice's response and sees if it matches <em>R1</em></li>
+<li>Bob says, OK Alice.</li>
+<li>Alice sends a challenge value, <em>R2</em></li>
+<li>Bob encrypts <em>R2</em> with the shared key and sends it back to Alice</li>
+<li>Alice decrypts the response and sees if it matches <em>R2</em></li>
+<li>Alice says, OK Bob.</li>
+</ol>
+<p>Mutual authentication depends on:</p>
+<ul>
+<li>Random challenges being unpredictable large numbers</li>
+<li>Challenge values and authentication messages not being repeatable (<strong>replay attack</strong>)</li>
+<li>The shared secret key remaining secret</li>
+</ul>
+<p>Simplified mutual authentication can be susceptible to <strong>reflection attack</strong>. Here are the steps of the genuine path, with the sub-points describing the attack:</p>
+<ol>
+<li>Alice claims she's alice and sends <em>R1</em><ul>
+<li>Charlie can impersonate Alice and send <em>R1</em></li>
+</ul>
+</li>
+<li>Bob sends the encrypted <em>R1</em> (ciphertext) and his own challenge <em>R2</em><ul>
+<li>Charlie can receive this but doesn't have the key to encrypt <em>R2</em></li>
+<li>In a new connection, Charlie impersonates Alice and sends <em>R2</em> as the first challenge</li>
+<li>Bob responds with the encrypted <em>R2</em>, which Charlie can use in the first connection</li>
+</ul>
+</li>
+<li>Alice decrypts the ciphertext and matches it to <em>R1</em>, then sends the encrypted <em>R2</em><ul>
+<li>Charlie impersonates Alice, sending the encrypted <em>R2</em> from Bob</li>
+</ul>
+</li>
+</ol>
+<p>Defeat the <abbr title="Man-in-the-Middle">MitM</abbr> reflection attack by using different keys for Alice and Bob, or odd and even challenge numbers.</p>
+<p>Signing or encryption using <a href="#public-key-certificate-digital-signatures">public key cryptography</a> can also be used for mutual authentication.</p>
+<h3 id="establishing-session-keys">Establishing Session Keys<a class="headerlink" href="#establishing-session-keys" title="Permanent link">&para;</a></h3>
+<p>Asymmetric cryptography is more computationally expensive. You can establish symmetric keys (shared secret) after authentication so that exchanging messages is more efficient.</p>
+<ul>
+<li>A long-term (master) key can be derived from some password</li>
+<li>Master key is used to authenticate and establish a session key</li>
+<li>Session keys are per-session only to limit consequence of exposure</li>
+</ul>
+<p><a href="#diffie-hellman-key-exchange">Diffie-Hellman key exchange</a> is used for this purpose.</p>
+<h4 id="key-distribution-center">Key Distribution Center<a class="headerlink" href="#key-distribution-center" title="Permanent link">&para;</a></h4>
+<p>A Key Distribution Center (<abbr title="Key Distribution Center">KDC</abbr>) can be used to scale the sharing of master keys with the help of the Security Service Module (<abbr title="Security Service Module">SSM</abbr>).</p>
+<p>If Alice and Bob each share a master key with the <abbr title="Key Distribution Center">KDC</abbr>:</p>
+<ol>
+<li>Alice sends a connection request packet to the <abbr title="Security Service Module">SSM</abbr></li>
+<li>The <abbr title="Security Service Module">SSM</abbr> asks the <abbr title="Key Distribution Center">KDC</abbr> for permission to establish the session with Bob</li>
+<li>
+<p><abbr title="Key Distribution Center">KDC</abbr> approves the connection request and generate and delivers a session key to Alice and Bob's SSMs</p>
+</li>
+<li>
+<p>The communication between any <abbr title="Security Service Module">SSM</abbr> and the <abbr title="Key Distribution Center">KDC</abbr> is encrypted using a master key unique to this <abbr title="Security Service Module">SSM</abbr> and <abbr title="Key Distribution Center">KDC</abbr></p>
+</li>
+<li>Data exchanged between Alice and Bob is encrypted using the secret session key, which is unique to this session</li>
+</ol>
+<p>Public key certificates are exchanged through a CA. A certificate can be verified using its public key whether or not the CA is online. See <a href="#public-key-certificate-digital-signatures">public key certificate</a>.</p>
+<h4 id="kerberos-protocol">Kerberos Protocol<a class="headerlink" href="#kerberos-protocol" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Provides authentication and access control, session keys</li>
+<li>Uses ticket-granting-tickets, per-day keys to reduce use and transmission of master keys</li>
+<li>Each principal has a master key derived from a password (or configured, if not human)<ul>
+<li>Keys are stored encrypted in <abbr title="Key Distribution Center">KDC</abbr></li>
+</ul>
+</li>
+</ul>
+<h3 id="public-key-infrastructure-pki">Public Key Infrastructure (<abbr title="Public Key Infrastructure">PKI</abbr>)<a class="headerlink" href="#public-key-infrastructure-pki" title="Permanent link">&para;</a></h3>
+<p>The X.509 standard defines a format for public-key certificates used in IPSec, <abbr title="Secure Socket Layer">SSL</abbr>, SET, and more. The standard describes these components:</p>
+<ul>
+<li>Version</li>
+<li>Certificate serial number</li>
+<li>Signature algorithm identifier</li>
+<li>Issuer name</li>
+<li>Period of validity</li>
+<li>Subject name</li>
+<li>Subject's public-key info</li>
+<li>Issuer's unique identifier</li>
+<li>Subject's unique identifier</li>
+<li>Extensions</li>
+<li>Signature</li>
+</ul>
+<p>Most commonly these are:</p>
+<ul>
+<li>CA certificate: used only to sign other certificates</li>
+<li>End user certificate: used to verify identities, sign and encrypt data</li>
+</ul>
+<p>The <abbr title="Public Key Infrastructure">PKI</abbr> standard has these problems:</p>
+<ul>
+<li>Reliance on user to make an informed decision when certificate can't be verified</li>
+<li>Different implementations use different trust stores and present different security views to users</li>
+<li>Assumption that all CAs in the trust store are equally trusted and apply equivalent policies</li>
+</ul>
+<h3 id="ip-security-ipsec">IP Security (IPSec)<a class="headerlink" href="#ip-security-ipsec" title="Permanent link">&para;</a></h3>
+<p>The main goal is to encrypt or authenticate all traffic at the IP level, below the transport layer. It has these <a href="https://en.wikipedia.org/wiki/IPsec#Security_architecture">main protocols</a>:</p>
+<blockquote>
+<ul>
+<li>Authentication Headers (AH) provides connectionless data integrity and data origin authentication for IP datagrams and provides protection against replay attacks.</li>
+<li>Encapsulating Security Payloads (<abbr title="Stack pointer, the top of the stack.">ESP</abbr>) provides confidentiality, connectionless data integrity, data origin authentication, an anti-replay service (a form of partial sequence integrity), and limited traffic-flow confidentiality.</li>
+<li>Internet Security Association and Key Management Protocol (<abbr title="Internet Security Association and Key Management Protocol">ISAKMP</abbr>) provides a framework for authentication and key exchange...</li>
+</ul>
+</blockquote>
+<p>AH uses a hash function to provide authentication. It doesn't cover mutable fields in original IP header (DSCP/<abbr title="Type of Service">ToS</abbr>, ECN, Flags, Fragment Offset, TTL and Header Checksum) and does not provide encryption. AH has two modes:</p>
+<ul>
+<li><strong>Transport mode</strong>: places authentication code in the AH header, inserted after the IP header</li>
+<li><strong>Tunnel mode</strong>: places AH header after a new IP header</li>
+</ul>
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Ipsec-ah.svg/800px-Ipsec-ah.svg.png" />
+  <figcaption>AH Modes, <a href="https://commons.wikimedia.org/wiki/File:Ipsec-ah.svg">Wikipedia</a></figcaption>
+</figure>
+
+<p>AH shouldn’t be used alone since <abbr title="Stack pointer, the top of the stack.">ESP</abbr> can also provide authentication. IPsecv3 provides backwards compatibility to support AH.</p>
+<p>The AH header contains:</p>
+<ul>
+<li>Next header</li>
+<li>Payload length</li>
+<li>Reserved</li>
+<li>Security Parameter Index (<abbr title="Security Parameter Index">SPI</abbr>)</li>
+<li>Sequence number<ul>
+<li>Optional; protects against replay attacks using sliding window</li>
+</ul>
+</li>
+<li>Integrity Check Value (ICV)</li>
+</ul>
+<p>If both AH and <abbr title="Stack pointer, the top of the stack.">ESP</abbr> are used, <abbr title="Stack pointer, the top of the stack.">ESP</abbr> is applied first for encryption followed by AH for authentication.</p>
+<p><abbr title="Stack pointer, the top of the stack.">ESP</abbr> provides authentication, integrity using hash functions, and confidentiality through encryption. Integrity is computed before encryption. <abbr title="Stack pointer, the top of the stack.">ESP</abbr> has two modes:</p>
+<ul>
+<li><strong>Transport mode</strong>: encrypts and optionally authenticates IP payload<ul>
+<li>Doesn't cover original IP header</li>
+<li>End-to-end (host-to-host)</li>
+</ul>
+</li>
+<li><strong>Tunnel mode</strong>: protects the entire IP packet (used for <abbr title="Virtual Private Network">VPN</abbr>)<ul>
+<li>Encrypts the original IP header</li>
+<li>Gateway-to-gateway encrypted connection</li>
+</ul>
+</li>
+</ul>
+<figure>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Ipsec-esp-tunnel-and-transport.svg/800px-Ipsec-esp-tunnel-and-transport.svg.png" />
+  <figcaption>ESP Modes, <a href="https://commons.wikimedia.org/wiki/File:Ipsec-esp-tunnel-and-transport.svg">Wikipedia</a></figcaption>
+</figure>
+
+<p>An IP can be spoofed unidirectionally, such as for <abbr title="Denial-of-Service">DoS</abbr> attacks.</p>
+<p>IPSec ensures that:</p>
+<ul>
+<li>A router advertisement comes from an authorized router</li>
+<li>A routing update is not forged</li>
+<li>A redirect message comes from the router to which the initial packet was sent</li>
+</ul>
+<p><strong>Sequence number checking</strong> is used to help prevent replay attack in AH or if the authentication option in <abbr title="Stack pointer, the top of the stack.">ESP</abbr> is used. A sliding window checks packets:</p>
+<ul>
+<li>If the sequence number in IPSec header is greater than the largest number of the current anti-replay window, packet is authenticated and window is advanced</li>
+<li>If it is smaller, the packet is rejected</li>
+<li>Duplicates are rejected</li>
+</ul>
+<h4 id="internet-key-exchange-ike">Internet Key Exchange (<abbr title="Internet Key Exchange">IKE</abbr>)<a class="headerlink" href="#internet-key-exchange-ike" title="Permanent link">&para;</a></h4>
+<p>Key exchange for IPSec standard can be provided by <abbr title="Internet Key Exchange">IKE</abbr>. <abbr title="Internet Key Exchange">IKE</abbr>:</p>
+<ol>
+<li>Establishes a shared secret using Diffie-Hellman</li>
+<li>Sets up a Security Association (<abbr title="Security Association">SA</abbr>), a logical group of security information describing a one-way relationship between sender and receiver</li>
+<li>
+<p>This <abbr title="Security Association">SA</abbr> is then used to negotiate further SAs for other services like IPSec</p>
+</li>
+<li>
+<p><abbr title="Internet Key Exchange">IKE</abbr> offers perfect forward secrecy (<abbr title="Perfect Forward Secrecy">PFS</abbr>) if the <abbr title="Security Association">SA</abbr> keys established in step 3 are independent of the <abbr title="Security Association">SA</abbr> in step 2</p>
+</li>
+<li>SAs are stored in a Security Association Database (<abbr title="Security Association Database">SADB</abbr>)<ul>
+<li>Each <abbr title="Security Association">SA</abbr> has a unique Security Parameter Index (<abbr title="Security Parameter Index">SPI</abbr>) (or <abbr title="Security Association">SA</abbr> ID) in the <abbr title="Security Association Database">SADB</abbr></li>
+<li><abbr title="Security Parameter Index">SPI</abbr> is included in outgoing packets and used to identify <abbr title="Security Association">SA</abbr> associated with a packet</li>
+</ul>
+</li>
+<li>Policies used to establish SAs are stored in the Security Policy Database (<abbr title="Security Policy Database">SPD</abbr>)</li>
+</ol>
+<p>If the packet is outgoing, the <abbr title="Security Policy Database">SPD</abbr> is checked for the policy.</p>
+<p>If the packet is incoming, the <abbr title="Security Parameter Index">SPI</abbr> is used to look up the <abbr title="Security Association">SA</abbr> in the <abbr title="Security Association Database">SADB</abbr>. <abbr title="Security Policy Database">SPD</abbr> is checked for matching security measures before the packet is delivered.</p>
+<h3 id="ssl-and-tls"><abbr title="Secure Socket Layer">SSL</abbr> and <abbr title="Transport Layer Security">TLS</abbr><a class="headerlink" href="#ssl-and-tls" title="Permanent link">&para;</a></h3>
+<p>You may like to read <a href="https://victoria.dev/blog/what-is-tls-transport-layer-security-encryption-explained-in-plain-english/">What is <abbr title="Transport Layer Security">TLS</abbr>? Transport Layer Security encryption explained in plain english</a>.</p>
+<ul>
+<li>A <abbr title="Transport Layer Security">TLS</abbr> session is created using the handshake protocol and defines the cipher suite used by connections in this session<ul>
+<li>Sessions are used to avoid re-negotiating every connection</li>
+</ul>
+</li>
+<li>A <abbr title="Transport Layer Security">TLS</abbr> connection is transient and associated with one only session</li>
+<li><abbr title="Transport Layer Security">TLS</abbr> doesn't rely on IPSec</li>
+</ul>
+<p>Handshake protocol parameters include:</p>
+<ul>
+<li>The highest <abbr title="Transport Layer Security">TLS</abbr> version understood by the client</li>
+<li>A random 32-bit timestamp and 28 bytes from an <abbr title="Random Number Generator">RNG</abbr></li>
+<li>A session ID</li>
+<li>The cipher suites supported by the client</li>
+<li>The compression methods supported by the client</li>
+</ul>
+<h2 id="wifi">WiFi<a class="headerlink" href="#wifi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Broadcast communications with no inherent physical protection</li>
+<li>Security threats include:<ul>
+<li>Accidental association (user connects to the neighbor's network)</li>
+<li>Malicious association (fake WiFi access point)</li>
+<li>Ad hoc networks (P2P networks without central access point)</li>
+<li>Nontraditional networks (Bluetooth and eavesdropping)</li>
+<li>Identity theft (<abbr title="(1): Mandatory Access Control (2): Media Access Control (3): Message Authentication Code">MAC</abbr> spoofing)</li>
+<li><abbr title="Man-in-the-Middle">MitM</abbr></li>
+<li><abbr title="Denial-of-Service">DoS</abbr></li>
+<li>Network injection</li>
+</ul>
+</li>
+</ul>
+<p>Wireless security measures for securing transmissions include:</p>
+<ul>
+<li>Signal-hiding techniques: hide wireless <abbr title="Access Point">AP</abbr> by:<ul>
+<li>Turning off <abbr title="Service Set Identifier">SSID</abbr></li>
+<li>Reducing signal strength</li>
+<li>Minimizing signal at building exterior</li>
+<li>Using directional antennas</li>
+<li>Using signal shielding</li>
+</ul>
+</li>
+<li>Encryption</li>
+</ul>
+<h3 id="wep-and-wpa2"><abbr title="Wired Equivalent Privacy">WEP</abbr> and <abbr title="WiFi Protected Access II">WPA2</abbr><a class="headerlink" href="#wep-and-wpa2" title="Permanent link">&para;</a></h3>
+<p>You might like to read <a href="https://victoria.dev/blog/wpa-key-wpa2-wpa3-and-wep-key-wi-fi-security-explained/"><abbr title="WiFi Protected Access">WPA</abbr> Key, <abbr title="WiFi Protected Access II">WPA2</abbr>, WPA3, and <abbr title="Wired Equivalent Privacy">WEP</abbr> Key: Wi-Fi security explained</a>.</p>
+<p><abbr title="Wired Equivalent Privacy">WEP</abbr> is insecure. <abbr title="WiFi Protected Access">WPA</abbr> introduced these improvements:</p>
+<ul>
+<li>Access control model based on <a href="https://en.wikipedia.org/wiki/IEEE_802.1X">IEEE 802.1X</a></li>
+<li>A flexible authentication protocol based on <a href="https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol"><abbr title="Extensible Authentication Protocol">EAP</abbr></a></li>
+<li>Message integrity check algorithm <abbr title="Temporal Key Integrity Protocol">TKIP</abbr>, which dynamically generates a new 128-bit key per-packet</li>
+<li>(<abbr title="WiFi Protected Access II">WPA2</abbr>) Mandatory support for <a href="https://en.wikipedia.org/wiki/CCMP_(cryptography)">CCMP</a>, based on <abbr title="Advanced Encryption Standard">AES</abbr></li>
+</ul>
+<h2 id="mobile-security">Mobile Security<a class="headerlink" href="#mobile-security" title="Permanent link">&para;</a></h2>
+<p>Android vs. iOS Sandbox permissions:</p>
+<table>
+<thead>
+<tr>
+<th>Android</th>
+<th>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App announces permissions required</td>
+<td>Apps have same permissions</td>
+</tr>
+<tr>
+<td>Installation-time approval</td>
+<td>First-use time approval</td>
+</tr>
+<tr>
+<td>App may escalate permissions</td>
+<td>No escalation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ios-security-overview">iOS Security Overview<a class="headerlink" href="#ios-security-overview" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The crypto engine and keys are hardware embedded<ul>
+<li>Each device has dedicated <abbr title="Advanced Encryption Standard">AES</abbr>-256 crypto engine</li>
+<li>Apple provides device ID (<abbr title="User or Device ID">UID</abbr>) and device group ID (<abbr title="Group ID">GID</abbr>) as <abbr title="Advanced Encryption Standard">AES</abbr> 256 bit keys burned into the silicon (secure enclave)</li>
+</ul>
+</li>
+<li>App Sandbox isolates apps from each other</li>
+<li>The trusted bootchain, BootROM code is burned into hardware<ul>
+<li>Each step verifies the kernel is properly signed by Apple, and iOS only runs on Apple-validated devices</li>
+</ul>
+</li>
+<li>Uses Data Protection key hierarchy<ul>
+<li>Uses per-file key, files are assigned with a class</li>
+<li>The file key is wrapped with the class key, class key is stored in the file's metadata</li>
+<li>The metadata of all files is encrypted with the File System Key</li>
+</ul>
+</li>
+<li>Apps have mandatory code signing with Apple-issued certificates<ul>
+<li>There's no dynamic code generation or self-modifying code</li>
+<li>At run time, signature checks are performed of all executable memory pages to ensure there was no modification since the last update</li>
+</ul>
+</li>
+<li>App Store has restricted app distribution and developers are verified by Apple to gain certificates<ul>
+<li>App Store apps are reviewed by Apple</li>
+</ul>
+</li>
+<li>Third-party apps are sandboxed</li>
+<li><abbr title="Address Space Layout Randomization">ASLR</abbr></li>
+<li>Non-executable memory pages (write and execute permissions are mutually exclusive)</li>
+</ul>
+<h3 id="android-security-overview">Android Security Overview<a class="headerlink" href="#android-security-overview" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The software stack is based on Linux kernel</li>
+<li>Uses Android Runtime (Dalvik <abbr title="Virtual Machine">VM</abbr>), Java-based core libraries wrapping C and C++ libraries</li>
+<li>Application sandbox is essentially provided from the <abbr title="Virtual Machine">VM</abbr><ul>
+<li><abbr title="User or Device ID">UID</abbr> provides <abbr title="Central Processing Unit">CPU</abbr> and memory protection enforced by Unix kernel</li>
+</ul>
+</li>
+<li>Apps are self-signed by developers, no vetting<ul>
+<li>Code signing is used to ensure apps come from the same developer, to facilitate upgrades</li>
+</ul>
+</li>
+</ul>
+<h2 id="web-security">Web Security<a class="headerlink" href="#web-security" title="Permanent link">&para;</a></h2>
+<p>You may like to read <a href="https://victoria.dev/blog/sql-injection-and-xss-what-white-hat-hackers-know-about-trusting-user-input/"><abbr title="Structured Query Language">SQL</abbr> injection and <abbr title="Cross Site Scripting">XSS</abbr>: what white hat hackers know about trusting user input</a>.</p>
+<p>Injection attacks include:</p>
+<ul>
+<li>Cross Site Scripting (<abbr title="Cross Site Scripting">XSS</abbr>): code is injected into a web page and changes that page's behavior</li>
+<li><abbr title="SQL injection">SQLi</abbr>: malicious actors may be able to send <abbr title="Structured Query Language">SQL</abbr> commands that affect a <abbr title="Structured Query Language">SQL</abbr> <abbr title="Database">DB</abbr>; see <a href="https://xkcd.com/327/">Bobby Tables</a></li>
+<li>Cross-Site Request Forgery (<abbr title="Cross-Site Request Forgery">CSRF</abbr>): a separate external site causes a user to send unauthorized commands to a target site</li>
+</ul>
+<h2 id="cybercrime-law">Cybercrime Law<a class="headerlink" href="#cybercrime-law" title="Permanent link">&para;</a></h2>
+<p>US <a href="https://en.wikipedia.org/wiki/Computer_Fraud_and_Abuse_Act">Computer Fraud and Abuse Act (CFAA)</a> defines criminal sanctions for unauthorized access.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Convention_on_Cybercrime">Convention on Cybercrime</a> sets out a common criminal policy defining:</p>
+<ul>
+<li>Illegal access</li>
+<li>Illegal interception</li>
+<li>Data interference</li>
+<li>System intereference</li>
+<li>Misuse of devices</li>
+<li>Computer-related forgery</li>
+<li>Computer-related fraud</li>
+<li>Offenses related to child pornography</li>
+<li>Infringements of copyright and related rights</li>
+<li>Attempt at aiding or abetting</li>
+</ul>
+<h3 id="intellectual-property">Intellectual Property<a class="headerlink" href="#intellectual-property" title="Permanent link">&para;</a></h3>
+<p>Three types of property (US legal system):</p>
+<ul>
+<li>Real property: land and things attached to them that you can't pick up and move</li>
+<li>Personal property: things you can move, or that you own</li>
+<li>Intellectual property: intangible assets that consist of human knowledge and ideas</li>
+</ul>
+<p>Copyrights protect the tangible expressions of an idea. Rights protected against infringement include:</p>
+<ul>
+<li>Reproduction</li>
+<li>Modification</li>
+<li>Distribution</li>
+<li>Public performance</li>
+<li>Public display</li>
+</ul>
+<p>Types of patents include:</p>
+<ul>
+<li><strong>Utility</strong>: for inventing or discovering any new and useful process, machine, articule of manufacturer, composition of matter, or new and useful improvement</li>
+<li><strong>Design</strong>: for inventing a new, original, and ornamental design for an article of manufacture</li>
+<li><strong>Plan</strong>: for inventing or discovering and asexually reproducing a distinct and new plant variety</li>
+</ul>
+<p>Software, databases, digital content, and algorithms are intellectual property. For example, RSA was patented by RSA Security from 1983-2000.</p>
+<p>The <a href="https://www.copyright.gov/dmca/">Digital Millennium Copyright Act (DMCA)</a> seeks to protect intellectual property (IP) by defining circumventing anti-piracy functionality as a crime.</p>
+<p>Exemptions to the DMCA:</p>
+<ul>
+<li>Fair use</li>
+<li>Reverse engineering</li>
+<li>Encryption research (Ed Felten's reserach on audio watermarking removal)</li>
+<li>Security testing</li>
+<li>Personal privacy</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Digital_rights_management">Digital Rights Management (DRM)</a> is not a single standard but refers generally to systems that ensure identification of holders of digital rights. A typical model has these components:</p>
+<ul>
+<li>Content provider (e.g. music record label)</li>
+<li>Distributor (e.g. online shop)</li>
+<li>Consumer (uses the system and pays for the digital license)</li>
+<li>Clearinghouse (pays royalties to content provider, distributor)</li>
+</ul>
+<h2 id="ethics">Ethics<a class="headerlink" href="#ethics" title="Permanent link">&para;</a></h2>
+<p>Professional <strong>Codes of Conduct</strong> provide guidance and articulate ethical expectations, since ethics cannot be reduced to precise laws or facts. E.g. the <abbr title="Access Control Matrix">ACM</abbr>, IEEE, and AITP have codes and standards of conduct. Common themes include:</p>
+<ol>
+<li>Dignity and worth of other people</li>
+<li>Personal integrity and honesty</li>
+<li>Responsibility for work</li>
+<li>Confidentiality of information</li>
+<li>Public safety, health, welfare</li>
+<li>Participation in professional societies to improve professional standards</li>
+<li>The idea that public knowledge and access to technology is equivalent to social power</li>
+</ol>
+<p><a href="https://ieeexplore.ieee.org/document/5779006">The Rules</a>, or Moral Responsibility for Computing Artifacts, are guidelines produced by the Ad Hoc Committee on Responsible Computing. Generally, they say that people who design, develop, or deploy computing artifacts (programs) are responsible (shared responsibility) for the foreseeable effects of doing so.</p>
+<h2 id="privacy">Privacy<a class="headerlink" href="#privacy" title="Permanent link">&para;</a></h2>
+<p>General privacy policy guidelines address:</p>
+<ul>
+<li>Consent: participants can make informed decisions</li>
+<li>Privacy and confidentiality</li>
+<li>Ownership and authorship: who has the responsibilty for and rights to the data</li>
+<li>Data sharing: data matching and reuse related to the social benefits of research</li>
+<li>Governance and custodianship: oversight and implementation of the management, organization, access, and preservation of data</li>
+</ul>
+<h3 id="oecd-privacy-guidelines">OECD Privacy Guidelines<a class="headerlink" href="#oecd-privacy-guidelines" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://www.oecd.org/sti/ieconomy/oecdguidelinesontheprotectionofprivacyandtransborderflowsofpersonaldata.htm">OECD Guidelines on the Protection of Privacy and Transborder Flows of Personal Data</a> address:</p>
+<ul>
+<li>Collection limitation</li>
+<li>Data quality</li>
+<li>Purpose specification</li>
+<li>Use limitation</li>
+<li>Security safeguards</li>
+<li>Openness</li>
+<li>Individual participation:<ul>
+<li>to obtain from a data controller, or otherwise, confirmation of whether or not the data controller has data relating to them;</li>
+<li>to have communicated to them, data relating to them within a reasonable time; at a charge, if any, that is not excessive; in a reasonable manner; and in a form that is readily intelligible to them;</li>
+<li>to be given reasons if a request made under (a) and (b) is denied, and to be able to challenge such denial</li>
+<li>to challenge data relating to them and, if the challenge is successful to have the data erased, rectified, completed, or amended.</li>
+</ul>
+</li>
+<li>Accountability</li>
+</ul>
+<h2 id="it-security-controls">IT Security Controls<a class="headerlink" href="#it-security-controls" title="Permanent link">&para;</a></h2>
+<p><strong>Risk</strong> is the potential for loss computed as the combination of:</p>
+<ul>
+<li>Likelihood that a given threat exploits a vulnerability to an asset</li>
+<li>Magnitude of harmful consequences that result</li>
+</ul>
+<p>An equation for calculating risk is: <em>(Probability that threat occurs) x (Cost to organization)</em></p>
+<p>Security control classes include:</p>
+<ul>
+<li>Management Controls (security policies, guidelines, standards)</li>
+<li>Operational Controls (Implementing security policy and standards with mechanisms)</li>
+<li>Technical Controls (Correctly using hardware and software security capabilties)</li>
+</ul>
+<p>Each class can include:</p>
+<ul>
+<li>Supportive controls</li>
+<li>Preventative controls (mitigations)</li>
+<li>Detection and recovery controls (detecting and responding to a breach)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

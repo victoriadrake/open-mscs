@@ -1,0 +1,2603 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../../db-systems-concepts-design/db-systems-concepts-design/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Cyber-Physical Systems Security - Open MSCS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cyber-physical-systems-security" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Open MSCS" class="md-header__button md-logo" aria-label="Open MSCS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open MSCS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cyber-Physical Systems Security
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/victoriadrake/open-mscs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-mscs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Course Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../grad-life-resources/" class="md-tabs__link">
+        
+  
+    
+  
+  Graduate Life Resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Open MSCS" class="md-nav__button md-logo" aria-label="Open MSCS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/></svg>
+
+    </a>
+    Open MSCS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/victoriadrake/open-mscs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-mscs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Course Notes
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Course Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cyber-Physical Systems Security
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Cyber-Physical Systems Security
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Textbooks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Goals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-concepts-to-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Concepts to Review
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ten-security-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ten Security Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cps-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPS Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Topologies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-architecture-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Architecture Importance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osi-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSI Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP vs. UDP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#industrial-control-systems-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industrial Control Systems (ICS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Industrial Control Systems (ICS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ics-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      ICS Devices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming ICS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Infrastructure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-access-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote Access Controls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-instrumented-systems-sis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Instrumented Systems (SIS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#industrial-network-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industrial Network Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Industrial Network Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fieldbus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fieldbus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modbus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modbus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-network-protocol-dnp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Network Protocol (DNP3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-dnp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure DNP3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-fieldbus-profibus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Fieldbus (PROFIBUS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#industrial-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industrial Ethernet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backend Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-process-communications-opc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Process Communications (OPC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inter-control-center-communications-protocol-iccp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inter-Control Center Communications Protocol (ICCP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iec-61850-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      IEC 61850 Standard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smart-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smart Grid
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Smart Grid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generation-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation System Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmission-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmission System Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution System Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-metering-infrastructure-ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Metering Infrastructure (AMI)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hacking-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hacking ICS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hacking ICS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cps-sensory-channel-attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPS Sensory Channel Attacks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#securing-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Securing ICS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Securing ICS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Zones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compensating-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compensating Controls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-level-sl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Level (SL)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy-in-cps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy in CPS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../db-systems-concepts-design/db-systems-concepts-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Systems Concepts and Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iis/intro-information-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Information Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../grad-life-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graduate Life Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Textbooks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Goals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-concepts-to-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Concepts to Review
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ten-security-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ten Security Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cps-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPS Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Topologies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-architecture-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Architecture Importance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osi-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSI Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP vs. UDP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#industrial-control-systems-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industrial Control Systems (ICS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Industrial Control Systems (ICS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ics-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      ICS Devices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programming-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming ICS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Infrastructure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-access-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote Access Controls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-instrumented-systems-sis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Instrumented Systems (SIS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#industrial-network-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industrial Network Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Industrial Network Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fieldbus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fieldbus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modbus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modbus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-network-protocol-dnp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Network Protocol (DNP3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-dnp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure DNP3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-fieldbus-profibus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Fieldbus (PROFIBUS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#industrial-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industrial Ethernet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backend Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-process-communications-opc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Process Communications (OPC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inter-control-center-communications-protocol-iccp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inter-Control Center Communications Protocol (ICCP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iec-61850-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      IEC 61850 Standard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smart-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smart Grid
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Smart Grid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generation-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation System Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmission-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmission System Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution System Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-metering-infrastructure-ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Metering Infrastructure (AMI)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hacking-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hacking ICS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hacking ICS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cps-sensory-channel-attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPS Sensory Channel Attacks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#securing-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Securing ICS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Securing ICS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Zones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compensating-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compensating Controls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-level-sl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Level (SL)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy-in-cps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy in CPS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cyber-physical-systems-security">Cyber-Physical Systems Security<a class="headerlink" href="#cyber-physical-systems-security" title="Permanent link">&para;</a></h1>
+<p>Cyber-physical systems (<abbr title="Cyber-Physical Systems">CPS</abbr>) integrate computing (processes, systems) and the physical world (processes, environments). Consequences can be more dire than in cyberspace: there's no "rollback" in the real world.</p>
+<h2 id="textbooks">Textbooks<a class="headerlink" href="#textbooks" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Industrial Network Security, Second Edition: Securing Critical Infrastructure Networks for Smart Grid, <abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr>, and Other Industrial Control Systems (2nd Edition), by Eric D. Knapp and Joel Thomas Langill, ISBN: 978-0124201149</li>
+<li>Applied Cyber Security and the Smart Grid: Implementing Security Controls into the Modern Power Infrastructure (1st Edition), by Eric D. Knapp and Raj Samani, ISBN: 978-1597499989</li>
+<li>Hacking Exposed Industrial Control Systems: <abbr title="Industrial Control System">ICS</abbr> and <abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr> Security Secrets &amp; Solutions (1st Edition), by Clint Bodungen, Bryan Singer, Aaron Shbeeb, Kyle Wilhoit, and Stephen Hilt, ISBN: 978-1259589713</li>
+</ul>
+<h2 id="security-goals">Security Goals<a class="headerlink" href="#security-goals" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Assurance</strong>: how trust is provided and managed</li>
+<li><strong>Authentication</strong>: ability to determine that something is genuine</li>
+<li><strong>Authorization</strong>: ensuring necessary permissions for an action</li>
+<li><strong>Availability</strong>: accessibility of information in a timely manner</li>
+<li><strong>Integrity</strong>: ensuring that information has not been altered</li>
+<li><strong>Confidentiality</strong>: maintaining secrecy</li>
+</ul>
+<p>The main goal of a <abbr title="Cyber-Physical Systems">CPS</abbr> is <strong>availability</strong>, while the typical goal of IT security is <strong>confidentiality</strong>.</p>
+<h3 id="security-concepts-to-review">Security Concepts to Review<a class="headerlink" href="#security-concepts-to-review" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Access control</li>
+<li>Symmetric and asymmetric encryption</li>
+<li>Public key cryptography and distribution</li>
+<li>Digital signatures</li>
+<li>Hash functions</li>
+<li>Message authentication</li>
+</ul>
+<h2 id="ten-security-principles">Ten Security Principles<a class="headerlink" href="#ten-security-principles" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Economy of mechanism</strong>: complexity is the enemy of security, choose simplicity</li>
+<li><strong>Fail-safe defaults</strong>: default behavior of a system should be the secure option</li>
+<li><strong>Complete mediation</strong>: every access to a resource is checked for compliance to an authorization scheme, e.g. getting on a flight, session timeouts.</li>
+<li><strong>Open design</strong>: open source systems can be examined and verified</li>
+<li><strong>Separation of privilege</strong>: access should be granted only for the purpose of the access; i.e. separate groups reduces attack surface if unauthorized access is gained (see <a href="#security-zones">Security Zones</a>)</li>
+<li><strong>Least privilege</strong>: systems should grant the bare minimum privileges necessary for a task</li>
+<li><strong>Least common mechanism</strong>: shared resources should be minimized, e.g. having separate user accounts</li>
+<li><strong>Psychological accessibility</strong>: security should be intuitive for the user (if you make it too complicated, no one will do it)</li>
+<li><strong>Work factor</strong>: security measures should not be unnecessarily excessive -- what will suffice?</li>
+<li><strong>Compromise recording</strong>: it may make more sense to record a compromise than stop it</li>
+</ol>
+<h2 id="cps-challenges"><abbr title="Cyber-Physical Systems">CPS</abbr> Challenges<a class="headerlink" href="#cps-challenges" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Interoperability</strong>: systems need to work together, i.e. compatible standards</li>
+<li><strong>Predictability</strong>: system state and functionality, high predictability means reliability</li>
+<li><strong>Reliability</strong>: degree of correctness</li>
+<li><strong>Sustainability</strong>: efficiency, dynamic evolving</li>
+<li><strong>Dependability</strong>: trust in the system, not failing</li>
+<li><strong>Security</strong>: integrity and confidentiality</li>
+</ul>
+<p>Considerations for <abbr title="Cyber-Physical Systems">CPS</abbr> include:</p>
+<ul>
+<li>Countermeasures: designing attack-resilient algorithms and systems</li>
+<li>Compliance with standards and regulation</li>
+<li>Detection and recovery: training operations in response, reconfiguration, fault detection, isolation</li>
+<li>Resilience and redundancy to guarantee availability</li>
+<li>Legislation and enforcement</li>
+</ul>
+<h2 id="networks">Networks<a class="headerlink" href="#networks" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Body Area Network (<abbr title="Body Area Network">BAN</abbr>): wearables, smartphone</li>
+<li>Local Area Network (<abbr title="Local Area Network">LAN</abbr>)</li>
+<li>Metropolitan Area Network (<abbr title="Metropolitan Area Network">MAN</abbr>)</li>
+<li>Wide Area Network (<abbr title="Wide Area Network">WAN</abbr>): Internet</li>
+</ul>
+<p>Network segmentation can support security zones. Logical segments include:</p>
+<ul>
+<li>Public networks, e.g. Internet</li>
+<li>Business networks</li>
+<li>Operations networks</li>
+<li>Plant control networks</li>
+<li>Supervisory control networks<ul>
+<li><abbr title="Industrial Control System">ICS</abbr> servers, workstations, <abbr title="Human-Machine Interface">HMI</abbr></li>
+</ul>
+</li>
+<li>Basic or local control networks<ul>
+<li>Controllers, <abbr title="Programmable Logic Controller">PLC</abbr>, <abbr title="Remote Terminal Unit">RTU</abbr>, field devices, <abbr title="Intelligent Electronic Device">IED</abbr>, subsystems</li>
+</ul>
+</li>
+<li>Process networks<ul>
+<li>Device network, analyzer network, equipment monitoring, automation systems</li>
+</ul>
+</li>
+<li><abbr title="Safety Instrumented Systems">SIS</abbr> and devices (see Safety Instrumented Systems (<abbr title="Safety Instrumented Systems">SIS</abbr>))</li>
+</ul>
+<h3 id="network-topologies">Network Topologies<a class="headerlink" href="#network-topologies" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Bus</strong>: all nodes are connected to one cable<ul>
+<li>Linear, serial, multiple devices via taps</li>
+<li>Shared resources, so limited reliability</li>
+<li>For a small number of devices</li>
+</ul>
+</li>
+<li><strong>Mesh</strong>: each device is connected to all others, e.g. wireless<ul>
+<li>Maximum performance and uptime</li>
+<li>Redundant and fault-tolerant</li>
+<li>Expensive when wired</li>
+<li>Wireless mesh can be limited by power availability</li>
+</ul>
+</li>
+<li><strong>Star</strong>: point-to-multi-point network with a central support</li>
+<li><strong>Branch</strong> or <strong>tree</strong>: a trunk topology supporting additional branches</li>
+<li><strong>Ring</strong>: circular serial nodes<ul>
+<li>provides redundancy</li>
+<li>for network access switches</li>
+</ul>
+</li>
+<li><strong>Multihoming</strong> or <strong>dual-homing</strong>: single node connected to two or more networks<ul>
+<li>not recommended, instead use <abbr title="Demilitarized Zone">DMZ</abbr> or read-only data diode or unidirectional gate</li>
+</ul>
+</li>
+</ul>
+<h3 id="network-architecture-importance">Network Architecture Importance<a class="headerlink" href="#network-architecture-importance" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Focus</th>
+<th>Industrial Command and Control</th>
+<th>Industrial Supervisory</th>
+<th>Business Network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-time operation</td>
+<td>Critical</td>
+<td>High</td>
+<td>Best-effort</td>
+</tr>
+<tr>
+<td>Reliability or resiliency</td>
+<td>Critical</td>
+<td>High</td>
+<td>Best-effort</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Sessions</td>
+<td>Few, defined</td>
+<td>Few</td>
+<td>Many</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>Low, consistent</td>
+<td>Low, consistent</td>
+<td>Retransmission is OK</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Serial, ethernet</td>
+<td>Ethernet</td>
+<td>Ethernet</td>
+</tr>
+<tr>
+<td>Protocols</td>
+<td>Real-time, proprietary</td>
+<td>Not real-time, open</td>
+<td>Not real-time, open</td>
+</tr>
+</tbody>
+</table>
+<h3 id="network-considerations">Network Considerations<a class="headerlink" href="#network-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Latency</strong>: round-trip time for a packet to traverse a network from source to destination<ul>
+<li>Consideration for data historians, choice of database, network hops, deep packet inspection</li>
+</ul>
+</li>
+<li><strong>Jitter</strong>: variability in latency over time<ul>
+<li>Severe latency can affect vital precision for <abbr title="Industrial Control System">ICS</abbr></li>
+</ul>
+</li>
+<li><strong>Bandwidth</strong>: total amount of data transmitted over a given period, e.g. MB/s or GB/s<ul>
+<li>Most <abbr title="Industrial Control System">ICS</abbr> need low bandwidth but have bursts</li>
+</ul>
+</li>
+<li><strong>Contention</strong>: competition between different active nodes in a segment</li>
+<li><strong>Throughput</strong>: volume of data that can physically flow through a network<ul>
+<li>Affected by cabling, interfaces, <abbr title="(1): Mandatory Access Control (2): Media Access Control (3): Message Authentication Code">MAC</abbr>, protocol choice, application, network, packets per second</li>
+</ul>
+</li>
+</ul>
+<p>Quality of Service (<abbr title="Quality of Service">QoS</abbr>) is the ability to prioritize some types of traffic over other types. Traffic between a <abbr title="Programmable Logic Controller">PLC</abbr> and <abbr title="Human-Machine Interface">HMI</abbr> needs to be prioritized so that the most critical communication isn't delayed. To identify important traffic, Type of Service (<abbr title="Type of Service">ToS</abbr>) and Class of Service (<abbr title="Class of Service">CoS</abbr>) are used.</p>
+<h2 id="osi-model"><abbr title="Open Systems Interconnection (model)">OSI</abbr> Model<a class="headerlink" href="#osi-model" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://en.wikipedia.org/wiki/OSI_model">Open Systems Interconnection (<abbr title="Open Systems Interconnection (model)">OSI</abbr>) conceptual model</a> has seven layers describing functionality.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Protocols</th>
+<th>Data Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td><abbr title="File Transfer Protocol">FTP</abbr>, HTTP, SMTP, TFTP, <abbr title="Domain Name System">DNS</abbr>, SNMP, DHCP (most common <abbr title="Industrial Control System">ICS</abbr> protocols are here)</td>
+<td>Message data</td>
+<td>High-level application APIs</td>
+</tr>
+<tr>
+<td>Presentation</td>
+<td></td>
+<td>Message data</td>
+<td>Character encoding, compression, encryption and decryption</td>
+</tr>
+<tr>
+<td>Session</td>
+<td></td>
+<td>Message data</td>
+<td>Communication session management</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td><abbr title="User Datagram Protocol">UDP</abbr>, <abbr title="Transmission Control Protocol">TCP</abbr>, SCTP</td>
+<td>Segment, datagram</td>
+<td>Transmission of data; end-to-end communications over a network, including segmentation, acknowledgement, multiplexing</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>IP, IPX, IGMP, ICMP, <abbr title="Address Resolution Protocol">ARP</abbr></td>
+<td>Packets</td>
+<td>Addressing, routing, traffic control</td>
+</tr>
+<tr>
+<td>Data link</td>
+<td>802.11 (wireless), Ethernet, <abbr title="Local Area Network">LAN</abbr>, <abbr title="Wide Area Network">WAN</abbr></td>
+<td>Frame</td>
+<td>Transmission of data frames between nodes physically connected</td>
+</tr>
+<tr>
+<td>Physical</td>
+<td>Bits</td>
+<td>Bits</td>
+<td>Transmission of raw bit stream over physical medium</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tcp-vs-udp"><abbr title="Transmission Control Protocol">TCP</abbr> vs. <abbr title="User Datagram Protocol">UDP</abbr><a class="headerlink" href="#tcp-vs-udp" title="Permanent link">&para;</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol">Transmission Control Protocol(<abbr title="Transmission Control Protocol">TCP</abbr>)</a> is a byte stream without record bounds. <a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol">User Datagram Protocol (<abbr title="User Datagram Protocol">UDP</abbr>)</a> sends connectionless diagrams.</p>
+<p><abbr title="Transmission Control Protocol">TCP</abbr> offers reliability, retries, and flow control using a sliding window.</p>
+<p>See <a href="https://victoria.dev/blog/what-is-tcp/ip-layers-and-protocols-explained/">What is <abbr title="Transmission Control Protocol">TCP</abbr>/IP? Layers and protocols explained</a>.</p>
+<p><abbr title="Transmission Control Protocol">TCP</abbr> IP addressing examples (these don't correspond to the layers directly):</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th></th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>Message</td>
+<td>Application-specific addresses</td>
+<td><code>data[]</code></td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>Segment</td>
+<td>Port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Datagram</td>
+<td>Logical addresses</td>
+<td><code>192.168.11</code></td>
+</tr>
+<tr>
+<td>Data link</td>
+<td>Frame</td>
+<td>Physical addresses</td>
+<td><code>12::34::56::78::9A::BC</code></td>
+</tr>
+<tr>
+<td>Physical</td>
+<td>Bits</td>
+<td></td>
+<td><code>100101010</code></td>
+</tr>
+</tbody>
+</table>
+<p>A three-way <abbr title="Transmission Control Protocol">TCP</abbr> handshake has these steps:</p>
+<ol>
+<li>Sender sends initial sequence number (SYN)</li>
+<li>Receiver sends its initial sequence number with acknowledgement appended (ACK)</li>
+<li>Sender acknowledges receiver's acknowledgement with another appendage</li>
+</ol>
+<p>See <a href="https://victoria.dev/blog/what-is-tls-transport-layer-security-encryption-explained-in-plain-english/">What is <abbr title="Transport Layer Security">TLS</abbr>? Transport Layer Security encryption explained in plain english</a>.</p>
+<p><abbr title="Transmission Control Protocol">TCP</abbr> connection termination has these steps:</p>
+<ol>
+<li>Sender sends active close (FIN)</li>
+<li>Receiver sends ACK</li>
+<li>Receiver sends FIN</li>
+<li>Sender sends ACK</li>
+</ol>
+<h2 id="industrial-control-systems-ics">Industrial Control Systems (<abbr title="Industrial Control System">ICS</abbr>)<a class="headerlink" href="#industrial-control-systems-ics" title="Permanent link">&para;</a></h2>
+<p>ICSs can be...</p>
+<ul>
+<li><strong>Open-Loop</strong>: one-way flow, no feedback<ul>
+<li>Desired output &gt; controller &gt; actuator &gt; process &gt; output</li>
+</ul>
+</li>
+<li><strong>Closed-Loop</strong>: additional control of output based on feedback signal compared to desired output<ul>
+<li>Desired output &gt; error &gt; controller &gt; actuator &gt; process &gt; actual output &gt; feedback &gt; adjust controller</li>
+<li>A fully automated loop means the process is controlled by comparing established set points against inputs</li>
+</ul>
+</li>
+<li><strong>Multiloop Feedback Control System</strong>: same as closed-loop but more feedback loops</li>
+</ul>
+<p>Actuators include:</p>
+<ul>
+<li>Valves</li>
+<li>Boiler, Turbine, shaft, generators that carry output to someplace else</li>
+</ul>
+<p>Controllers include:</p>
+<ul>
+<li>Computers</li>
+<li>Speed generators</li>
+</ul>
+<p>Sensors include things that take measurements.</p>
+<p>The <a href="https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95">ISA95</a> is a standard for integration of enterprise and production control systems.</p>
+<p><img align="left" alt="Graphic of the enterprise-control model" src="https://web.archive.org/web/20141105030807if_/https://www.isa.org/uploadedImages/Content/Standards_and_Publications/ISA_Publications/InTech_Magazine/Issues/2001/October/20011048.gif" /></p>
+<p>It defines these levels:</p>
+<ul>
+<li>L4: Business planning and logistics</li>
+<li>L3: Manufacturing operations and control</li>
+<li>
+<p>L2-L0:</p>
+<ul>
+<li>Batch, continuous, or discrete control</li>
+<li>Field devices and networks</li>
+<li><abbr title="Programmable Logic Controller">PLC</abbr>, <abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr>, <abbr title="Human-Machine Interface">HMI</abbr></li>
+</ul>
+</li>
+</ul>
+<h3 id="ics-devices"><abbr title="Industrial Control System">ICS</abbr> Devices<a class="headerlink" href="#ics-devices" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Remote Terminal Unit (<abbr title="Remote Terminal Unit">RTU</abbr>)</strong></li>
+<li><strong>Intelligent Electronic Device (<abbr title="Intelligent Electronic Device">IED</abbr>)</strong>: supports specific function, e.g. managing unstable voltage</li>
+<li><strong>Human-Machine Interface (<abbr title="Human-Machine Interface">HMI</abbr>)</strong>: the operator's buttons<ul>
+<li>Simplifies <abbr title="Programmable Logic Controller">PLC</abbr> logic</li>
+<li>Security relies on access control here</li>
+<li>Common attack vector</li>
+<li>Sends feedback that becomes input for control loops</li>
+</ul>
+</li>
+<li><strong>Supervisory Workstations</strong>: a <abbr title="Human-Machine Interface">HMI</abbr> with admin mode<ul>
+<li>Remote monitor</li>
+<li>May be a read-only dashboard</li>
+</ul>
+</li>
+<li><strong>Data Historian</strong>: keeps historized data that can be analyzed for optimization<ul>
+<li>Interoperates with <abbr title="Industrial Control System">ICS</abbr> server</li>
+<li>Hardened, strict user access controls</li>
+</ul>
+</li>
+<li><strong>Business Information Console</strong>: provides business intelligence to upper management<ul>
+<li>Usually has the same data as <abbr title="Human-Machine Interface">HMI</abbr> historian</li>
+<li>May be physical console, or remote <abbr title="Human-Machine Interface">HMI</abbr>/historian</li>
+<li>The best place to isolate the process control network from outside systems</li>
+<li>Needs network security since the business info is kept outside of process control</li>
+</ul>
+</li>
+<li><strong>Process Management</strong>: <abbr title="Human-Machine Interface">HMI</abbr> control point with real-time information<ul>
+<li>Allows manually affecting output of the control loop (force) by translating function code to human-readable controls (a GUI)</li>
+<li>These have various protocols and are typically written in vendor-proprietary code</li>
+<li>Important to security, as a compromise can permanently alter systems (see <a href="https://spectrum.ieee.org/telecom/security/the-real-story-of-stuxnet">The Real Story of Stuxnet</a>)</li>
+</ul>
+</li>
+</ul>
+<h3 id="programming-ics">Programming <abbr title="Industrial Control System">ICS</abbr><a class="headerlink" href="#programming-ics" title="Permanent link">&para;</a></h3>
+<p>A Programmable Logic Controller (<abbr title="Programmable Logic Controller">PLC</abbr>) has these components:</p>
+<ul>
+<li>Power supply (AC/DC)</li>
+<li>Communication module(s) (to talk to other PLCs, packaged equipment)</li>
+<li>Control processor</li>
+<li>Input module(s) (sensors)</li>
+<li>Output module(s) (actuators)</li>
+</ul>
+<p>A <abbr title="Programmable Logic Controller">PLC</abbr> scan (loop) has these steps:</p>
+<ol>
+<li>Check input status</li>
+<li>Execute program</li>
+<li>Update output status</li>
+</ol>
+<blockquote>
+<p>The IEC (International Electrotechnical Commission) officially recognizes five <abbr title="Programmable Logic Controller">PLC</abbr> programming languages in the IEC61131-3 Standard. They are Ladder Diagram (LD), Function Block (FBD), Structured Text (ST), Instruction List (IL), and Sequential Function Chart (SFC) <a href="https://www.learnrobotics.org/blog/plc-programming-languages/">(Source)</a></p>
+</blockquote>
+<h2 id="critical-infrastructure">Critical Infrastructure<a class="headerlink" href="#critical-infrastructure" title="Permanent link">&para;</a></h2>
+<p>Initially defined in <a href="https://www.cisa.gov/homeland-security-presidential-directive-7">Homeland Security Presidential Directive 7 (HSPD-7)</a> and revoked and redefined in <a href="https://obamawhitehouse.archives.gov/the-press-office/2013/02/12/presidential-policy-directive-critical-infrastructure-security-and-resil">Presidential Policy Directive 21 (PPD-21)</a>, critical infrastructure is described as these 16 sectors:</p>
+<ol>
+<li>Banking and finance</li>
+<li>Chemical</li>
+<li>Information technology</li>
+<li>Critical manufacturing</li>
+<li>Defense industrial base</li>
+<li>Food and agriculture</li>
+<li>Commercial facilities</li>
+<li>Communications</li>
+<li>Dams</li>
+<li>Emergency services</li>
+<li>Energy</li>
+<li>Government facilities</li>
+<li>Health care and public health</li>
+<li>Nuclear reactors, materials, waste</li>
+<li>Transportation systems</li>
+<li>Water and waste water systems</li>
+</ol>
+<h2 id="remote-access-controls">Remote Access Controls<a class="headerlink" href="#remote-access-controls" title="Permanent link">&para;</a></h2>
+<p>Considerations for remote access include:</p>
+<ul>
+<li>Minimizing attack vectors</li>
+<li>Least privilege (see <a href="#ten-security-principles">Ten Security Principles</a>)</li>
+<li>Minimal access paths</li>
+<li>Further segmentation:<ul>
+<li>Application control (limit remote users to certain authorized applications)</li>
+<li>No direct access to critical systems</li>
+<li>A strong security policy</li>
+<li>Avoidance of remote credential storage</li>
+<li>Ability to terminate the remote connection locally</li>
+<li>Log all the things</li>
+</ul>
+</li>
+</ul>
+<h2 id="safety-instrumented-systems-sis">Safety Instrumented Systems (<abbr title="Safety Instrumented Systems">SIS</abbr>)<a class="headerlink" href="#safety-instrumented-systems-sis" title="Permanent link">&para;</a></h2>
+<p>A <abbr title="Safety Instrumented Systems">SIS</abbr> is a dedicated controller or logic solver designed to protect against the effects of an attack by reacting to unsafe conditions. A <abbr title="Safety Instrumented Systems">SIS</abbr> is designed specifically for its purpose, e.g. providing protection at a gas refinery, or chemical or nuclear facility.</p>
+<p>The IEC 61511 standard describes design and management for SISs and describes Safety Integrity Levels (<abbr title="Safety Integrity Level">SIL</abbr>) 1-4. See a description of the standard and purposes: <a href="https://instrumentationtools.com/s84-iec-61511-standard-safety-instrumented-systems/">S84 / IEC 61511 Standard for Safety Instrumented Systems</a>.</p>
+<h2 id="industrial-network-protocols">Industrial Network Protocols<a class="headerlink" href="#industrial-network-protocols" title="Permanent link">&para;</a></h2>
+<h3 id="fieldbus">Fieldbus<a class="headerlink" href="#fieldbus" title="Permanent link">&para;</a></h3>
+<p>Fieldbus is a category of protocols commonly found in process and control between sensors and actuators and their corresponding PLCs. A standard of nine protocol profiles was introduced in IEC 61784:</p>
+<ol>
+<li>FOUNDATION Fieldbus</li>
+<li><abbr title="Critical Infrastructure Protection">CIP</abbr></li>
+<li>PROFIBUS/PROFINET</li>
+<li>P-NET</li>
+<li>WorldFIP</li>
+<li>INTERBUS</li>
+<li>CC-Link</li>
+<li>HART</li>
+<li>SERCOS</li>
+</ol>
+<h3 id="modbus">Modbus<a class="headerlink" href="#modbus" title="Permanent link">&para;</a></h3>
+<p>Modicon communication bus (Modbus) was designed in 1979 and, as an open standard, is widely used today. It operates at the application layer of the <abbr title="Transmission Control Protocol">TCP</abbr>/IP protocol stack.</p>
+<p>Modbus on its own lacks security. There's no:</p>
+<ul>
+<li>Authentication</li>
+<li>Encryption</li>
+<li>Checksums</li>
+<li>Broadcast suppression (all devices receive all messages)</li>
+</ul>
+<p>Security recommendations include:</p>
+<ul>
+<li>Use of an <abbr title="Industrial Control System">ICS</abbr>-aware <abbr title="Intrusion Detection System">IDS</abbr> to monitor communications</li>
+<li>Fingerprint normal behavior patterns to facilitate whitelisting</li>
+<li>Use of an application-aware firewall</li>
+</ul>
+<p>A protocol data unit (PDU) consists of a function code and data.</p>
+<pre><code class="language-text">╔═══════════════╗ ╔══════════════════════════════════╗
+║ Function code ║ ║               Data               ║
+╚═══════════════╝ ╚══════════════════════════════════╝
+</code></pre>
+<p>An application data unit (ADU) consists of an address, a PDU, and an error check.</p>
+<pre><code class="language-text">╔═════════╗ ╔═══════════════╗ ╔══════════════════════════════════╗ ╔═════════════╗
+║ Address ║ ║ Function code ║ ║               Data               ║ ║ Error check ║
+╚═════════╝ ╚═══════════════╝ ╚══════════════════════════════════╝ ╚═════════════╝
+</code></pre>
+<p>The Modbus data specification looks like this:</p>
+<table>
+<thead>
+<tr>
+<th>Data table</th>
+<th>Object type</th>
+<th>Access</th>
+<th>Data provided by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discrete input</td>
+<td>Single bit</td>
+<td>Read-only</td>
+<td>Physical I/O</td>
+</tr>
+<tr>
+<td>Coil</td>
+<td>Single bit</td>
+<td>Read-write</td>
+<td>Application</td>
+</tr>
+<tr>
+<td>Input register</td>
+<td>16-bit word</td>
+<td>Read-only</td>
+<td>Physical I/O</td>
+</tr>
+<tr>
+<td>Holding register</td>
+<td>16-bit word</td>
+<td>Read-only</td>
+<td>Read-write</td>
+</tr>
+</tbody>
+</table>
+<p>A Modbus Application Protocol (MBAP) header consists of:</p>
+<pre><code class="language-text">╔════════════════╗ ╔═════════════╗ ╔════════╗ ╔═════════╗
+║ Transaction ID ║ ║ Protocol ID ║ ║ Length ║ ║ Unit ID ║
+╚════════════════╝ ╚═════════════╝ ╚════════╝ ╚═════════╝
+</code></pre>
+<p>Variants of Modbus have been adapted for other purposes, including:</p>
+<ul>
+<li><strong>Modbus over <abbr title="Transmission Control Protocol">TCP</abbr>/IP</strong><ul>
+<li>Combines the Modbus Application Protocol (MBAP) header with a Modbus <abbr title="Remote Terminal Unit">RTU</abbr> ADU (legacy systems)</li>
+</ul>
+</li>
+<li><strong>Modbus <abbr title="Transmission Control Protocol">TCP</abbr></strong><ul>
+<li>Combines the MBAP header with only the Modbus <abbr title="Remote Terminal Unit">RTU</abbr> PDU (modern)</li>
+</ul>
+</li>
+<li><strong>Modbus <abbr title="Remote Terminal Unit">RTU</abbr></strong> (binary)<ul>
+<li>Has an ADU of maximum 256 bytes</li>
+</ul>
+</li>
+<li><strong>Modbus ASCII</strong><ul>
+<li>Has an ADU of maximum 510 bytes</li>
+</ul>
+</li>
+<li><strong>Modbus Plus</strong></li>
+</ul>
+<p>Modbus is a request-response protocol with three PDUs:</p>
+<ol>
+<li>Modbus Request</li>
+<li>Modbus Response</li>
+<li>Modbus Exception Response</li>
+</ol>
+<p>A typical transaction without errors goes like this:</p>
+<ol>
+<li>Client initiates a request, sending the function code and data request</li>
+<li>Server performs the action and initiates a response, sending the function code and data response</li>
+<li>Client receives response</li>
+</ol>
+<p>Each device communicating via Modbus needs a specific address. Capturing packets with <a href="https://www.wireshark.org/">Wireshark</a> is a great way to observe Modbus in action.</p>
+<h3 id="distributed-network-protocol-dnp3">Distributed Network Protocol (DNP3)<a class="headerlink" href="#distributed-network-protocol-dnp3" title="Permanent link">&para;</a></h3>
+<p>Designed for use in electric utility and extended for oil and gas, water, and wastewater, with specific features that apply to these industries, including:</p>
+<ul>
+<li>Report by exception</li>
+<li>Data quality indicators</li>
+<li>Time-stamped data including sequence-of-events, to aid reconstruction</li>
+<li>"Select before operate" two-pass procedure on outputs</li>
+</ul>
+<p>DNP3 is reliable and efficient, and well suited for real-time data transfer:</p>
+<ul>
+<li>Cyclical redundancy checks</li>
+<li>Optional link-layer acknowledgements</li>
+<li>Retransmission of faulty frames</li>
+</ul>
+<p>Two types of data:</p>
+<ul>
+<li>Static data, or class 0: represents a static value</li>
+<li>Event data, or class 1, 2, or 3 by priority: represents a change</li>
+</ul>
+<p>Communication is initiated from the master station to the slave outstation:</p>
+<ol>
+<li>Master sends request message</li>
+<li>Slave sends response message</li>
+<li>Master confirms (ACK)</li>
+</ol>
+<p>DNP3 also supports unsolicited responses for alarms:</p>
+<ol>
+<li>Slave sends unsolicited response</li>
+<li>Master confirms (ACK)</li>
+</ol>
+<p>Every DNP3 device needs a unique address.</p>
+<p>DNP3 lacks security. There's no:</p>
+<ul>
+<li>Authentication</li>
+<li>Encryption</li>
+</ul>
+<h3 id="secure-dnp3">Secure DNP3<a class="headerlink" href="#secure-dnp3" title="Permanent link">&para;</a></h3>
+<p>This DNP3 variant adds authentication to the response-request process, issued as a challenge by the receiving device. A unique session key is hashed with the message data to verify authority, integrity, and pairing. It can also operate over <abbr title="Transport Layer Security">TLS</abbr> for confidentiality.</p>
+<p>Secure DNP3 operates at the application layer of the <abbr title="Transmission Control Protocol">TCP</abbr>/IP protocol stack as a payload of the <abbr title="Transmission Control Protocol">TCP</abbr>/IP packet.</p>
+<pre><code class="language-text">├─────────────────────────────────────── IP Packet ─────────────┼────────── Payload ───────────┤
+                                                                ├───────── DNP3 LPDU ──────────┤
+╔════════╗ ╔════════════════════════╗ ╔═══════════════════════╗ ╔═════════════╗ ╔══════════════╗
+║  HDLC  ║ ║ Source/Destination MAC ║ ║ Source/Destination IP ║ ║ DNP3 Header ║ ║ DNP3 Payload ║
+╚════════╝ ╚════════════════════════╝ ╚═══════════════════════╝ ╚═════════════╝ ╚══════════════╝
+</code></pre>
+<p>The process for critical requests looks like this:</p>
+<ol>
+<li>Master sends request message</li>
+<li>Slave sends authentication challenge</li>
+<li>Master sends authentication response</li>
+<li>Slave confirms ACK</li>
+<li>Slave sends response message</li>
+<li>Master confirms ACK</li>
+</ol>
+<h3 id="process-fieldbus-profibus">Process Fieldbus (PROFIBUS)<a class="headerlink" href="#process-fieldbus-profibus" title="Permanent link">&para;</a></h3>
+<p>Designed in late 1980s to allow PLCs to communicate with host computers, there are a number of specialized variants:</p>
+<ul>
+<li>PROFIBUS PA: for instrumentation for process automation<ul>
+<li>Developed to address needs of field instrumentation in hazardous areas (explosive vapors, dust)</li>
+<li>Uses <em>intrinsic safety</em> concept to to limit power on communication lines so that dust or vapor in the vicinity will not be ignited</li>
+</ul>
+</li>
+<li>PROFIsafe: safety applications</li>
+<li>PROFIdrive: high-speed drive applications</li>
+<li>PROFIBUS DP (decentralized periphery): the most widely deployed variant, and it's turtles all the way down...<ul>
+<li>PROFIBUS DP-V0</li>
+<li>PROFIBUS DP-V1</li>
+<li>PROFIBUS DP-V2</li>
+<li>These three variants are minor upgrade versions of the former</li>
+</ul>
+</li>
+</ul>
+<p>PROFIBUS communications have three profiles: asynchronous, synchronous, and via Ethernet (ethertype 0x8892) -- also called PROFINET.</p>
+<p>PROFIBUS uses token sharing to allow multiple master nodes (PLCs or RTUs) to communicate with its slaves (sensor, motor, or other control system device). Slaves can initiate communication to their master node or other slaves.</p>
+<p>PROFIBUS lacks security. There's no authentication (a spoofed node could impersonate a master node), but as it uses a naturally segmented serial network, compromise requires physical access. <a href="https://spectrum.ieee.org/telecom/security/the-real-story-of-stuxnet">Stuxnet</a> is an example of PROFIBUS exploitation.</p>
+<h3 id="industrial-ethernet">Industrial Ethernet<a class="headerlink" href="#industrial-ethernet" title="Permanent link">&para;</a></h3>
+<p>Adapts the IEEE 802.3 Ethernet standard to real-time industrial automation applications and provides physical enhancements to harden Ethernet, such as more rugged wiring, connectors, and hardware designed for industrial application. Some considerations:</p>
+<ul>
+<li>Electrical noise and interference (EMI)</li>
+<li>Vibration</li>
+<li>Extended temperatures and humidity</li>
+<li>Power requirements</li>
+<li>Support of real-time performance: low latency, low jitter, minimal packet loss</li>
+</ul>
+<p>There are <a href="https://www.pdv.reutlingen-university.de/rte/">30 different varieties of Industrial Ethernet</a>, because apparently we can't all just get along.</p>
+<p>The five most widely-accepted are:</p>
+<ol>
+<li><strong>EtherNet/IP</strong><ul>
+<li>Based on <abbr title="Transmission Control Protocol">TCP</abbr>/IP</li>
+<li>Real-time protocol using <abbr title="Transmission Control Protocol">TCP</abbr> and <abbr title="User Datagram Protocol">UDP</abbr></li>
+<li>Susceptible to any vulnerabilities of its underlying protocols</li>
+</ul>
+</li>
+<li><strong>PROFINET</strong><ul>
+<li>Based on <abbr title="Transmission Control Protocol">TCP</abbr>/IP</li>
+<li>Open standard (IEC 61158 and IEC 61784)</li>
+<li>Version 1: standard Ethernet and <abbr title="Transmission Control Protocol">TCP</abbr>/IP</li>
+<li>Version 2: software-based Real Time (RT) support with cycle times of 5-10ms</li>
+<li>Version 3: Isochronous Real Time (IRT) with cycle times of less than 1ms and jitter less than 1ms</li>
+<li>Susceptible to any vulnerabilities of its underlying protocols</li>
+</ul>
+</li>
+<li><strong>EtherCAT</strong><ul>
+<li>Direct Ethernet access</li>
+<li>Communicates large amounts of data over a single Ethernet frame</li>
+<li>Short cycle time, low jitter: only 1-2 frames required for a complete cycle</li>
+<li>Susceptible to any Ethernet vulnerabilities</li>
+<li>Highly susceptible to <abbr title="Denial-of-Service">DoS</abbr> attack</li>
+</ul>
+</li>
+<li><strong>Ethernet POWERLINK</strong><ul>
+<li>Direct Ethernet access</li>
+<li>Based on Fast Ethernet with direct encapsulation of Ethernet frames</li>
+<li>Three time periods: "start of cycle" frame, synchronous phase, then asynchronous phase</li>
+<li>Depends on controlled request-response cycles: susceptible to disruption</li>
+<li>Highly susceptible to <abbr title="Denial-of-Service">DoS</abbr> attack</li>
+<li>Susceptible to any Ethernet vulnerabilities</li>
+</ul>
+</li>
+<li><strong>SERCOS III (Serial Real-Time Communication System)</strong><ul>
+<li>Direct Ethernet access</li>
+<li>Deterministic real-time motion control and I/O applications</li>
+<li>High-speed, low jitter</li>
+<li>Network supports up to 511 slave devices in ring or straight topologies</li>
+<li>Cyclical master-slave protocol</li>
+<li>Susceptible to any Ethernet vulnerabilities</li>
+<li>When option to support embedded open <abbr title="Transmission Control Protocol">TCP</abbr>/IP and <abbr title="User Datagram Protocol">UDP</abbr>/IP communications is enabled, a device using SERCOS III could launch an inbound attack to other systems</li>
+</ul>
+</li>
+</ol>
+<p>Security support for all these protocols include:</p>
+<ul>
+<li>Use of an <abbr title="Industrial Control System">ICS</abbr>-aware <abbr title="Intrusion Detection System">IDS</abbr> to monitor communications</li>
+<li>Use of an application-aware firewall</li>
+</ul>
+<h3 id="backend-protocols">Backend Protocols<a class="headerlink" href="#backend-protocols" title="Permanent link">&para;</a></h3>
+<h4 id="open-process-communications-opc">Open Process Communications (OPC)<a class="headerlink" href="#open-process-communications-opc" title="Permanent link">&para;</a></h4>
+<p>A series of standard specifications (not actually a protocol) released in 1996 (referred to as OPC Classic). It provides a mechanism for various technologies to exchange data at a higher level than fieldbus. As a Windows interconnection, these technologies include:</p>
+<ul>
+<li>Object Linking and Embedded (OLE)</li>
+<li>Component Object Model (COM)</li>
+<li>Distributed Component Object Model (DCOM)</li>
+</ul>
+<p>A client application calls a local process that is executed on a remote server. A remote procedure call (RPC) is used to provide functionality. Roughly, this takes the form:</p>
+<ol>
+<li>OPC client establishes a connection to the OPC server</li>
+<li>OPC server communicates with a data source via native protocol (Modbus, DNP3, etc.)</li>
+<li>OPC server receives data.</li>
+<li>OPC client receives data over the network and provides it to the requesting application.</li>
+</ol>
+<p>OPC security concerns include:</p>
+<ul>
+<li>Use of DCOM and RPC, vulnerable to multiple attack vectors</li>
+<li>Host security concerns due to Windows support</li>
+<li>Legacy authentication services</li>
+</ul>
+<p>The newer Unified Architecture (OPC-UA) should be used over OPC Classic.</p>
+<h4 id="inter-control-center-communications-protocol-iccp">Inter-Control Center Communications Protocol (ICCP)<a class="headerlink" href="#inter-control-center-communications-protocol-iccp" title="Permanent link">&para;</a></h4>
+<p>Designed for bidirectional Wide-Area Network (<abbr title="Wide Area Network">WAN</abbr>) communication between a utility control center and other control centers, power plants, and substations.</p>
+<p>Used for:</p>
+<ul>
+<li>Establishing connection</li>
+<li>Accessing information (read requests)</li>
+<li>Information transmission</li>
+<li>Notifications of changes, alarms, exceptions</li>
+<li>Configuring remote devices</li>
+<li>Control of operating programs</li>
+</ul>
+<p>A bilateral table is used to define permissions to control access for each control center. It works like this:</p>
+<ol>
+<li>Client sends request</li>
+<li>Server checks bilateral table to validate permissions</li>
+<li>Server returns response</li>
+</ol>
+<p>Security concerns include:</p>
+<ul>
+<li>Lack of authentication and encryption</li>
+<li>Exploitation of bilateral tables to explicitly define trust</li>
+<li>High accessibility</li>
+</ul>
+<p>Secure ICCP variants incorporating digital certificates should be used where possible.</p>
+<h3 id="iec-61850-standard">IEC 61850 Standard<a class="headerlink" href="#iec-61850-standard" title="Permanent link">&para;</a></h3>
+<p>Designed originally for subsystem automation and adapted for other applications (hydroelectric plants, wind turbines, distribution feeders, high-voltage switch gears).</p>
+<ul>
+<li>Configuration by Substation Configuration Language (SCL) (based on XML)</li>
+<li>Data model and communications model</li>
+<li>Designed to run on standard Ethernet <abbr title="Local Area Network">LAN</abbr></li>
+<li>Fiber optics has the advantages of avoid electromagnetic interference, prevent unplanned power conductors, and permit high throughput</li>
+<li>Seeks to be <a href="https://xkcd.com/927/">the single complete standard</a> for configuration, monitoring, reporting, storing, and communicating</li>
+</ul>
+<p><img alt="xkcd: How Standards Proliferate" src="https://imgs.xkcd.com/comics/standards.png" /></p>
+<p>Classes of communications protocols:</p>
+<ul>
+<li>Machine-to-machine (M2M)<ul>
+<li>Based on Generic Substation Event (GSE) protocol (P2P layer 2 multicast)</li>
+<li>Generic Substation State Events (GSSE) and Generic Object Oriented Substation Events (GOOSE)</li>
+<li>GOOSE is most common and was designed to operate at layer 2 of the <abbr title="Open Systems Interconnection (model)">OSI</abbr> model (link layer) to ensure 4ms performance requirement</li>
+</ul>
+</li>
+<li>Client-server</li>
+<li>Configuration protocols</li>
+</ul>
+<p>Doesn't include security specifications on its own (they're in IEC 62351-6):</p>
+<ul>
+<li>Requires <abbr title="Transport Layer Security">TLS</abbr></li>
+<li>Use VLANs for protection (encryption would be too slow for GOOSE)</li>
+<li>VLANs can be spoofed</li>
+</ul>
+<h2 id="smart-grid">Smart Grid<a class="headerlink" href="#smart-grid" title="Permanent link">&para;</a></h2>
+<p>Many interconnected and inter-communicating systems using open and proprietary protocols, including:</p>
+<ul>
+<li>Billing systems</li>
+<li>Bulk electric generation systems</li>
+<li>Customer information and management systems</li>
+<li>Electric distribution systems</li>
+<li>Electric transmission systems</li>
+<li>Load management systems</li>
+<li>Meteorological and environment monitoring systems</li>
+<li>Meter data management systems<ul>
+<li>Smart meter device logs</li>
+<li>Storage of usage statistics</li>
+</ul>
+</li>
+<li>Protection systems</li>
+<li>Substation automation systems</li>
+</ul>
+<p>To remain available, the smart grid needs to have high resiliency. Threats to resiliency include:</p>
+<ul>
+<li>Growing demand and peak demand for resources<ul>
+<li>Baseload, intermediate load, and peak load correspond to rising costs</li>
+</ul>
+</li>
+<li>Cyber attacks</li>
+</ul>
+<p>Key components include:</p>
+<ul>
+<li>Substation automation</li>
+<li>Synchronized phasor measurements (using <abbr title="Phasor Measurement Unit">PMU</abbr>)</li>
+<li>Advanced Metering Infrastructure</li>
+</ul>
+<p>Security strategies include:</p>
+<ul>
+<li>Monitoring for situational awareness</li>
+<li>Risk and threat analysis early in deployment and planning stages</li>
+<li>Separation of services</li>
+<li>Defense-in-depth</li>
+</ul>
+<p>Cyberattacks specific to the smart grid involve:</p>
+<ul>
+<li>Mapping grid architecture through reconnaissance and scanning</li>
+<li>Identifying and penetrating target systems</li>
+<li>Propagating throughout a breached system (more connections makes propagation easier)</li>
+</ul>
+<p>Common attack motives include:</p>
+<ul>
+<li>Information theft for profit or reconnaissance<ul>
+<li><abbr title="Personally-Identifiable Information">PII</abbr> of smart grid consumers</li>
+<li>Energy consumption information</li>
+<li><abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr> and automation systems that give operational details of smart grid</li>
+</ul>
+</li>
+<li><abbr title="Denial-of-Service">DoS</abbr></li>
+<li>Service manipulation, e.g. GPS spoofing to desynchronize phasors</li>
+</ul>
+<h3 id="generation-system-architecture">Generation System Architecture<a class="headerlink" href="#generation-system-architecture" title="Permanent link">&para;</a></h3>
+<p>Familiarity with general common architectural components can help identify possible risks. Possible risk areas include:</p>
+<ul>
+<li>Manipulation of fuel supply</li>
+<li>Burner controls</li>
+<li>Valve or flow manipulation</li>
+<li>Turbine operation</li>
+<li>Intake pumps</li>
+<li>Voltage or capacity manipulation</li>
+<li>Generation <abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr> (G-<abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr>) for managing automation</li>
+</ul>
+<p>Anything with a microprocessor can be compromised, and the manipulation of any one component of a system can compromise the system.</p>
+<h3 id="transmission-system-architecture">Transmission System Architecture<a class="headerlink" href="#transmission-system-architecture" title="Permanent link">&para;</a></h3>
+<p>Main focus areas:</p>
+<ul>
+<li>Generation control</li>
+<li>Delivery</li>
+<li>Energy storage</li>
+<li>Condition, reserve and interchange management</li>
+</ul>
+<p>Highly distributed, highly physically accessible systems covering wide areas. Primary components that present risk if compromised include:</p>
+<ul>
+<li>Substations, or yards (substation automation systems)<ul>
+<li>Provide voltage measurement and regulation, and line protection</li>
+<li>Handles step-up and step-down of voltage for distribution (see Transformers... below, not the movie)</li>
+</ul>
+</li>
+<li>GPS satellite timing (see <abbr title="Phasor Measurement Unit">PMU</abbr>)</li>
+<li>Transmission <abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr> (T-<abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr>) for managing substation processes</li>
+<li>Phase measurement unit (<abbr title="Phasor Measurement Unit">PMU</abbr>) systems and phase data concentrators<ul>
+<li>A <abbr title="Phasor Measurement Unit">PMU</abbr> is also called synchrophasor, which sounds like a super 1337 80s-neon cyberweapon.</li>
+<li>Synchronizes multiple phasor measurements from different points on the grid using GPS, which allows accurate measurement of grid quality (voltage and current)</li>
+<li>Provides real-time data to TSCADA that is used to manage substation functions</li>
+<li>Uses <a href="https://standards.ieee.org/standard/C37_118-2005.html">IEEE C37.118</a> standard for phasor measurements (superseded by <a href="https://standards.ieee.org/standard/60255-118-1-2018.html">IEEE/IEC 60255-118-1-2018</a>)<ul>
+<li>Lacks inherent security, uses intrinsic mechanisms for data and control</li>
+<li>If not properly protected, measurements can be easily intercepted and manipulated</li>
+</ul>
+</li>
+<li>Commercially produced, support multiple protocols, uses commercial <abbr title="Operating System">OS</abbr> like Windows, and are vulnerable to compromise</li>
+</ul>
+</li>
+<li>Line protection systems<ul>
+<li>Prevent surges (overcurrent) and outages (undercurrent) with breakers, line monitoring systems, automation</li>
+<li>Built on common commercial <abbr title="Operating System">OS</abbr></li>
+</ul>
+</li>
+<li>Transformers (more than meets the eye)<ul>
+<li>Step-up for electric transmission, located at transmission system ingress</li>
+<li>Step-down for end-user consumption, located at transmission system egress to distribution</li>
+</ul>
+</li>
+<li>Gateway enabling communication with control center and <abbr title="Wide Area Network">WAN</abbr><ul>
+<li>Translates messages using many different protocols (broad attack surface) from substation systems and controllers and between a central transmission control</li>
+<li>Provides activity logs for the substation, i.e. to historian</li>
+<li>Prime target for attack as host security or malware prevention here is rare</li>
+<li>Direct, indirect, remote manipulation from attack will affect many components</li>
+</ul>
+</li>
+<li>Transmission <abbr title="Remote Terminal Unit">RTU</abbr>, <abbr title="Intelligent Electronic Device">IED</abbr>, <abbr title="Phasor Measurement Unit">PMU</abbr>, and wide area measurement</li>
+</ul>
+<h3 id="distribution-system-architecture">Distribution System Architecture<a class="headerlink" href="#distribution-system-architecture" title="Permanent link">&para;</a></h3>
+<p>Main focus areas:</p>
+<ul>
+<li>Load management and modelling</li>
+<li>Two-way power flow</li>
+<li>Risk analysis and outage management</li>
+<li>Dynamic feed or reconfiguration to avoid outages</li>
+</ul>
+<p>Primary components that present risk if compromise include:</p>
+<ul>
+<li>Distribution <abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr> (D-<abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr>)<ul>
+<li>Handles many remote <abbr title="Communication &amp; Control">C&amp;C</abbr> functions, different protocols (broad attack surface)</li>
+<li>Established communication channel means you can use it to access many connected systems, e.g. <abbr title="Advanced Metering Infrastructure">AMI</abbr> or G-<abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr></li>
+</ul>
+</li>
+<li>Field controller (<abbr title="Remote Terminal Unit">RTU</abbr>)<ul>
+<li>Many protocols supported (broad attack surface)</li>
+<li>Compromise may mess up protection systems, cause random false failures</li>
+</ul>
+</li>
+</ul>
+<h3 id="advanced-metering-infrastructure-ami">Advanced Metering Infrastructure (<abbr title="Advanced Metering Infrastructure">AMI</abbr>)<a class="headerlink" href="#advanced-metering-infrastructure-ami" title="Permanent link">&para;</a></h3>
+<p>Primary components:</p>
+<ol>
+<li>Smart meters<ul>
+<li>Solid-state meter with RT data collection</li>
+<li>Microprocessor and local memory</li>
+<li>Use of communication network, often including home network (additional attack surface)</li>
+<li>Diagnostic ports</li>
+<li>Remote management and configuration via software</li>
+</ul>
+</li>
+<li>Communication network<ul>
+<li>Broadband over powerline, powerline communications, radio, telecommunication network</li>
+</ul>
+</li>
+<li><abbr title="Advanced Metering Infrastructure">AMI</abbr> server or headend<ul>
+<li>Software based, commercial <abbr title="Operating System">OS</abbr> (usually Windows) and <abbr title="Database">DB</abbr></li>
+</ul>
+</li>
+</ol>
+<p>Common features include:</p>
+<ul>
+<li>Remote meter reading</li>
+<li>Remote billing</li>
+<li>Demand and response</li>
+<li>Energy delivery</li>
+<li>Remote connect/disconnect</li>
+<li>Remote payment and pre-payment</li>
+</ul>
+<p>Common attack targets include:</p>
+<ul>
+<li>Meter data management system</li>
+<li>Customer information system</li>
+</ul>
+<p>Security concerns include:</p>
+<ul>
+<li>Protocols that vary widely in inherent security and vulnerabilities (broad attack surface)</li>
+<li>Smart meters are physically accessible and require board and chip security</li>
+<li>Home and business <abbr title="Local Area Network">LAN</abbr> can be used as ingress to <abbr title="Advanced Metering Infrastructure">AMI</abbr> and thus smart grid</li>
+</ul>
+<p>Adjacent to Home Area Network (<abbr title="Home Area Network">HAN</abbr>), which provides additional attack entry points:</p>
+<ul>
+<li>In-Home Devices (IHD) (smart appliances, like your toaster)</li>
+<li>Home Energy Management Systems (HEMS)</li>
+</ul>
+<h2 id="hacking-ics">Hacking <abbr title="Industrial Control System">ICS</abbr><a class="headerlink" href="#hacking-ics" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Security does not lead to safety and vice versa</li>
+<li>The more details (an attacker has) the more damage (they can inflict)</li>
+</ul>
+<p>Possible cyberattack incidents include:</p>
+<ul>
+<li>Disrupting feedback loops</li>
+<li>Changing configuration, <abbr title="Programmable Logic Controller">PLC</abbr> logic, <abbr title="Remote Terminal Unit">RTU</abbr> programming, or other controllers</li>
+<li><abbr title="Communication &amp; Control">C&amp;C</abbr> channels affecting secure systems</li>
+</ul>
+<p>Impact of cyberattack on <abbr title="Industrial Control System">ICS</abbr> is local, regional, possibly global, and includes:</p>
+<ul>
+<li>Damage to equipment, facilities, supply to end users, loss of life</li>
+<li>Deterioration of business reputation</li>
+<li>Loss of production and intellectual property</li>
+</ul>
+<p>Common targets include:</p>
+<ul>
+<li><abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr> servers via control network</li>
+<li>Engineering workstation (single host with access to configure control mechanisms)</li>
+<li>Yard protection equipment, e.g. via feeder measurements</li>
+<li>Energy management systems, e.g. manipulating current load</li>
+</ul>
+<p>Common attack methods include:</p>
+<ul>
+<li><abbr title="Man-in-the-Middle">MitM</abbr></li>
+<li><abbr title="Denial-of-Service">DoS</abbr></li>
+<li>Replay attack</li>
+<li>Reverse-engineering devices</li>
+<li>Use of known unpatched vulnerabilities</li>
+</ul>
+<p>Attacks succeed due to:</p>
+<ul>
+<li>Insecure communication protocols</li>
+<li>Lack of device-to-device authentication</li>
+<li>Fragile communication stacks in embedded devices</li>
+<li>Using readily available software tools on <abbr title="Commercial Off-The-Shelf">COTS</abbr> components</li>
+</ul>
+<p>Handling infection (compromise):</p>
+<ul>
+<li>Removing malware immediately may activate dormant subsequent malware and removes the ability to learn from the compromise</li>
+<li>First logically isolate the infected host (remove from network or physical assets)<ul>
+<li>Possibly continue to allow malware <abbr title="Communication &amp; Control">C&amp;C</abbr> in a sandbox</li>
+<li>Collect logs and other data for later investigation</li>
+</ul>
+</li>
+</ul>
+<h3 id="cps-sensory-channel-attacks"><abbr title="Cyber-Physical Systems">CPS</abbr> Sensory Channel Attacks<a class="headerlink" href="#cps-sensory-channel-attacks" title="Permanent link">&para;</a></h3>
+<p>Sensors are input for <abbr title="Cyber-Physical Systems">CPS</abbr>. Sensory channels include:</p>
+<ul>
+<li>Visible light<ul>
+<li>Automatic controls, e.g. brightness control for LCDs</li>
+<li>Light detection and ranging (<abbr title="Light Detection and Ranging">LIDAR</abbr>)</li>
+<li>Use as side channels for sensitive data</li>
+</ul>
+</li>
+<li>Infrared light<ul>
+<li>Remote control systems</li>
+<li>Navigation assistance, obstacle avoidance</li>
+<li>3D mapping</li>
+<li>Covert channel support</li>
+</ul>
+</li>
+<li>Acoustic<ul>
+<li>Obstacle avoidance and map building (short burst sound wave used to take measurements by reflections, with transducers)</li>
+</ul>
+</li>
+<li>Seismic<ul>
+<li>Accelerometers</li>
+</ul>
+</li>
+</ul>
+<p>Maliciously, sensory channels can be used as:</p>
+<ul>
+<li>Triggers for existing malware on devices</li>
+<li>Transfer of malware between devices</li>
+<li>A combination medium with other sensory channels and traditional channels</li>
+</ul>
+<p>Conventional security focuses on traditional channels and is not sufficient for novel attacks on sensory channel threats.</p>
+<h2 id="securing-ics">Securing <abbr title="Industrial Control System">ICS</abbr><a class="headerlink" href="#securing-ics" title="Permanent link">&para;</a></h2>
+<p>Main challenges include:</p>
+<ul>
+<li>Zero tolerance for false positives</li>
+<li>Commercial security software may be unsuitable for time-sensitive, high-precision <abbr title="Industrial Control System">ICS</abbr></li>
+</ul>
+<h3 id="security-zones">Security Zones<a class="headerlink" href="#security-zones" title="Permanent link">&para;</a></h3>
+<p>Establish security zones (logical or physical asset groups that have common security requirements) and defined conduits for communication. (See Separation of Privilege in <a href="#ten-security-principles">Ten Security Principles</a>)</p>
+<p>Zones can be created according to:</p>
+<ul>
+<li>Security level</li>
+<li>Logical (functional) requirements or discrete functionality</li>
+<li>Control loop or process</li>
+<li>Physical asset access</li>
+<li>Placing trusted and untrusted assets (i.e. those that use insecure protocols)</li>
+<li>Network connectivity</li>
+<li>Remote access requirements</li>
+<li><abbr title="Role-Based Access Control">RBAC</abbr> requirements</li>
+<li>Allowed and disallowed technologies within a zone</li>
+</ul>
+<p>Creating zones can help with:</p>
+<ul>
+<li>Areas where security controls should be applied</li>
+<li>Security policies needed</li>
+<li>Defining expected behavior in and between zones</li>
+<li>Placement for <abbr title="Intrusion Detection System">IDS</abbr> and <abbr title="Intrusion Prevention System">IPS</abbr>, especially on conduits</li>
+<li>Seeing information flow requirements</li>
+<li>Seeing need for nesting based on security level</li>
+</ul>
+<p>Zone examples and security:</p>
+<ul>
+<li>Field zone<ul>
+<li>Often embedded systems, low cost and power means you can't install commercial security software</li>
+<li>Device security relies on manufacturer, e.g. with whitelisting</li>
+<li>On conduits to and between field zones: <abbr title="Industrial Control System">ICS</abbr> firewall, protocol filter, <abbr title="Intrusion Prevention System">IPS</abbr></li>
+</ul>
+</li>
+<li>Control zone<ul>
+<li>Whitelisting</li>
+<li>Anti-virus</li>
+<li>Configuration management and system hardening</li>
+<li>Separation of services</li>
+<li>Host <abbr title="Intrusion Detection System">IDS</abbr>/<abbr title="Intrusion Prevention System">IPS</abbr> and <abbr title="Data Loss Protection">DLP</abbr></li>
+<li>Event logging</li>
+<li>On conduits between: <abbr title="Supervisory Control &amp; Data Acquisition">SCADA</abbr> firewall and <abbr title="Intrusion Detection System">IDS</abbr>/<abbr title="Intrusion Prevention System">IPS</abbr>, <abbr title="Network Access Control">NAC</abbr>, <abbr title="Network Behavior Anomaly Detection">NBAD</abbr>/<abbr title="Network Threat Behavior Analysis">NTBA</abbr>, <abbr title="Data Loss Protection">DLP</abbr></li>
+</ul>
+</li>
+<li>Energy services<ul>
+<li>On conduits to and from: enterprise firewall and <abbr title="Intrusion Detection System">IDS</abbr>/<abbr title="Intrusion Prevention System">IPS</abbr>, <abbr title="Network Access Control">NAC</abbr>, <abbr title="Network Behavior Anomaly Detection">NBAD</abbr>/<abbr title="Network Threat Behavior Analysis">NTBA</abbr>, <abbr title="Data Loss Protection">DLP</abbr></li>
+</ul>
+</li>
+<li>Back-office services<ul>
+<li>Data integrity and information assurance tools: <abbr title="Database">DB</abbr> security, auditing, <abbr title="Data Loss Protection">DLP</abbr><ul>
+<li>Value of data increases as you move inward from the field</li>
+<li>Increased reliance on integrity (less on availability)</li>
+</ul>
+</li>
+<li><abbr title="Database">DB</abbr> Activity Monitoring (<abbr title="Database Activity Monitoring">DAM</abbr>)</li>
+<li>On conduits to and from: enterprise firewall and <abbr title="Intrusion Detection System">IDS</abbr>/<abbr title="Intrusion Prevention System">IPS</abbr>, <abbr title="Network Access Control">NAC</abbr>, <abbr title="Network Behavior Anomaly Detection">NBAD</abbr>/<abbr title="Network Threat Behavior Analysis">NTBA</abbr>, <abbr title="Data Loss Protection">DLP</abbr></li>
+</ul>
+</li>
+<li>Enterprise zone<ul>
+<li>On conduits and from: enterprise firewall and <abbr title="Intrusion Detection System">IDS</abbr>/<abbr title="Intrusion Prevention System">IPS</abbr>, <abbr title="Network Access Control">NAC</abbr>, <abbr title="Network Behavior Anomaly Detection">NBAD</abbr>/<abbr title="Network Threat Behavior Analysis">NTBA</abbr>, <abbr title="Data Loss Protection">DLP</abbr></li>
+</ul>
+</li>
+</ul>
+<p>Modelling systems and physical devices can provide <abbr title="Cyber-Physical Systems">CPS</abbr>-specific rules for detecting anomalies and fingerprinting device behavior.</p>
+<p><strong>Situational awareness</strong> is the process of perception, decision, and action that enables assessment of and reaction to a situation. (A widely applicable concept; see <a href="https://www.artofmanliness.com/articles/ooda-loop/">The Tao of Boyd: How to Master the OODA Loop</a>.) Considerations include:</p>
+<ul>
+<li>Where is your data stored and how is it being used?</li>
+<li>Collecting information in a format that can be analyzed from a cybersecurity standpoint</li>
+</ul>
+<h3 id="compensating-controls">Compensating Controls<a class="headerlink" href="#compensating-controls" title="Permanent link">&para;</a></h3>
+<p>These help meet security requirements when other measures are too difficult or impractical to implement. These include:</p>
+<ul>
+<li>Firewalls</li>
+<li>Industrial protocol filters</li>
+<li><abbr title="Intrusion Detection System">IDS</abbr> and <abbr title="Intrusion Prevention System">IPS</abbr> that perform <abbr title="Deep Packet Inspection">DPI</abbr></li>
+<li>Network access control systems</li>
+<li>Application content inspection</li>
+<li><abbr title="Transport Layer Security">TLS</abbr></li>
+<li>Logging and monitoring<ul>
+<li><abbr title="Security Information Event Management">SIEM</abbr> or log management tools can detect and compare anomalies after an incident<ul>
+<li>Automated capabilities include data correlation, scoring risk associated with assets, filtering and cross-referencing information with outside sources</li>
+</ul>
+</li>
+<li>Network forensics tools</li>
+<li><abbr title="Data Loss Protection">DLP</abbr> detects sensitive information at rest and in motion, e.g. stop sensitive info from being saved to a USB drive</li>
+</ul>
+</li>
+</ul>
+<h3 id="security-level-sl">Security Level (<abbr title="Security Level">SL</abbr>)<a class="headerlink" href="#security-level-sl" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ISA-62443 Security Level (<abbr title="Security Level">SL</abbr>) standard provides a measurement for the relative security of a zone or conduit</li>
+<li>Used to determine Target Security Level and Capability Security Level to help ensure assets grouped together meet the same <abbr title="Security Level">SL</abbr></li>
+<li>Physical assessment determines the Achieved Security Level, for assurance</li>
+</ul>
+<h2 id="privacy-in-cps">Privacy in <abbr title="Cyber-Physical Systems">CPS</abbr><a class="headerlink" href="#privacy-in-cps" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>These patterns can be useful for analyzing our energy use for energy conservation but, together with data from other sources, the potential for extensive data mining is very significant.<br />
+⁠— Giovanni Buttarelli, assistant director of the European Data Protection Supervisor</p>
+</blockquote>
+<p>Privacy risks associated with the Smart Grid include:</p>
+<ul>
+<li>The ability to identify a person from data originating from <abbr title="Advanced Metering Infrastructure">AMI</abbr></li>
+<li><abbr title="Personally-Identifiable Information">PII</abbr> that is easily accessible due to lack of proper safeguards</li>
+<li>Integration with home smart appliances and communication channels (your smartphone)</li>
+<li>Third parties can utilize energy usage data to profile activities happening at a property<ul>
+<li>If the home is vacant</li>
+<li>How many individuals live there</li>
+<li>Number of appliances, use patterns, and identification using libraries of known patterns</li>
+<li>Whether a property is growing marijuana (subpoena of utility records; see <a href="https://www.law.cornell.edu/supremecourt/text/99-8508">Kyllo v. United States</a>)</li>
+</ul>
+</li>
+<li>Data sold to third-parties</li>
+</ul>
+<p>Privacy strategies for the Smart Grid include periodic sampling and differential privacy.</p>
+<p>Privacy Impact Assessment (<abbr title="Privacy Impact Assessment">PIA</abbr>) or Data Protection Impact Assessment (<abbr title="Data Protection Impact Assessment">DPIA</abbr>) analyzes privacy implications of a system and may:</p>
+<ul>
+<li>Satisfy, meet, or exceed legal requirements</li>
+<li>Demonstrate due diligence</li>
+<li>Help identify and manage risks</li>
+<li>Avoid unnecessary costs, inadequate solutions, loss of trust and reputation</li>
+<li>Inform organizational communications strategy</li>
+</ul>
+<p><abbr title="Data Protection Impact Assessment">DPIA</abbr> subsequently has these options:</p>
+<ul>
+<li><strong>Risk acceptance</strong>: acknowledge and take no action</li>
+<li><strong>Risk mitigation</strong> or <strong>reduction</strong>: take steps to reduce the risk or its consequences to an acceptable level</li>
+<li><strong>Risk transfer</strong>: transfer the risk to a third-party</li>
+<li><strong>Risk avoidance</strong>: decide not to implement the risky system entirely</li>
+</ul>
+<p>Other <abbr title="Cyber-Physical Systems">CPS</abbr> domains with security and privacy considerations include:</p>
+<ul>
+<li>Healthcare and medicine (implantable devices)</li>
+<li>Intelligent transportation (traffic management systems, infrastructure, vehicle advanced driver assistance systems)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
